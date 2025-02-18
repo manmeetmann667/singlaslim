@@ -1,0 +1,9 @@
+.menu-items {
+  transition: all 0.5s ease;
+  color: #3d3d3d;
+  font-size: 0.8 rem;
+}
+
+.menu-items:hover {
+  color: #4295d4;
+}

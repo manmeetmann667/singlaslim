@@ -1,0 +1,22 @@
+<header>
+  <div class="container py-5">
+    <!-- Logo -->
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
+      <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem">Blogs</span>
+    </div>
+
+    <!-- <h1>Here are some moments of trebha !</h1> -->
+  </div>
+</header>
+
+<div class="container" style="padding-bottom: 50px">
+  <div class="row d-flex flex-row justify-content-center align-items-center" *ngFor="let blog of blogsList">
+    <div class="col-lg-4 col-md-4 col-12 my-2">
+     <img [src]="blog.imageUrl" class="img-fluid" alt="">
+    </div>
+    <div class="col-lg-8 col-md-8 col-12 d-flex flex-column">
+      <h4 class="Montserrat-Medium">{{ blog.title }}</h4>
+      <p class="Montserrat-Medium">{{blog.description}}</p>
+    </div>
+  </div>
+</div>

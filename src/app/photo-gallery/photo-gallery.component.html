@@ -1,0 +1,76 @@
+    <header>
+        <div class="container py-5">
+            <!-- Logo -->
+            <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
+                <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem;">Photo Gallery</span>
+            </div>
+    
+            <!-- <h1>Here are some moments of trebha !</h1> -->
+        </div>
+    </header>
+    
+
+
+<div class="container" style="padding-bottom: 50px">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-12 my-2" *ngFor="let image of imagesList">
+            <div class="card shadow-sm" style="border: 1px solid #96763721; width: 18rem;">
+                <div class="card-body">
+                <img class="card-img-top img-fluid" [src]="image.imageUrl" alt="Card image cap">
+                  <h5 class="card-title Montserrat-Medium mt-2" style="font-size: 0.9rem;">{{ image.title }}</h5>
+                  <p class="small Montserrat-Medium">{{image.description}}</p>
+                  
+                </div>
+              </div>
+        </div>
+       
+    </div>
+
+</div>
+
+<header>
+    <div class="container py-5">
+        <!-- Logo -->
+        <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
+            <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem;">Video Gallery</span>
+        </div>
+
+        <!-- <h1>Here are some moments of trebha !</h1> -->
+    </div>
+</header>
+
+
+
+<div class="container" style="padding-bottom: 50px">
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-12 my-2" *ngFor="let video of videosList">
+        <div class="card shadow-sm" style="border: 1px solid #96763721; width: 18rem;">
+            <div class="card-body">
+            <img class="card-img-top img-fluid" [src]="video.thumbnailImageUrl" alt="Card image cap">
+              <h5 class="card-title Montserrat-Medium mt-2" style="font-size: 0.9rem;">{{ video.title }}</h5>
+              <p class="small Montserrat-Medium">{{video.description}}</p>
+              <div class="text-center">
+                  <p (click)="openViewVideoModal(viewVideoModal, video.videoUrl)" class="small Montserrat-Medium" style="color: #967737; cursor: pointer;"><u> Click to play <i class="bi bi-play"></i></u></p>
+
+              </div>
+            </div>
+          </div>
+    </div>
+   
+</div>
+
+</div>
+
+<ng-template #viewVideoModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Video</h4>
+      <button type="button" class="close" aria-label="Close" id="closeAddServiceModal" #closeAddServiceModal
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <iframe style="margin-top:2px;" width="100%" height="300" [src]='sanitizer.bypassSecurityTrustResourceUrl(videoUrl)'
+        frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </ng-template>

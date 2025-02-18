@@ -1,0 +1,50 @@
+@import url(./styles/fonts.css);
+@import url(./styles/colors.css);
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css');
+/* @import 'toastr'; */
+@import '~ngx-toastr/toastr';
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.primary-text-color {
+  color: #4295d4;
+}
+
+.primary-bg-color {
+  background-color: #4295d4;
+}
+
+.primary-bg-color-light {
+  background-color: #96763790;
+}
+
+.menu-icon {
+  transition: all 0.5s ease;
+  color: #000;
+}
+
+.menu-icon:hover {
+  color: #4295d4;
+}
+
+.btn-outline-primary{
+  border: 2px solid #4295d4;
+  background-color: white;
+  border-radius: 10px;
+  color: #4295d4;
+}
+
+.btn-outline-primary:hover{
+  background-color: #4295d4;
+  color: white !important;
+  border: 2px solid #4295d4;
+}
+
+.btn-primary{
+  background-color: #4295d4;
+  color: white !important;
+  border-radius: 10px;
+  border: 2px solid #4295d4;
+}

@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "dist/cipt-website",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "site": "trebha-wellness-aesthetic",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

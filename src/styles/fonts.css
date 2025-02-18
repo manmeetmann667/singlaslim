@@ -1,0 +1,60 @@
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url(../assets/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: Montserrat-Medium;
+  src: url(../assets/fonts/Montserrat-Medium.ttf);
+}
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../assets/fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: Montserrat-SemiBold;
+  src: url(../assets/fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: PlayfairDisplay-Bold;
+  src: url(../assets/fonts/PlayfairDisplay-Bold.ttf);
+}
+
+/* @font-face {
+  font-family: PlayfairDisplay-Medium;
+  src: url(./fonts/PlayfairDisplay-Medium.ttf);
+}
+@font-face {
+  font-family: PlayfairDisplay-Regular;
+  src: url(./fonts/PlayfairDisplay-Regular.ttf);
+}*/
+@font-face {
+  font-family: PlayfairDisplay-SemiBold;
+  src: url(../assets/fonts/PlayfairDisplay-SemiBold.ttf);
+}
+
+.Montserrat-Bold {
+  font-family: Montserrat-Bold;
+}
+.Montserrat-Medium {
+  font-family: Montserrat-Medium;
+}
+.Montserrat-Regular {
+  font-family: Montserrat-Regular;
+}
+.Montserrat-SemiBold {
+  font-family: Montserrat-SemiBold;
+}
+.PlayfairDisplay-Bold {
+  font-family: PlayfairDisplay-Bold;
+}
+/* .PlayfairDisplay-Medium {
+  font-family: PlayfairDisplay-Medium;
+}
+.PlayfairDisplay-Regular {
+  font-family: PlayfairDisplay-Regular;
+}*/
+.PlayfairDisplay-SemiBold {
+  font-family: PlayfairDisplay-SemiBold;
+}

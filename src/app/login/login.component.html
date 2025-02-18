@@ -1,0 +1,251 @@
+<div class="">
+    <div class="container-fluid d-flex justify-content-center bg-light" style="min-height: 550px;">
+        <div class="container sub-container row d-flex justify-content-center align-items-start mx-0 px-0">
+            <div class="col-lg-5 col-md-12 col-sm-12 d-none d-lg-block  ">
+                <div class="d-flex flex-column justify-content-between">
+                    <div class="p-2 bd-highlight">
+                        <div class="col-6 mx-0 p-0" style="margin-top: 40px;">
+                            <img class="img-fluid mt-5 " src="../../assets/images/Trebha-logo-removebg-preview.png"
+                                alt="">
+                        </div>
+
+                        <div class="h3 Montserrat-Medium" style="margin-top: 10px;color:#967737; ">
+                        </div>
+                        <!-- <div class="py-2">
+                            <i class="fa fa-circle-o text-primary" style="font-size: 10px;" aria-hidden="true"></i>&nbsp;
+                            <span class=" text-black OpenSans-Regular">Login Into Platform</span>
+                        </div>
+                        <div class="py-2">
+                            <i class="fa fa-circle-o text-primary" style="font-size: 10px;" aria-hidden="true"></i>&nbsp;
+                            <span class=" text-black OpenSans-Regular">Enroll Into A Course</span>
+                        </div>
+                        <div class="py-2">
+                            <i class="fa fa-circle-o text-primary" style="font-size: 10px;" aria-hidden="true"></i>&nbsp;
+                            <span class=" text-black OpenSans-Regular">And Start Learning</span>
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 mt-5 col-sm-12 m-0 p-0">
+                <div class="card m-0 p-0">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center m-4">
+                            <div class="h6 Montserrat-SemiBold ">Login with your registered Phone number</div>
+                        </div>
+                        <div class="m-4">
+                            <form class="d-flex flex-column" [formGroup]="phoneForm" ngNativeValidate
+                                (ngSubmit)="onSubmit(otpDialogContext,loginAlertDialogContext,successDialogContext)">
+
+                                <div class="form-group mb-3">
+                                    <label class="Montserrat-Regular text-left">Phone number</label>
+                                    <div class="card">
+                                        <div class="input-group">
+                                            <select formControlName="countryCode" class="ml-2"
+                                                style="border: none; outline:none; background-color: transparent;"
+                                                (ngModelChange)="countryCodeFun($event)" required>
+                                                <option *ngFor="let item of countryCodeNameList; index as i" [value]="i"
+                                                    [selected]='countryCodeIndex == i'>
+                                                    {{item}}
+                                                </option>
+                                            </select>
+
+
+                                            <input class="form-control pl-2" placeholder="9999999999"
+                                                style="border: none;  outline:none; background-color: transparent;"
+                                                formControlName="phone" maxlength="10" minlength="10" type="text">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex justify-content-center align-self-center">
+                                    <div class="spinner-border text-primary" role="status" *ngIf="stateStatus == 1">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group mb-3" *ngIf="stateStatus == 2">
+                                    <label class="OpenSans-Regular text-left">One Time Password</label>
+                                    <div class="card">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">OTP</span>
+                                            </div>
+                                            <input class="form-control pl-2" placeholder="One Time Password"
+                                                style="border: none;  outline:none; background-color: transparent;"
+                                                formControlName="otp" maxlength="6" minlength="6" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex p-2 justify-content-center" style="height: 80px;">
+                                    <div id="recaptcha-container"></div>
+                                </div>
+
+                                <button type="submit" *ngIf="stateStatus == 0" class="btn btn-outline-primary mt-4 Montserrat-Medium">Get
+                                    OTP</button>
+                                <button type="submit" *ngIf="stateStatus == 2"
+                                    class="btn btn-outline-primary mt-4 Montserrat-Medium">Verify
+                                    OTP</button>
+
+
+
+                            </form>
+                        </div>
+
+
+                        <div class="text-center mt-4">
+                            <a [routerLink]="['/register']">
+                                <h6>
+                                    <small><span class="text-muted">Not a member yet?</span> Register now</small>
+                                </h6>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
+<div class="d-block d-sm-block d-md-block d-lg-none">
+    <div class="container-fluid d-flex justify-content-center bg-light" style="min-height: 550px;">
+        <div class="sub-container row d-flex justify-content-center align-items-center">
+            <div class="card m-0 p-0">
+                <div class="card-body d-flex flex-column justify-content-center">
+                    <div class="d-flex flex-column justify-content-center align-items-center m-4">
+                        <div class="h6 OpenSans-SemiBold text-center">Login with your registered Phone number</div>
+                    </div>
+                    <div class="m-4">
+                        <form class="d-flex flex-column" [formGroup]="phoneForm" ngNativeValidate
+                            (ngSubmit)="onSubmit(otpDialogContext,loginAlertDialogContext,successDialogContext)">
+
+                            <div class="form-group mb-3">
+                                <label class="OpenSans-Regular text-left">Phone number</label>
+                                <div class="card">
+                                    <div class="input-group">
+                                        <select formControlName="countryCode"
+                                            style="border: none; outline:none; background-color: transparent;"
+                                            (ngModelChange)="countryCodeFun($event)" required>
+                                            <option *ngFor="let item of countryCodeNameList; index as i" [value]="i"
+                                                [selected]='countryCodeIndex == i'>
+                                                {{item}}
+                                            </option>
+                                        </select>
+
+
+                                        <input class="form-control pl-2" placeholder="e.g. 1234567890"
+                                            style="border: none;  outline:none; background-color: transparent;"
+                                            formControlName="phone" maxlength="10" minlength="10" type="text">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="spinner-border text-primary" role="status" *ngIf="stateStatus == 1">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+
+                            <div class="form-group mb-3" *ngIf="stateStatus == 2">
+                                <label class="OpenSans-Regular text-left">One Time Password</label>
+                                <div class="card">
+                                    <div class="input-group">
+                                        <input class="form-control pl-2" placeholder="e.g. 123456"
+                                            style="border: none;  outline:none; background-color: transparent;"
+                                            formControlName="otp" maxlength="6" minlength="6" type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex p-2 justify-content-center" style="height: 80px;">
+                                <div id="recaptcha-container-sm"></div>
+                            </div>
+
+                            <button type="submit" *ngIf="stateStatus == 0" class="btn btn-primary mt-4">Get
+                                OTP</button>
+                            <button type="submit" *ngIf="stateStatus == 2" class="btn btn-primary mt-4">Verify
+                                OTP</button>
+
+
+
+                        </form>
+                    </div>
+
+
+                    <div class="text-center mt-4">
+                        <a [routerLink]="['/register']">
+                            <h6>
+                                <small><span class="text-muted">Not a member yet?</span> Register now</small>
+                            </h6>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<ng-template #otpDialogContext let-modal>
+    <div class="modal-header">
+        <h6 class="modal-title" id="modal-basic-title">An OTP has been send to {{phoneForm.value.phone}} for
+            verification.
+        </h6>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body text-left p-4 ">
+
+        <form [formGroup]="userVerificationForm" (ngSubmit)="verifyLoginCode(successDialogContext)" ngNativeValidate>
+            <div class="form-group">
+                <label>Verification code</label>
+                <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa4-code" aria-hidden="true"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="code" placeholder="OTP" maxlength="6" minlength="6"
+                        type="text" required>
+                </div>
+            </div>
+
+            <div class="text-center mb-4">
+                <div class="spinner-border text-dark" role="status" *ngIf="stateStatus == 3">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <button type="submit" [disabled]="!userVerificationForm.valid || codeSend"
+                    class="btn btn-primary mt-4">Verify</button>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div> -->
+</ng-template>
+
+
+<ng-template #successDialogContext let-modal>
+
+    <div class="modal-body text-center m-2 p-2">
+        <i class="fa fa-check-circle" style="color: green; font-size: 60px;" aria-hidden="true"></i>
+        <h3>Logged In Successfully!!</h3>
+    </div>
+
+</ng-template>
+
+<ng-template #loginAlertDialogContext let-modal>
+
+    <div class="modal-body text-center m-2 p-2">
+        <i class="fa fa-exclamation-circle" style="color: crimson; font-size: 60px;" aria-hidden="true"></i>
+        <h4>Already logged Into A Device</h4>
+        <h6>This account is already logged into a device, previously. To login into this device, please logout from thre
+            previous one.</h6>
+        <button type="button" class="btn btn-danger btn-sm">Browse Courses</button>
+    </div>
+
+</ng-template>

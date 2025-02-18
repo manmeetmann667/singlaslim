@@ -1,0 +1,44 @@
+.container-fluid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.address {
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.address:hover {
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+.map-container {
+    margin-top: 20px;
+    max-width: 600px;
+}
+
+.display-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+.Montserrat-SemiBold {
+    font-weight: 600;
+}
+
+.Montserrat-Medium {
+    font-weight: 400;
+}

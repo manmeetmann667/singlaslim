@@ -1,0 +1,291 @@
+<div class="container-fluid" style=" background-color: #f1f1f19D;">
+    <!-- <button (click)="logOut()">Logout</button> -->
+    <!-- <h3 style="">Profile Info</h3> -->
+    <div class="row m-4">
+
+        <div class="col-lg-3 col-md-12 col-12">
+            <div class="col-12 mt-4">
+                <div class="card border-1 shadow-sm mb-4" style="border-radius: 2%;">
+                    <div class="card-body">
+                        <div class="d-flex flex-column">
+                            <span [ngStyle]="{'color': pageBool == 0? '#967737': 'black'}" style="cursor: pointer;"
+                                (click)="changePageBool(0)">
+                                <span class="m-4 p-4 my-4 py-4 Montserrat-Medium" ><i style="font-size: 1rem;"
+                                        class="bi bi-person-fill mr-2"></i>My Profile</span></span>
+                            <div style="border-bottom: 1px solid #f1f1f19d;" class="my-2"></div>
+                            <span [ngStyle]="{'color': pageBool == 1? '#967737': 'black'}" style="cursor: pointer;"
+                                (click)="changePageBool(1)">
+                                <span  class="m-4 p-4"><i
+                                        class="bi bi-list-ul mr-2 Montserrat-Medium"></i>Weight Logs</span></span>
+                            <div style="border-bottom: 1px solid #f1f1f1cb;" class="my-2"></div>
+                            <span [ngStyle]="{'color': pageBool == 2? '#967737': 'black'}" style="cursor: pointer;"
+                                (click)="changePageBool(2)">
+                                <span  class="m-4 p-4"><i
+                                        class="bi bi-journal-text mr-2 Montserrat-Medium"></i>Diet Chart</span></span>
+                            <div style="border-bottom: 1px solid #f1f1f1cb;" class="my-2"></div>
+                            <span style="cursor: pointer;">
+                                <span  (click)="logOut()" class="m-4 p-4 Montserrat-Medium"><i
+                                        class="bi bi-box-arrow-right mr-2"></i>Log Out</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <ul class="list-group text-center">
+              <li class="list-group-item" style="color: #967737; cursor: pointer;">
+                  <span class="m-4 p-4 my-4 py-4" style=""><i style="font-size: 1rem;" class="bi bi-person-fill me-2"></i>My Profile</span></li>
+              <li class="list-group-item" style="cursor: pointer;">
+                  <span style="" class="m-4 p-4"><i class="bi bi-list-ul me-2"></i>My Orders</span></li>
+              <li class="list-group-item" style="cursor: pointer;">
+                  <span style="" class="m-4 p-4"><i class="bi bi-journal-text me-2"></i>Address Book</span></li>
+            </ul> -->
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-12 mb-4 justify-content-center align-items-center text-start">
+            <div class="card shadow-sm mt-4" id="content" *ngIf="pageBool == 0">
+                <div class="card-body">
+                    <div class="row m-4">
+                        <!-- <div class="col-lg-4 col-md-4 col-12">
+                  <img [src]="customerModel.imageUrl" class="d-lg-block d-none" style="border-radius: 50%;" height="200em"
+                    alt="">
+                  <img [src]="customerModel.imageUrl" class="d-lg-none d-block img-fluid" style="border-radius: 50%;"
+                    alt="">
+                </div> -->
+                        <div class="col-lg-8 col-md-8 col-12">
+                            <h3 class="Montserrat-Bold" style=" border-bottom: 1px solid #e6e6e6;">
+                                {{ userModel?.name }}</h3>
+                            <div class="d-flex flex-row mt-2">
+                                <label class="text-muted"><i class="bi bi-envelope"></i></label>
+                                <span class="ml-3 Montserrat-Medium">{{ userModel?.email }} </span>
+                            </div>
+                            <div class="d-flex flex-row mt-2">
+                                <label class="text-muted"><i class="bi bi-telephone"></i></label>
+                                <span class="ml-3 Montserrat-Medium">{{ userModel?.mobile }} </span>
+                            </div>
+                            <div class="d-flex flex-row mt-2">
+                                <label class="text-muted"><i class="bi bi-gift"></i></label>
+                                <span
+                                    class="ml-3 Montserrat-Medium">{{ userModel?.dob['seconds']*1000 | date: 'dd-MMMM-yyyy' }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-sm mt-4" *ngIf="pageBool == 1">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <h3 class="Montserrat-Bold mb-2" style="font-size: 1.3rem;">Weight Logs</h3>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-row">
+                                <input type="number" [(ngModel)]="weight"
+                                    class="input-group col-5 float-right  mr-2 text-sm" placeholder="Enter Weight (Kg)">
+                                <button (click)="logWeight()"
+                                    class="btn btn-outline-primary btn-sm float-right Montserrat-Medium"><i
+                                        class="bi bi-plus mr-1"></i>Log Weight</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="border-bottom: 1px solid #e6e6e6;"></div>
+                    <div class="container" *ngIf="healthLogList.length == 0">
+                        <div class="card border-0 m-2">
+                            <div class="card-body text-center">
+                                <div class="d-flex flex-column">
+                                    <div class="text-center">
+                                        <!-- <img src="../../assets/img/Screenshot 2022-05-11 at 11.25.09 PM.png" height="100rem"
+                          width="100rem" alt=""> -->
+                                    </div>
+                                    <h5 class="text-muted Montserrat-Medium small">No Weight Log Found !</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt-4" *ngIf="healthLogList.length != 0">
+                        <div class="card m-2">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-flush">
+                                        <thead class="thead-light text-start">
+                                            <tr>
+                                                <th style="font-size: 1rem;" scope="col" class="Montserrat-Medium">Sr.
+                                                    No</th>
+                                                <th style="font-size: 1rem;" scope="col" class="Montserrat-Medium">
+                                                    Weight (Kg)</th>
+                                                <th style="font-size: 1rem;" scope="col" class="Montserrat-Medium">
+                                                    Logged From</th>
+                                                <th style="font-size: 1rem;" scope="col" class="Montserrat-Medium">
+                                                    Logged on</th>
+                                                <!-- <th style="font-size: 1rem;" scope="col" class="Montserrat-Medium">Status</th> -->
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="border-light">
+                                            <tr *ngFor="let log of healthLogList; index as idx">
+                                                <td class="Montserrat-Medium">{{idx + 1}}</td>
+                                                <td class="Montserrat-Medium">
+                                                    {{ log.weight }}
+                                                </td>
+                                                <td class="text-muted text-start">
+                                                    <span class="Montserrat-Medium"
+                                                        style="font-size: 0.8rem;">{{ log.signal? 'Mobile App' : 'Website' }}</span>
+                                                </td>
+                                                <td class="text-muted text-start">
+                                                    <span class="Montserrat-Medium"
+                                                        style="font-size: 0.8rem;">{{ log.createdOn.toDate() | date: 'dd MMMM yyyy' }}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- <div class="d-flex flex-column">
+                      <div class="d-flex flex-row">
+                        <span class="open-sans text-muted">1. </span>
+                        <span class="open-sans ms-3">Mr. Ram Kapoor</span>
+                      </div>
+                    </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mt-4" *ngIf="pageBool == 2">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <h3 class="Montserrat-Bold" style="font-size: 1.3rem">Diet Chart</h3>
+                        </div>
+                        <div class="col-6">
+                            <!-- <button class="btn btn-sm btn-outline-dark float-end" (click)="openAddressModal(addressModal)"><i
+                      class="bi bi-plus"></i>
+                    New Address
+                  </button> -->
+                        </div>
+
+                    </div>
+                    <div style="border-bottom: 1px solid #e6e6e6;"></div>
+                    <div class="mt-4">
+                        <div class="container" *ngIf="dietsList.length != 0">
+                            <div class="card m-2" *ngFor="let diet of dietsList;index as idx">
+                                <div class="card-body">
+                                    <div class="d-flex flex-column">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h3 class="Montserrat-Medium" style="font-size: 1rem;">{{ diet.title}}</h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="d-flex flex-row float-right">
+                                                    <span class="Montserrat-Regular text-muted" style="font-size: 1rem;">Assigned On : &nbsp;</span>
+                                                    <span class="Montserrat-Regular text-muted" style="font-size: 1rem;"> {{ diet.assignedOn.toDate() | date: 'dd-MMMM-yyyy' }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <span class="Montserrat-Regular text-muted text-sm" style="font-size: 0.9rem;">{{ diet.remarks }}</span>
+                                            </div>
+                                            <div class="col-6">
+                                                <h4 class="Montserrat-Medium float-right mt-1" (click)="openDietModal(dietChartModal, diet)" style="font-size: 0.9rem; color: #967737; cursor: pointer;">View Details <i class="bi bi-arrow-right"></i></h4>
+                                            </div>
+                                        </div>
+                                        <!-- <span class="Montserrat-Medium mt-1 text-sm" style="font-size: 0.9rem;">Plan</span>
+                                        <div class="table-responsive">
+                                            <table class="table table-flush">
+                                                <thead class="thead-light text-start">
+                                                    <tr>
+                                                        <th style="font-size: 0.9rem;" scope="col" class="Montserrat-Medium">Sr.
+                                                            No</th>
+                                                        <th style="font-size: 0.9rem;" scope="col" class="Montserrat-Medium">
+                                                            Time</th>
+                                                        <th style="font-size: 0.9rem;" scope="col" class="Montserrat-Medium">
+                                                            Diet</th>
+                                                    
+                                            
+        
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="border-light">
+                                                    <tr *ngFor="let diet of diet.dietChart; index as idx2">
+                                                        <td class="Montserrat-Medium text-muted">{{idx2 + 1}}</td>
+                                                        <td class="Montserrat-Medium">
+                                                            {{ diet.time }}
+                                                        </td>
+                                                        <td class="text-start">
+                                                            <span class="Montserrat-Medium"
+                                                                style="font-size: 0.9rem;">{{ diet.diet }}</span>
+                                                        </td>
+                                                     
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" *ngIf="dietsList.length == 0">
+                            <div class="card border-0 m-2">
+                                <div class="card-body text-center">
+                                    <div class="d-flex flex-column">
+                                        <div class="text-center">
+                                            <!-- <img src="../../assets/img/Screenshot 2022-05-11 at 11.25.09 PM.png" height="120rem"
+                            width="120rem" alt=""> -->
+                                        </div>
+                                        <h5 class="text-muted Montserrat-Medium small">No Diets Found !</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<ng-template #dietChartModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title Montserrat-SemiBold">{{ selectedDietModel?.title }} Chart</h4>
+        <button type="button" class="close" aria-label="Close" id="closeAddNewStaffModal" #closeAddNewStaffModal
+            (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="Montserrat-Regular" scope="col">Sr. No</th>
+                            <th class="Montserrat-Regular" scope="col">Time</th>
+                            <!-- <th scope="col">Descripton</th> -->
+                            <!-- <th scope="col">Status</th> -->
+                            <th class="Montserrat-Regular" scope="col">Diet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let diet of selectedDietModel?.dietChart; index as idx">
+                            <td class="Montserrat-Regular">{{ idx + 1 }}</td>
+                            <td class="Montserrat-Regular">{{ diet.time || 'No Time Provided' }}</td>
+                            <!-- <td class="text-wrap">{{ image.description || 'No Description Provided' }}</td> -->
+
+                            <td class="Montserrat-Regular">
+                                {{ diet.diet }}
+                                <!-- <button class="btn btn-dark btn-sm" (click)="viewImageModal(viewModal, image.imageUrl)">View
+                  Image</button>
+                <button  class="btn btn-dark btn-sm" (click)="openImageModal(ImageModal, image)">Update</button>
+                <button  class="btn btn-danger btn-sm" (click)="openDeleteModal(deleteModal, image)">Delete</button> -->
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </ng-template>

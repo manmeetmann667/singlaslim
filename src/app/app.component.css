@@ -1,0 +1,36 @@
+.social-container {
+  position: fixed;
+  top: 40%;
+  right: 0;
+  z-index: 1000;
+}
+
+#loader {
+   /* ÷display: block; */
+  position: fixed;
+  left: 43%;
+  top: 44%;
+  /* // width: 30%; */
+  /* // align-self: center; */
+  z-index: 2147483647;
+  margin: 0px 0 0 0px;
+}
+#connectivity {
+  display: block;
+  position: fixed;
+  top: 10%;
+  left: 38%;
+  align-content: center;
+  z-index: 2147483647;
+  margin: 0px 0 0 0px;
+}
+
+#overlay {
+  display: block;
+  position: fixed;
+  z-index: 100000000000;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.3;
+}
