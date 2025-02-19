@@ -1,38 +1,70 @@
 <div *ngIf="loader">
-    <div id="overlay">
-    </div>
-    <div id="loader" class="text-center flex-column d-flex justify-content-center align-items-center align-self-center">
-      <div class="spinner-border text-dark" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    
-      <div class="h3 text-white">Please wait...</div>
-      <!-- <div class="h5 text-white">Performing database operation. </div> -->
-    </div>
-  </div>
-  <app-loader *ngIf="isLoading"></app-loader>
+	<div id="overlay"></div>
+	<div
+		id="loader"
+		class="text-center flex-column d-flex justify-content-center align-items-center align-self-center"
+	>
+		<div class="spinner-border text-dark" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+
+		<div class="h3 text-white">Please wait...</div>
+		<!-- <div class="h5 text-white">Performing database operation. </div> -->
+	</div>
+</div>
+<app-loader *ngIf="isLoading"></app-loader>
 <app-navbar *ngIf="!isLoading"></app-navbar>
 <router-outlet *ngIf="!isLoading"></router-outlet>
 <app-footer *ngIf="!isLoading"></app-footer>
 
-<div *ngIf="!isLoading" class="social-container d-block d-sm-block d-md-block d-lg-none">
-    <div class="d-flex flex-column p-2 m-2" style="background-color: rgba(255, 255, 255, 0.445); border-radius: 10px;">
-        <div (click)="openLink('https://www.facebook.com/singlaslimmingclinicludhiana/')">
-            <i class="bi bi-facebook menu-icon cursor-pointer" style="font-size: 1.4rem;"></i>
-        </div>
-        <div (click)="openLink('https://www.youtube.com/@allaboutfat2017')">
-            <i class="bi bi-youtube menu-icon cursor-pointer" style="font-size: 1.4rem;"></i>
-        </div>
-        <div (click)="openLink('https://www.instagram.com/singlaslimmingclinic/')">
-            <i class="bi bi-instagram menu-icon cursor-pointer" style="font-size: 1.4rem;"></i>
-        </div>
-        <!-- <div>
+<div
+	*ngIf="!isLoading"
+	class="social-container d-block d-sm-block d-md-block d-lg-none"
+>
+	<div
+		class="d-flex flex-column p-2 m-2"
+		style="
+			background-color: rgba(255, 255, 255, 0.445);
+			border-radius: 10px;
+		"
+	>
+		<div
+			(click)="
+				openLink(
+					'https://www.facebook.com/singlaslimmingclinicludhiana/'
+				)
+			"
+		>
+			<i
+				class="bi bi-facebook menu-icon cursor-pointer"
+				style="font-size: 1.4rem"
+			></i>
+		</div>
+		<div
+			(click)="openLink('https://www.youtube.com/@allaboutfat2017')"
+		>
+			<i
+				class="bi bi-youtube menu-icon cursor-pointer"
+				style="font-size: 1.4rem"
+			></i>
+		</div>
+		<div
+			(click)="
+				openLink('https://www.instagram.com/singlaslimmingclinic/')
+			"
+		>
+			<i
+				class="bi bi-instagram menu-icon cursor-pointer"
+				style="font-size: 1.4rem"
+			></i>
+		</div>
+		<!-- <div>
             <i class="bi bi-whatsapp menu-icon cursor-pointer" style="font-size: 1.4rem;"></i>
         </div> -->
-    </div>
+	</div>
 </div>
 
-<div  *ngIf="!isLoading"class="social-container d-none d-lg-block">
+<!-- <div  *ngIf="!isLoading"class="social-container d-none d-lg-block">
     <div class="d-flex flex-column p-2 m-2" style="background-color: rgba(255, 255, 255, 0.445); border-radius: 10px;">
         <div (click)="openLink('https://www.facebook.com/singlaslimmingclinicludhiana/')">
             <i class="bi bi-facebook menu-icon cursor-pointer" style="font-size: 1.8rem;"></i>
@@ -46,5 +78,6 @@
         <!-- <div>
             <i class="bi bi-whatsapp menu-icon cursor-pointer" style="font-size: 1.8rem;"></i>
         </div> -->
-    </div>
-</div>
+<!-- </div>
+</div> -->
+-->

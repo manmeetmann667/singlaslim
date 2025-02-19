@@ -1,13 +1,44 @@
 header {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100%;
-  min-height: 120px;
-  /* padding: 50px 0; */
-  color: #fff;
-  background: #9676374b
-    url(https://www.athenadesignstudio.com/plugins/switch/images/bg.jpg)
-    no-repeat center center;
-  margin-bottom: 30px;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 120px;
+	/* padding: 50px 0; */
+	color: #fff;
+	background: #9676374b
+		url(https://www.athenadesignstudio.com/plugins/switch/images/bg.jpg)
+		no-repeat center center;
+	margin-bottom: 30px;
+}
+.slider {
+	position: relative;
+	width: 98vw; /* Full width of the screen */
+	height: 350px; /* Adjust height as needed */
+	overflow: hidden;
+	margin: auto;
+	margin-bottom: 4rem;
+	border-radius: 10px;
+}
+
+.slider-container {
+	display: flex;
+	transition: transform 1s ease-in-out;
+	width: 100%;
+	height: 100%;
+}
+
+.slide {
+	display: flex; /* Arrange images in a row */
+	width: 100%;
+	height: 100%;
+	flex: 0 0 100%;
+	gap: 10px; /* Add some spacing if needed */
+}
+
+.slide img {
+	border-radius: 2rem;
+	width: calc(100% / 4); /* Ensures 4 images in a row */
+	height: 100%;
+	object-fit: cover; /* Ensures full coverage */
 }

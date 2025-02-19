@@ -1,44 +1,63 @@
 .container-fluid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
 .address {
-    cursor: pointer;
-    padding: 8px 0;
-    font-size: 1.1rem;
-    color: #555;
+	cursor: pointer;
+	padding: 8px 0;
+	font-size: 1.1rem;
+	color: #555;
 }
 
 .address:hover {
-    color: #007BFF;
-    text-decoration: underline;
+	color: #007bff;
+	text-decoration: underline;
 }
 
 .map-container {
-    margin-top: 20px;
-    max-width: 600px;
+	margin-top: 20px;
+	max-width: 600px;
 }
 
 .display-4 {
-    font-size: 2.5rem;
-    font-weight: bold;
+	font-size: 2.5rem;
+	font-weight: bold;
 }
 
 .mt-3 {
-    margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 h3 {
-    font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 
 .Montserrat-SemiBold {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .Montserrat-Medium {
-    font-weight: 400;
+	font-weight: 400;
+}
+.bg-primary {
+	position: relative;
+	color: white;
+}
+
+.bg-primary .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding-left: 7rem;
+	flex-direction: column;
+	z-index: 1;
 }
