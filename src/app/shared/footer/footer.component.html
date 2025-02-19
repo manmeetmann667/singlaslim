@@ -1,41 +1,68 @@
 <div class="container-fluid primary-bg-color-light">
-    <div class="container py-5 ">
-        <!-- <div class="row ml-1">
+	<div class="container py-5">
+		<!-- <div class="row ml-1">
             <div class="menu-items Montserrat-Medium cursor-pointer h6" *ngFor="let item of topMenuList">
                 <div class="px-2 ">{{item}}</div>
             </div>
         </div> -->
-        <hr>
-        <div class="row ">
-            <div class="col-4 mt-5 " *ngFor="let mainItem of menuObjList">
-                <div *ngIf="mainItem.list.length > 0" style="font-size: 1.2rem;" class="h6 mb-1 Montserrat-Medium">{{mainItem.name}}</div>
-                <div *ngIf="mainItem.list.length == 0" class="h6 mb-1" style="font-size: 1.2rem;" class="h6 mb-1 Montserrat-Medium">
-                    <a [routerLink]="mainItem.link" style="color: inherit;">
-                        {{mainItem.name}}</a>
-                </div>
-                <div *ngIf="mainItem.list.length > 0" class="small Montserrat-Medium">
-                    <div *ngFor="let subOneItem of mainItem.list">
-                        <div *ngIf="subOneItem.list.length > 0" class=" mb-1">{{subOneItem.name}}</div>
-                        <div *ngIf="subOneItem.list.length == 0" class=" mb-1">
-                            <a [routerLink]="subOneItem.link" style="color: inherit;">
-                                {{subOneItem.name}}</a>
-                        </div>
-                        <div *ngIf="subOneItem.list.length > 0">
-                            <div *ngFor="let subTwoItem of subOneItem.list">
-                                <div class="ml-4  mb-1">
-                                    <a [routerLink]="subOneItem.link" style="color: inherit;">
-                                        {{subTwoItem.name}}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <div class="container d-flex Montserrat-SemiBold mt-3 pb-3 flex-row justify-content-between">
-        <div>Copyright Singla Slimming Clinic</div>
-        <div>Developed by Auribises Technologies</div>
-    </div>
+		<hr />
+		<div class="row">
+			<div class="col-4 mt-5" *ngFor="let mainItem of menuObjList">
+				<div
+					*ngIf="mainItem.list.length > 0"
+					style="font-size: 1.2rem"
+					class="h6 mb-1 Montserrat-Medium"
+				>
+					{{ mainItem.name }}
+				</div>
+				<div
+					*ngIf="mainItem.list.length == 0"
+					class="h6 mb-1"
+					style="font-size: 1.2rem"
+					class="h6 mb-1 Montserrat-Medium"
+				>
+					<a [routerLink]="mainItem.link" style="color: inherit">
+						{{ mainItem.name }}</a
+					>
+				</div>
+				<div
+					*ngIf="mainItem.list.length > 0"
+					class="small Montserrat-Medium"
+				>
+					<div *ngFor="let subOneItem of mainItem.list">
+						<div *ngIf="subOneItem.list.length > 0" class="mb-1">
+							{{ subOneItem.name }}
+						</div>
+						<div *ngIf="subOneItem.list.length == 0" class="mb-1">
+							<a
+								[routerLink]="subOneItem.link"
+								style="color: inherit"
+							>
+								{{ subOneItem.name }}</a
+							>
+						</div>
+						<div *ngIf="subOneItem.list.length > 0">
+							<div *ngFor="let subTwoItem of subOneItem.list">
+								<div class="ml-4 mb-1">
+									<a
+										[routerLink]="subOneItem.link"
+										style="color: inherit"
+									>
+										{{ subTwoItem.name }}</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div
+		class="container d-flex Montserrat-SemiBold mt-3 pb-3 flex-row justify-content-between"
+	>
+		<div>Copyright Singla Slimming Clinic</div>
+		<div>Developed by Auribises Technologies</div>
+	</div>
 </div>
