@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component, OnInit, OnDestroy } from "@angular/core"
 import { AngularFirestore } from "@angular/fire/firestore"
 import { DomSanitizer } from "@angular/platform-browser"
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap"
@@ -12,16 +12,16 @@ import * as util from "../utils"
 	templateUrl: "./photo-gallery.component.html",
 	styleUrls: ["./photo-gallery.component.css"],
 })
-export class PhotoGalleryComponent implements OnInit {
+export class PhotoGalleryComponent implements OnInit, OnDestroy {
 	images: string[] = []
 	imageGroups: string[][] = [] // Stores images in groups of 4
 	currentIndex: number = 0
 	intervalId: any
 	excludedImages = [7, 8, 10, 11, 17, 22, 26] // List of missing images
 	imagesList: Images[] = []
-
 	videosList: Videos[] = []
 	videoUrl: string
+	isExpanded = {} // To track the expanded state of each video description
 
 	constructor(
 		private db: AngularFirestore,
@@ -67,11 +67,7 @@ export class PhotoGalleryComponent implements OnInit {
 							ele.data() as Images
 						)
 						this.imagesList.push(sliderbj)
-						// this.data.sliderLastDocs.next(ele);
 					})
-					console.log(this.imagesList)
-
-					// this.data.sliderSub.next(this.sliderImagesList);
 				}
 			})
 	}
@@ -94,10 +90,10 @@ export class PhotoGalleryComponent implements OnInit {
 						)
 						this.videosList.push(videoObj)
 					})
-					console.log(this.imagesList)
 				}
 			})
 	}
+
 	ngOnDestroy(): void {
 		if (this.intervalId) {
 			clearInterval(this.intervalId)
@@ -113,5 +109,9 @@ export class PhotoGalleryComponent implements OnInit {
 	next(): void {
 		this.currentIndex =
 			(this.currentIndex + 1) % this.imageGroups.length
+	}
+
+	toggleReadMore(title: string): void {
+		this.isExpanded[title] = !this.isExpanded[title]
 	}
 }
