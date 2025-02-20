@@ -1,66 +1,100 @@
-<div class="container-fluid m-0 p-0 ">
-    <ngb-carousel [showNavigationArrows]="false" [pauseOnHover]="false" [interval]="2500">
-        <ng-template ngbSlide *ngFor="let image of sliderImagesList; index as i">
-            <div class="d-none d-lg-block" style="
-              height: 85vh;" [ngStyle]="{
-              'background': 'linear-gradient(to right, #141717 0%, transparent), url('+ sliderImagesList[i].imageUrl +') no-repeat',
-              'background-size': 'cover'
-            }">
-                <div class="container-fluid pl-5 ml-4 d-flex flex-column justify-content-center pt-5 h-100">
-                    <div class="Montserrat-SemiBold display-4 mt-5 text-white">
-                        Transform your body <br> Transfrom your life.
-                    </div>
-                    <div class="Montserrat-Medium text-white h5">
-                        Book your consultation today with Singla Slimming Clinic.
-                    </div>
-                    <div class="row col-5">
-                        <div class="col-lg-6 col-12">
-                            <a href="tel: 08146300892"><button class="btn btn-primary w-100 mt-4 Montserrat-SemiBold"
-                                    style="scale: 1.1;">Call Us</button> </a>
-                        </div>
-                        <!-- <div class="col-lg-6 col-12">
+<div class="container-fluid m-0 p-0">
+	<ngb-carousel
+		[showNavigationArrows]="false"
+		[pauseOnHover]="false"
+		[interval]="2500"
+	>
+		<ng-template
+			ngbSlide
+			*ngFor="let image of sliderImagesList; index as i"
+		>
+			<div
+				class="d-none d-lg-block"
+				style="height: 85vh"
+				[ngStyle]="{
+					background:
+						'linear-gradient(to right, #141717 0%, transparent), url(' +
+						sliderImagesList[i].imageUrl +
+						') no-repeat',
+					'background-size': 'cover'
+				}"
+			>
+				<div
+					class="container-fluid pl-5 ml-4 d-flex flex-column justify-content-center pt-5 h-100"
+				>
+					<div class="Montserrat-SemiBold display-4 mt-5 text-white">
+						Transform your body <br />
+						Transfrom your life.
+					</div>
+					<div class="Montserrat-Medium text-white h5">
+						Book your consultation today with Singla Slimming Clinic.
+					</div>
+					<div class="row col-5">
+						<div class="col-lg-6 col-12">
+							<a href="tel: 08146300892"
+								><button
+									class="btn btn-primary w-100 mt-4 Montserrat-SemiBold"
+									style="scale: 1.1"
+								>
+									Call Us
+								</button>
+							</a>
+						</div>
+						<!-- <div class="col-lg-6 col-12">
                   <button class="btn btn-outline-primary w-100 Montserrat-Medium mt-4" (click)="openAppointmentForm(bookAppointmentFormModal)">Book a Consultation</button>
                 </div> -->
-
-                    </div>
-                </div>
-            </div>
-            <div class="d-block d-lg-none" style="
-              height: 85vh;
-              width: 100%;
-            " [ngStyle]="{
-              'background': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 10%, transparent), url('+ sliderImagesList[i].imageUrl +') no-repeat',
-              'background-size': 'cover'
-            }">
-                <div class="container d-flex flex-column justify-content-center h-100 pe-2">
-                    <div class="Montserrat-SemiBold text-white" style="font-size: 2rem;">
-                        Transform your body <br> Transfrom your life.
-                    </div>
-                    <div class="Montserrat-Medium text-white fs-6">
-                        Book your consultation today with Singla Slimming Clinic.
-                    </div>
-                    <div class="d-flex flex-row mt-4 px-0">
-                        <div class="">
-                            <a class="Montserrat-Medium" href="tel: 08146300892"><button
-                                    class="btn-primary btn me-2 Montserrat-Medium">Call Us</button></a>
-                        </div>
-                        <!-- <div class="">
+					</div>
+				</div>
+			</div>
+			<div
+				class="d-block d-lg-none"
+				style="height: 85vh; width: 100%"
+				[ngStyle]="{
+					background:
+						'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 10%, transparent), url(' +
+						sliderImagesList[i].imageUrl +
+						') no-repeat',
+					'background-size': 'cover'
+				}"
+			>
+				<div
+					class="container d-flex flex-column justify-content-center h-100 pe-2"
+				>
+					<div
+						class="Montserrat-SemiBold text-white"
+						style="font-size: 2rem"
+					>
+						Transform your body <br />
+						Transfrom your life.
+					</div>
+					<div class="Montserrat-Medium text-white fs-6">
+						Book your consultation today with Singla Slimming Clinic.
+					</div>
+					<div class="d-flex flex-row mt-4 px-0">
+						<div class="">
+							<a class="Montserrat-Medium" href="tel: 08146300892"
+								><button
+									class="btn-primary btn me-2 Montserrat-Medium"
+								>
+									Call Us
+								</button></a
+							>
+						</div>
+						<!-- <div class="">
                   <button class="btn-main-mobile"  (click)="openAppointmentForm(bookAppointmentFormModal)">Book a Consultation</button>
                 </div> -->
-
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="carousel-caption">
+					</div>
+				</div>
+			</div>
+			<!-- <div class="carousel-caption">
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </div> -->
-        </ng-template>
-    </ngb-carousel>
+		</ng-template>
+	</ngb-carousel>
 
-    <div class="container my-5 py-5 d-flex flex-md-row flex-column  ">
-       
-        <!-- <div class="col-md-6 col-12 text-justify Montserrat-Medium" style="align-self: center;">
+	<div class="container my-5 py-5 d-flex flex-md-row flex-column">
+		<!-- <div class="col-md-6 col-12 text-justify Montserrat-Medium" style="align-self: center;">
             <ul>
                 <li style="font-size: 0.9rem;">
                     We started our journey from Punjab as Singla Slimming Clinic in 2003 by our founders Dr.Anju
@@ -69,43 +103,54 @@
             </ul>
         </div> -->
 
-        <div class="col-md-6 col-12 text-justify Montserrat-Medium d-flex flex-column align-items-center" style="align-self: center; text-align: center;">
-            <img src="../assets/images/dranjusingla.jpg" alt="Dr. Anju Singla" style="max-width: 50%; height: auto; margin-bottom: 1rem;">
-            <ul style="padding: 0; list-style-position: inside;">
-                <li style="font-size: 0.9rem;">
-                    We started our journey from Punjab as Singla Slimming Clinic in 2003 by our founders Dr. Anju
-                    Singla & Dr. Sushil Singla
-                </li>
-            </ul>
-        </div>
+		<div
+			class="col-md-6 col-12 text-justify Montserrat-Medium d-flex flex-column align-items-center"
+			style="align-self: center; text-align: center"
+		>
+			<img
+				src="../assets/images/dranjusingla.jpg"
+				alt="Dr. Anju Singla"
+				style="max-width: 50%; height: auto; margin-bottom: 1rem"
+			/>
+			<ul style="padding: 0; list-style-position: inside">
+				<li style="font-size: 0.9rem">
+					We started our journey from Punjab as Singla Slimming Clinic
+					in 2003 by our founders Dr. Anju Singla & Dr. Sushil Singla
+				</li>
+			</ul>
+		</div>
 
-        <div class="col-md-6 col-12 text-start" style="position: relative;">
-            <div style="top: 50% ;height: 40%; width: 60%; background-color: #96763731; position: absolute;">
-            </div>
-            <div class="text-center Montserrat-Bold display-2 d-lg-block d-none">
-                <div>
-                    WHO
-                </div>
-                <div>
-                    WE
-                </div>
-                <div>ARE</div>
-            </div>
-            <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
-                <div>
-                    WHO
-                </div>
-                <div>
-                    WE
-                </div>
-                <div>ARE</div>
-            </div>
+		<div
+			class="col-md-6 col-12 text-start"
+			style="position: relative"
+		>
+			<div
+				style="
+					top: 50%;
+					height: 40%;
+					width: 60%;
+					background-color: #96763731;
+					position: absolute;
+				"
+			></div>
+			<div
+				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			>
+				<div>WHO</div>
+				<div>WE</div>
+				<div>ARE</div>
+			</div>
+			<div
+				class="text-center Montserrat-Bold display-4 d-lg-none d-block"
+			>
+				<div>WHO</div>
+				<div>WE</div>
+				<div>ARE</div>
+			</div>
+		</div>
+	</div>
 
-
-        </div>
-    </div>
-
-    <!-- <div
+	<!-- <div
         class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-center align-items-center section-color">
         <div class="my-5 col-md-6 col-12 order-md-0 order-1 text-justify Montserrat-Medium" style="align-self: center;">
             <ul>
@@ -141,23 +186,32 @@
         </div>
     </div> -->
 
-    <div class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-        style="position: relative;">
-
-        <!-- Left Section: Placeholder for Image/Visual -->
-        <div class="col-md-6 col-12 text-start" style="position: relative;">
-            <div style="top: 50% ;height: 40%; width: 60%; background-color: #96763731; position: absolute;">
-            </div>
-            <div class="text-center Montserrat-Bold display-2 d-lg-block d-none">
-                <div>
-                    Our
-                </div>
-                <div>
-                    Programs
-                </div>
-                <div></div>
-            </div>
-            <!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
+	<div
+		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
+		style="position: relative"
+	>
+		<!-- Left Section: Placeholder for Image/Visual -->
+		<div
+			class="col-md-6 col-12 text-start"
+			style="position: relative"
+		>
+			<div
+				style="
+					top: 50%;
+					height: 40%;
+					width: 60%;
+					background-color: #96763731;
+					position: absolute;
+				"
+			></div>
+			<div
+				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			>
+				<div>Our</div>
+				<div>Programs</div>
+				<div></div>
+			</div>
+			<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
             <div>
                 WHO
             </div>
@@ -166,92 +220,107 @@
             </div>
             <div>ARE</div>
         </div> -->
+		</div>
 
+		<!-- Right Section: Text Content -->
+		<div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
+			<div class="mt-4">
+				<h4 class="mb-3"><strong>Offline Services</strong></h4>
+				<ul class="list-unstyled">
+					<li class="mb-2">Lose 4-12 kg in 1 month</li>
+					<li class="mb-2">No Surgery | No Medicine | No Exercise</li>
+				</ul>
+			</div>
 
-        </div>
+			<div class="mt-4">
+				<h4 class="mb-3"><strong>Online Services</strong></h4>
+				<ul class="list-unstyled">
+					<li class="mb-2">Lose 3-8 kg in 1 month</li>
+					<li class="mb-2">No Surgery | No Medicine</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
-        <!-- Right Section: Text Content -->
-        <div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
-            <div class="mt-4">
-                <h4 class="mb-3"><strong>Offline Services</strong></h4>
-                <ul class="list-unstyled">
-                    <li class="mb-2">Lose 4-12 kg in 1 month</li>
-                    <li class="mb-2">No Surgery | No Medicine | No Exercise</li>
-                </ul>
-            </div>
-            
-            <div class="mt-4">
-                <h4 class="mb-3"><strong>Online Services</strong></h4>
-                <ul class="list-unstyled">
-                    <li class="mb-2">Lose 3-8 kg in 1 month</li>
-                    <li class="mb-2">No Surgery | No Medicine</li>
-                </ul>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-        style="position: relative;">
-
-
-        <!-- Left Section: Text Content -->
-        <div class="col-md-6 col-12 text-justify Montserrat-Medium">
-            <!-- <h1 class="display-4 mb-4">Our Services</h1> -->
-            <ul class="list-unstyled">
-                <!-- <li class="mb-3">
+	<div
+		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
+		style="position: relative"
+	>
+		<!-- Left Section: Text Content -->
+		<div class="col-md-6 col-12 text-justify Montserrat-Medium">
+			<!-- <h1 class="display-4 mb-4">Our Services</h1> -->
+			<ul class="list-unstyled">
+				<!-- <li class="mb-3">
                     <strong>Non-Surgical Liposuction:</strong> Utilizing state-of-the-art fat cavitation machines with
                     ultrasound technology to naturally melt fat without pain or invasive surgery.
                 </li> -->
-                <li class="mb-3">
-                    <strong>Skin Toning and Tightening:</strong> Advanced solutions for a firmer and smoother
-                    appearance.
-                </li>
-                <li class="mb-3">
-                    <strong>Body Shaping:</strong> Customized programs for a sculpted physique.
-                </li>
-                <li class="mb-3">
-                    <strong>Personalized Meal Plans:</strong> Balanced, nutritious, and tailored to individual needs.
-                </li>
-                <li class="mb-3">
-                    <strong>Regular Monitoring and Support:</strong> Ensuring your progress with expert guidance.
-                </li>
-            </ul>
-        </div>
+				<li class="mb-3">
+					<strong>Skin Toning and Tightening:</strong> Advanced
+					solutions for a firmer and smoother appearance.
+				</li>
+				<li class="mb-3">
+					<strong>Body Shaping:</strong> Customized programs for a
+					sculpted physique.
+				</li>
+				<li class="mb-3">
+					<strong>Personalized Meal Plans:</strong> Balanced,
+					nutritious, and tailored to individual needs.
+				</li>
+				<li class="mb-3">
+					<strong>Regular Monitoring and Support:</strong> Ensuring
+					your progress with expert guidance.
+				</li>
+			</ul>
+		</div>
 
-        <div class="col-md-6 col-12 d-flex justify-content-center align-items-center">
-            <div style="top: 50% ;height: 40%; width: 60%; background-color: #96763731; position: absolute;">
-            </div>
-            <div class="text-center Montserrat-Bold display-2 d-lg-block d-none">
-                <div>
-                    Our
-                </div>
-                <div>
-                    Services
-                </div>
-                <div></div>
-            </div>
-        </div>
+		<div
+			class="col-md-6 col-12 d-flex justify-content-center align-items-center"
+		>
+			<div
+				style="
+					top: 50%;
+					height: 40%;
+					width: 60%;
+					background-color: #96763731;
+					position: absolute;
+				"
+			></div>
+			<div
+				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			>
+				<div>Our</div>
+				<div>Services</div>
+				<div></div>
+			</div>
+		</div>
+	</div>
 
-    </div>
-
-    <div class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-        style="position: relative;">
-
-        <!-- Left Section: Placeholder for Image/Visual -->
-        <div class="col-md-6 col-12 text-start" style="position: relative;">
-            <div style="top: 50% ;height: 40%; width: 60%; background-color: #96763731; position: absolute;">
-            </div>
-            <div class="text-center Montserrat-Bold display-2 d-lg-block d-none">
-                <div>
-                    About
-                </div>
-                <div>
-                    Us
-                </div>
-                <div></div>
-            </div>
-            <!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
+	<div
+		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
+		style="position: relative"
+	>
+		<!-- Left Section: Placeholder for Image/Visual -->
+		<div
+			class="col-md-6 col-12 text-start"
+			style="position: relative"
+		>
+			<div
+				style="
+					top: 50%;
+					height: 40%;
+					width: 60%;
+					background-color: #96763731;
+					position: absolute;
+				"
+			></div>
+			<div
+				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			>
+				<div>About</div>
+				<div>Us</div>
+				<div></div>
+			</div>
+			<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
             <div>
                 WHO
             </div>
@@ -260,28 +329,28 @@
             </div>
             <div>ARE</div>
         </div> -->
+		</div>
 
+		<!-- Right Section: Text Content -->
+		<div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
+			<!-- <h1 class="display-4 mb-4">About Us</h1> -->
+			<p>
+				Singla Slimming Clinic has been a pioneer in the slimming and
+				wellness industry since 2003. Founded by Dr. Anju Singla and
+				Dr. Sushil Singla, we have successfully transformed lives for
+				over 21 years, helping individuals achieve their weight loss
+				goals with cutting-edge, non-invasive techniques.
+			</p>
+			<p>
+				With over 121,000 success stories and more than 2.5 million+
+				kilos lost, we have become a trusted name in weight loss and
+				wellness. We focus on addressing the root causes of overweight
+				and offer tailored solutions for sustainable results.
+			</p>
 
-        </div>
-
-        <!-- Right Section: Text Content -->
-        <div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
-            <!-- <h1 class="display-4 mb-4">About Us</h1> -->
-            <p>
-                Singla Slimming Clinic has been a pioneer in the slimming and wellness industry since 2003.
-                Founded by Dr. Anju Singla and Dr. Sushil Singla, we have successfully transformed lives
-                for over 21 years, helping individuals achieve their weight loss goals with cutting-edge, non-invasive
-                techniques.
-            </p>
-            <p>
-                With over 121,000 success stories and more than 2.5 million+ kilos lost, we have become a
-                trusted name in weight loss and wellness. We focus on addressing the root causes of
-                overweight and offer tailored solutions for sustainable results.
-            </p>
-
-            <!-- Address Section -->
-            <h3 class="mt-4">Branches</h3>
-            <!-- <div class="d-flex flex-row mb-2">
+			<!-- Address Section -->
+			<h3 class="mt-4">Branches</h3>
+			<!-- <div class="d-flex flex-row mb-2">
             <span class="Montserrat-SemiBold">LUDHIANA: </span>
             <span class="ml-2">2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span>
         </div>
@@ -294,67 +363,107 @@
             <span class="ml-2">MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span>
         </div> -->
 
-            <ul class="list-unstyled">
-                <li class="mb-3">
-                    <strong>Ludhiana:</strong> 12-J, Deepak Hospital Road, near The Drawing Room Cafe, D-Block, A-Block, Sarabha Nagar
-                </li>
-                <li class="mb-3">
-                    <strong>Amritsar:</strong>  284 D, near dusshera ground, Gumtala Sub Urban, Defence Colony,D-Block, Ranjit Avenue
-                </li>
-                <li class="mb-3">
-                    <strong>Jalandhar:</strong> 1st floor, mkc mall, opposite APJ college, Near BMC Chowk, New Jawahar Nagar
-                </li>
-                <li class="mb-3">
-                    <strong>Mohali:</strong> sco no. 4, KBD Plaza, Near Airport Rd, Sector 117, Sahibzada Ajit Singh Nagar, Punjab 140307
-                </li>
-                <li class="mb-3">
-                    <strong>Zirakpur:</strong> CCC, Chandigarh Citi Center Office, 56,57 c block, VIP Rd, Zirakpur, Punjab 140603
-                </li>
-            </ul>
+			<ul class="list-unstyled">
+				<li class="mb-3">
+					<strong>Ludhiana:</strong> 12-J, Deepak Hospital Road, near
+					The Drawing Room Cafe, D-Block, A-Block, Sarabha Nagar
+				</li>
+				<li class="mb-3">
+					<strong>Amritsar:</strong> 284 D, near dusshera ground,
+					Gumtala Sub Urban, Defence Colony,D-Block, Ranjit Avenue
+				</li>
+				<li class="mb-3">
+					<strong>Jalandhar:</strong> 1st floor, mkc mall, opposite
+					APJ college, Near BMC Chowk, New Jawahar Nagar
+				</li>
+				<li class="mb-3">
+					<strong>Mohali:</strong> sco no. 4, KBD Plaza, Near Airport
+					Rd, Sector 117, Sahibzada Ajit Singh Nagar, Punjab 140307
+				</li>
+				<li class="mb-3">
+					<strong>Zirakpur:</strong> CCC, Chandigarh Citi Center
+					Office, 56,57 c block, VIP Rd, Zirakpur, Punjab 140603
+				</li>
+			</ul>
 
-            <!-- Office Hours Section -->
-            <h3 class="mt-4">Office Hours</h3>
-            <p>Monday to Saturday: 9:00 AM - 7:00 PM</p>
-            <h3 class="mt-4">Call Us At</h3>
-            <p>+91 8416300892</p>
-        </div>
-    </div>
+			<!-- Office Hours Section -->
+			<h3 class="mt-4">Office Hours</h3>
+			<p>Monday to Saturday: 9:00 AM - 7:00 PM</p>
+			<h3 class="mt-4">Call Us At</h3>
+			<p>+91 8416300892</p>
+		</div>
+	</div>
 
-    <div class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-        style="position: relative;">
+	<div
+		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
+		style="position: relative"
+	>
+		<!-- Left Section: Text Content -->
+		<div class="col-md-6 col-12 text-justify Montserrat-Medium">
+			<!-- <h1 class="display-4 mb-4">Our Services</h1> -->
+			<ul class="list-unstyled">
+				<li class="mb-3">
+					<strong>Root Cause Solutions:</strong> We tackle the
+					underlying issues of weight gain for long-term results.
+				</li>
+				<li class="mb-3">
+					<strong>Expert Team:</strong> A dedicated team of
+					nutritionists, dietitians, and weight loss specialists
+					ensures personalized care.
+				</li>
+				<li class="mb-3">
+					<strong>Hybrid Approach:</strong> Both offline and online
+					services available to suit your convenience.
+				</li>
+			</ul>
+		</div>
 
-
-        <!-- Left Section: Text Content -->
-        <div class="col-md-6 col-12 text-justify Montserrat-Medium">
-            <!-- <h1 class="display-4 mb-4">Our Services</h1> -->
-            <ul class="list-unstyled">
-                <li class="mb-3">
-                    <strong>Root Cause Solutions:</strong> We tackle the underlying issues of weight gain for long-term results.
-                </li>
-                <li class="mb-3">
-                    <strong>Expert Team:</strong> A dedicated team of nutritionists, dietitians, and weight loss specialists ensures personalized care.
-                </li>
-                <li class="mb-3">
-                    <strong>Hybrid Approach:</strong> Both offline and online services available to suit your convenience.
-                </li>
-            </ul>
-            
-        </div>
-
-        <div class="col-md-6 col-12 d-flex justify-content-center align-items-center">
-            <div style="top: 50% ;height: 40%; width: 60%; background-color: #96763731; position: absolute;">
-            </div>
-            <div class="text-center Montserrat-Bold display-2 d-lg-block d-none">
-                <div>
-                    Why 
-                </div>
-                <div>
-                    Choose Us
-                </div>
-                <div></div>
-            </div>
-        </div>
-
-    </div>
-
+		<div
+			class="col-md-6 col-12 d-flex justify-content-center align-items-center"
+		>
+			<div
+				style="
+					top: 50%;
+					height: 40%;
+					width: 60%;
+					background-color: #96763731;
+					position: absolute;
+				"
+			></div>
+			<div
+				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			>
+				<div>Why</div>
+				<div>Choose Us</div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div
+		class="container my-5 py-5"
+		style="background-color: aliceblue; border-radius: 1rem"
+	>
+		<div class="d-flex justify-content-around align-items-center">
+			<div>
+				<p class="font-weight-bold" style="font-size: 2.6rem">
+					Calculate Your Ideal Weight
+				</p>
+				<p style="font-size: 1.5rem">
+					Know your Ideal Weight for
+					<span class="font-weight-bold">Healthier Life!</span>
+				</p>
+				<button
+					class="btn btn-primary mt-3"
+					style="font-size: 1.2rem"
+				>
+					Calculate Now
+				</button>
+			</div>
+			<img
+				src="../../../assets/images/ideal-weight-image.png"
+				width="500px"
+				height="auto"
+			/>
+		</div>
+	</div>
 </div>
