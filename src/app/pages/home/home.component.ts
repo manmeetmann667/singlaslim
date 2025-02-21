@@ -1,4 +1,9 @@
-import { Component, OnInit } from "@angular/core"
+import {
+	Component,
+	ElementRef,
+	OnInit,
+	ViewChild,
+} from "@angular/core"
 import { AngularFirestore } from "@angular/fire/firestore"
 import { BehaviorSubject, Subscription } from "rxjs"
 import { AuthService } from "src/app/auth.service"
@@ -7,10 +12,12 @@ import { News } from "src/app/classes/news"
 import { sliderImages } from "src/app/classes/slider"
 import { environment } from "src/environments/environment"
 import * as util from "../../utils"
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap"
 import {
 	DomSanitizer,
 	SafeResourceUrl,
 } from "@angular/platform-browser"
+// import { Modal } from "bootstrap"
 
 @Component({
 	selector: "app-home",
@@ -26,12 +33,16 @@ export class HomeComponent implements OnInit {
 
 	newsList: News[] = []
 
-	// userModel: CustomerModel
-	// userModelSub: Subscription;
+	gender: string = "male" // Default gender
+	weight!: number // User's input weight
+	height!: number // User's input height in inches
+	iframeSrc: SafeResourceUrl // Use SafeResourceUrl for sanitized iframe URLs
+	searchCity: string = "" // Bind to the search input field
 
 	constructor(
 		private db: AngularFirestore,
 		private auth: AuthService,
+		private modalService: NgbModal,
 		private sanitizer: DomSanitizer
 	) {}
 
@@ -40,16 +51,53 @@ export class HomeComponent implements OnInit {
 		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
 			this.cityMap["LUDHIANA"]
 		)
-
-		// this.userModelSub = this.auth.userModelSubject.subscribe((res) => {
-		//   console.log(res);
-
-		//   if(res != null){
-		//     this.userModel = res;
-		//     console.log(this.userModel);
-		//   }
-		// })
 	}
+	openModal(content: any) {
+		this.modalService.open(content, { centered: true })
+	}
+
+	calculateIdealWeight() {
+		if (!this.weight || !this.height) {
+			alert("Please enter weight and height!")
+			return
+		}
+		const heightInInches = this.height / 2.54
+		let idealWeight: number
+		if (this.gender === "male") {
+			idealWeight = heightInInches * 1
+		} else {
+			idealWeight = heightInInches * 0.9
+		}
+		alert(
+			`Your ideal weight should be around ${idealWeight.toFixed(
+				2
+			)} kg`
+		)
+	}
+	// @ViewChild("weightCalculatorModal") modalElement!: ElementRef
+	// modalInstance: any
+
+	// // ngAfterViewInit() {
+	// // 	this.modalInstance = new Modal(this.modalElement.nativeElement)
+	// // }
+
+	// openModal() {
+	// 	this.modalInstance.show()
+	// }
+	// calculateIdealWeight() {
+	// 	// Logic for calculating the ideal weight
+	// 	if (this.gender === "male") {
+	// 		this.idealWeight = (this.height - 60) * 1 // 1kg per inch for males
+	// 	} else if (this.gender === "female") {
+	// 		this.idealWeight = (this.height - 60) * 0.9 // 0.9kg per inch for females
+	// 	}
+
+	// 	// Convert the result to two decimal places
+	// 	this.idealWeight = Math.round(this.idealWeight * 100) / 100
+
+	// 	// Close modal after calculation (Optional)
+	// 	this.modalService.dismissAll()
+	// }
 
 	getNews() {
 		this.db
@@ -61,20 +109,14 @@ export class HomeComponent implements OnInit {
 			.get()
 			.toPromise()
 			.then((response) => {
-				if (response.docs.length != 0) {
-					response.docs.forEach((ele, idx) => {
+				if (response.docs.length !== 0) {
+					response.docs.forEach((ele) => {
 						let newsObj: News = Object.assign({}, ele.data() as News)
 						this.newsList.push(newsObj)
-						// this.data.sliderLastDocs.next(ele);
 					})
-					console.log(this.newsList)
-
-					// this.data.sliderSub.next(this.sliderImagesList);
 				}
 			})
 	}
-	iframeSrc: SafeResourceUrl // Use SafeResourceUrl for sanitized iframe URLs
-	searchCity: string = "" // Bind to the search input field
 
 	// City mapping
 	cityMap = {
