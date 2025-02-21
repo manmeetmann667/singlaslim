@@ -38,7 +38,7 @@ const routes: Routes = [
 	{ path: "user-profile", component: UserProfileComponent },
 	{ path: "our-members", component: OurMembersComponent },
 	{ path: "photo-gallery", component: PhotoGalleryComponent },
-	{ path: "testimonials", component: TestimonialsComponent },
+	{ path: "testimonials", component: MedicalTestimonialComponent },
 	{ path: "hydra-facial", component: HydraFacialComponent },
 	{ path: "our-company", component: AboutCompanyComponent },
 	{ path: "login", component: LoginComponent },
@@ -56,7 +56,7 @@ const routes: Routes = [
 	{ path: "magic-tech", component: MagicTechComponent },
 	{ path: "diode-lipolaser", component: DiodeLipolaserComponent },
 	{ path: "body-firming", component: BodyFirmingComponent },
-	{ path: "blogs", component: BlogsComponent },
+	{ path: "casestudies", component: BlogsComponent },
 	{
 		path: "stitchesmark-removal",
 		component: StitchesmarkRemovalComponent,
@@ -70,10 +70,6 @@ const routes: Routes = [
 	},
 	{ path: "skin-tightening", component: SkinTighteningComponent },
 	{ path: "about-us", component: AboutUsComponent },
-	{
-		path: "medical-testimonial",
-		component: MedicalTestimonialComponent,
-	},
 
 	{ path: "", component: HomeComponent },
 ]
