@@ -36,6 +36,7 @@ import { SaggyskinTreatmentComponent } from './pages/saggyskin-treatment/saggysk
 import { SkinTighteningComponent } from './pages/skin-tightening/skin-tightening.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { MedicalTestimonialComponent } from './medical-testimonial/medical-testimonial.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
     SkinRejuvenationComponent,
     SaggyskinTreatmentComponent,
     SkinTighteningComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    MedicalTestimonialComponent
   ],
   imports: [
     BrowserModule,

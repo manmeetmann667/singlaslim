@@ -1,0 +1,78 @@
+/* Testimonial Card Styling */
+.testimonial-card {
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	background: #fff;
+}
+
+.testimonial-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Image & Video Styling */
+.testimonial-image,
+.testimonial-video {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+/* Description Styling */
+.testimonial-description {
+	font-size: 14px;
+	color: #555;
+	text-align: justify;
+}
+
+/* Button Styling */
+.btn-primary {
+	border-radius: 50px;
+	padding: 8px 20px;
+	font-weight: bold;
+}
+
+.btn-primary:hover {
+	background-color: #0056b3;
+	color: #fff;
+}
+
+/* Custom Modal Styling */
+.custom-modal {
+	max-width: 80vw !important;
+	width: 80%;
+}
+
+.modal-content {
+	border-radius: 10px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+	padding: 15px;
+	border-bottom: 2px solid #fff;
+}
+
+.modal-header .close {
+	font-size: 1.5rem;
+	opacity: 1;
+}
+
+.testimonial-text {
+	font-size: 1.2rem;
+	line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.testimonial-image,
+	.testimonial-video {
+		height: 150px;
+	}
+
+	.custom-modal {
+		width: 95%;
+	}
+}

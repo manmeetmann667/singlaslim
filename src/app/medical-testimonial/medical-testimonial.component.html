@@ -1,0 +1,87 @@
+<div class="container py-5">
+	<h1 class="text-center mb-4 text-primary">Medical Testimonials</h1>
+
+	<div class="row">
+		<!-- Loop through testimonials array -->
+		<div
+			class="col-lg-4 col-md-6 col-sm-12 mb-4"
+			*ngFor="let testimonial of testimonials"
+		>
+			<div class="card testimonial-card shadow-lg border-0">
+				<div class="card-body text-center">
+					<!-- Display image or video -->
+					<ng-container *ngIf="testimonial.type === 'image'">
+						<img
+							[src]="testimonial.media"
+							alt="Testimonial"
+							class="testimonial-image img-fluid rounded"
+						/>
+					</ng-container>
+					<ng-container *ngIf="testimonial.type === 'video'">
+						<video controls class="testimonial-video rounded">
+							<source [src]="testimonial.media" type="video/mp4" />
+						</video>
+					</ng-container>
+
+					<!-- Testimonial Description -->
+					<p class="testimonial-description p-3 text-muted">
+						{{ testimonial.description | slice : 0 : 100 }}...
+					</p>
+
+					<button
+						class="btn btn-primary btn-sm"
+						(click)="openModal(content, testimonial)"
+					>
+						Read More
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap Modal -->
+	<ng-template #content let-modal>
+		<div class="">
+			<div class="modal-content">
+				<div class="modal-header bg-primary text-white">
+					<h5 class="modal-title">Testimonial Details</h5>
+					<button
+						type="button"
+						class="close text-white"
+						(click)="modal.close()"
+					>
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-6 text-center">
+							<img
+								[src]="modalImage"
+								class="img-fluid rounded shadow-lg"
+								*ngIf="isImage"
+								alt="Testimonial Image"
+							/>
+							<video
+								#videoPlayer
+								controls
+								class="testimonial-video rounded shadow-lg"
+								*ngIf="isVideo"
+								autoplay
+							>
+								<source [src]="modalImage" type="video/mp4" />
+							</video>
+						</div>
+						<div
+							class="col-md-6 d-flex flex-column justify-content-center"
+						>
+							<p class="testimonial-text text-dark font-weight-bold">
+								{{ modalDescription }}
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-template>
+</div>
