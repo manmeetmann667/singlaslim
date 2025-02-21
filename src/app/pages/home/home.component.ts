@@ -69,35 +69,11 @@ export class HomeComponent implements OnInit {
 			idealWeight = heightInInches * 0.9
 		}
 		alert(
-			`Your ideal weight should be around ${idealWeight.toFixed(
+			`Your medically ideal weight should be around ${idealWeight.toFixed(
 				2
 			)} kg`
 		)
 	}
-	// @ViewChild("weightCalculatorModal") modalElement!: ElementRef
-	// modalInstance: any
-
-	// // ngAfterViewInit() {
-	// // 	this.modalInstance = new Modal(this.modalElement.nativeElement)
-	// // }
-
-	// openModal() {
-	// 	this.modalInstance.show()
-	// }
-	// calculateIdealWeight() {
-	// 	// Logic for calculating the ideal weight
-	// 	if (this.gender === "male") {
-	// 		this.idealWeight = (this.height - 60) * 1 // 1kg per inch for males
-	// 	} else if (this.gender === "female") {
-	// 		this.idealWeight = (this.height - 60) * 0.9 // 0.9kg per inch for females
-	// 	}
-
-	// 	// Convert the result to two decimal places
-	// 	this.idealWeight = Math.round(this.idealWeight * 100) / 100
-
-	// 	// Close modal after calculation (Optional)
-	// 	this.modalService.dismissAll()
-	// }
 
 	getNews() {
 		this.db
