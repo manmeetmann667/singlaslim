@@ -1,6 +1,21 @@
-<div class="container py-5">
-	<h1 class="text-center mb-4 text-primary">Medical Testimonials</h1>
+<header>
+	<div class="container py-5">
+		<!-- Logo -->
+		<div
+			class="d-flex flex-column justify-content-center align-items-center"
+			style="margin-top: 10px"
+		>
+			<span
+				class="Montserrat-Medium"
+				style="color: #967737; font-size: 1.3rem"
+				>Medical Testimonial</span
+			>
+		</div>
 
+		<!-- <h1>Here are some moments of trebha !</h1> -->
+	</div>
+</header>
+<div class="container py-5">
 	<div class="row">
 		<!-- Loop through testimonials array -->
 		<div
@@ -18,7 +33,7 @@
 						/>
 					</ng-container>
 					<ng-container *ngIf="testimonial.type === 'video'">
-						<video controls class="testimonial-video rounded">
+						<video controls class="testimonial-video-first rounded">
 							<source [src]="testimonial.media" type="video/mp4" />
 						</video>
 					</ng-container>
@@ -41,8 +56,8 @@
 
 	<!-- Bootstrap Modal -->
 	<ng-template #content let-modal>
-		<div class="">
-			<div class="modal-content">
+		<div class="modal-dial">
+			<div class="modal-cont">
 				<div class="modal-header bg-primary text-white">
 					<h5 class="modal-title">Testimonial Details</h5>
 					<button
@@ -54,8 +69,10 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="row">
-						<div class="col-md-6 text-center">
+					<div class="d-flex align-items-center">
+						<div
+							class="col-md-6 d-flex justify-content-center align-items-center"
+						>
 							<img
 								[src]="modalImage"
 								class="img-fluid rounded shadow-lg"
@@ -65,7 +82,7 @@
 							<video
 								#videoPlayer
 								controls
-								class="testimonial-video rounded shadow-lg"
+								class="testimonial-video rounded"
 								*ngIf="isVideo"
 								autoplay
 							>
