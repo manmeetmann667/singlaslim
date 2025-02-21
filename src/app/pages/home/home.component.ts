@@ -6,8 +6,8 @@ import { CustomerModel } from 'src/app/classes/customerModel';
 import { News } from 'src/app/classes/news';
 import { sliderImages } from 'src/app/classes/slider';
 import { environment } from 'src/environments/environment';
-import * as util from '../../utils'
-
+import * as util from '../../utils';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -17,36 +17,45 @@ import * as util from '../../utils'
 export class HomeComponent implements OnInit {
   images: string[] = [
     '../assets/images/slider-1.png',
-  ]
-
+  ];
 
   sliderImagesList: sliderImages[] = [];
-  sliderImagesListSubject = new BehaviorSubject<sliderImages[]>(null)
+  sliderImagesListSubject = new BehaviorSubject<sliderImages[]>(null);
 
   newsList: News[] = [];
 
-  // userModel: CustomerModel
-  // userModelSub: Subscription;
+  gender: string = 'male';  // Default gender
+  weight: number;  // User's input weight
+  height: number;  // User's input height in inches
+  idealWeight: number = null;  // To store the calculated ideal weight
 
-
-  constructor(private db: AngularFirestore,
-    private auth: AuthService) { }
+  constructor(private db: AngularFirestore, 
+              private auth: AuthService, 
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getSliderImages();
     this.getNews();
-
-    // this.userModelSub = this.auth.userModelSubject.subscribe((res) => {
-    //   console.log(res);
-
-    //   if(res != null){
-    //     this.userModel = res;
-    //     console.log(this.userModel);
-    //   }
-    // })
-
   }
 
+  openModal() {
+    this.modalService.open('weightCalculatorModal');  // Open the modal
+  }
+
+  calculateIdealWeight() {
+    // Logic for calculating the ideal weight
+    if (this.gender === 'male') {
+      this.idealWeight = (this.height - 60) * 1;  // 1kg per inch for males
+    } else if (this.gender === 'female') {
+      this.idealWeight = (this.height - 60) * 0.9;  // 0.9kg per inch for females
+    }
+
+    // Convert the result to two decimal places
+    this.idealWeight = Math.round(this.idealWeight * 100) / 100;
+
+    // Close modal after calculation (Optional)
+    this.modalService.dismissAll();
+  }
 
   getSliderImages() {
     this.db
@@ -55,27 +64,17 @@ export class HomeComponent implements OnInit {
       .collection(util.sliderImages, (ref) =>
         ref.where("active", "==", true)
           .orderBy("createdOn", "desc")
-
       )
       .get().toPromise()
       .then((response) => {
-        if (response.docs.length != 0) {
-          response.docs.forEach((ele, idx) => {
-            let sliderbj: sliderImages = Object.assign(
-              {},
-              ele.data() as sliderImages
-            );
+        if (response.docs.length !== 0) {
+          response.docs.forEach((ele) => {
+            let sliderbj: sliderImages = Object.assign({}, ele.data() as sliderImages);
             this.sliderImagesList.push(sliderbj);
-            // this.data.sliderLastDocs.next(ele);
           });
-          console.log(this.sliderImagesList);
-
-          // this.data.sliderSub.next(this.sliderImagesList);
         }
       });
   }
-
-
 
   getNews() {
     this.db
@@ -86,18 +85,11 @@ export class HomeComponent implements OnInit {
       )
       .get().toPromise()
       .then((response) => {
-        if (response.docs.length != 0) {
-          response.docs.forEach((ele, idx) => {
-            let newsObj: News = Object.assign(
-              {},
-              ele.data() as News
-            );
+        if (response.docs.length !== 0) {
+          response.docs.forEach((ele) => {
+            let newsObj: News = Object.assign({}, ele.data() as News);
             this.newsList.push(newsObj);
-            // this.data.sliderLastDocs.next(ele);
           });
-          console.log(this.newsList);
-
-          // this.data.sliderSub.next(this.sliderImagesList);
         }
       });
   }

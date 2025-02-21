@@ -1,7 +1,91 @@
-.carousel-caption {
-  top: 40%;
+/* Modal */
+.modal-content {
+  border-radius: 1rem;
+  padding: 20px;
+  background-color: #fff;
 }
 
-.section-color {
-  background-color: rgba(0, 128, 128, 0.03);
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+.modal-body {
+  font-family: Montserrat, sans-serif;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body label {
+  font-weight: 600;
+}
+
+.modal-body input {
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Gender Select */
+.gender-select {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gender-select label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.gender-select input {
+  margin-right: 10px;
+}
+
+/* Calculate Button */
+.btn-calculate {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-calculate:hover {
+  background-color: #0b5ed7;
+}
+
+/* Ideal Weight Result */
+.ideal-weight-result {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ideal-weight-result span {
+  font-size: 2rem;
+  color: #212529;
+}
+
+/* Close Button */
+.close {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
