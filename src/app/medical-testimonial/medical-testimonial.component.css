@@ -86,3 +86,6 @@ header {
 	height: 100%; /* Maintain aspect ratio */
 	max-height: 60vh; /* Adjust max height for consistency */
 }
+.bg-custom {
+	background-color: #4295d4;
+}

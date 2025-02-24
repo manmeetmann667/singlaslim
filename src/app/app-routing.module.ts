@@ -31,6 +31,7 @@ import { PhotoGalleryComponent } from "./photo-gallery/photo-gallery.component"
 import { RegisterComponent } from "./register/register.component"
 import { TestimonialsComponent } from "./testimonials/testimonials.component"
 import { MedicalTestimonialComponent } from "./medical-testimonial/medical-testimonial.component"
+import { BookAppointmentComponent } from "./pages/book-appointment/book-appointment.component"
 
 const routes: Routes = [
 	{ path: "home", component: HomeComponent },
@@ -70,6 +71,7 @@ const routes: Routes = [
 	},
 	{ path: "skin-tightening", component: SkinTighteningComponent },
 	{ path: "about-us", component: AboutUsComponent },
+	{ path: "book-appointment", component: BookAppointmentComponent },
 
 	{ path: "", component: HomeComponent },
 ]

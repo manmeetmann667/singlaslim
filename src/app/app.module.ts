@@ -37,6 +37,7 @@ import { SkinTighteningComponent } from './pages/skin-tightening/skin-tightening
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { MedicalTestimonialComponent } from './medical-testimonial/medical-testimonial.component';
+import { BookAppointmentComponent } from './pages/book-appointment/book-appointment.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { MedicalTestimonialComponent } from './medical-testimonial/medical-testi
     SaggyskinTreatmentComponent,
     SkinTighteningComponent,
     SafeUrlPipe,
-    MedicalTestimonialComponent
+    MedicalTestimonialComponent,
+    BookAppointmentComponent
   ],
   imports: [
     BrowserModule,

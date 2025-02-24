@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 	height!: number // User's input height in inches
 	iframeSrc: SafeResourceUrl // Use SafeResourceUrl for sanitized iframe URLs
 	searchCity: string = "" // Bind to the search input field
+	idealWeight: number | null = null
 
 	constructor(
 		private db: AngularFirestore,
@@ -62,17 +63,11 @@ export class HomeComponent implements OnInit {
 			return
 		}
 		const heightInInches = this.height / 2.54
-		let idealWeight: number
 		if (this.gender === "male") {
-			idealWeight = heightInInches * 1
+			this.idealWeight = heightInInches * 1
 		} else {
-			idealWeight = heightInInches * 0.9
+			this.idealWeight = heightInInches * 0.9
 		}
-		alert(
-			`Your medically ideal weight should be around ${idealWeight.toFixed(
-				2
-			)} kg`
-		)
 	}
 
 	getNews() {
