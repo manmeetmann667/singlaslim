@@ -1,87 +1,93 @@
 <div class="container py-4">
 	<div class="row justify-content-center">
-		<div class="col-md-6 text-center py-3">
-			<p class="h4 font-weight-bold">Enter Your Details</p>
-			<p class="text-muted">
-				You can join with your mobile number and get started
-			</p>
-		</div>
+	  <div class="col-md-6 text-center py-3">
+		<p class="h4 font-weight-bold">Enter Your Details</p>
+		<p class="text-muted">
+		  You can join with your mobile number and get started
+		</p>
+	  </div>
 	</div>
-
+  
 	<div class="row justify-content-center py-3">
-		<div class="col-md-6">
-			<!-- Name Input -->
-			<input
-				type="text"
-				class="form-control mb-4"
-				placeholder="Enter Your Name*"
-			/>
-
-			<div class="position-relative mb-4">
-				<!-- Flag & Code Input -->
-				<div class="input-group mb-1">
-					<div class="input-group-prepend" (click)="toggleDropdown()">
-						<span class="input-group-text">
-							<img
-								[src]="selectedCountry.flag"
-								alt="flag"
-								width="25"
-								height="15"
-								class="mr-2 cursor-pointer"
-							/>
-							{{ selectedCountry.code }}
-						</span>
-					</div>
-
-					<!-- Phone Number Input -->
-					<input
-						type="text"
-						class="form-control"
-						[(ngModel)]="phoneNumber"
-						placeholder="Enter phone number"
-					/>
-				</div>
-
-				<!-- Country Dropdown -->
-				<div
-					*ngIf="isDropdownVisible"
-					class="position-absolute w-100 mt-1"
-					style="z-index: 1000; width: auto; max-width: 150px"
-				>
-					<select
-						class="form-control shadow-sm rounded-3 bg-light"
-						[(ngModel)]="selectedCountry.code"
-						(change)="onCountrySelect($event)"
-					>
-						<option
-							*ngFor="let country of countries"
-							[value]="country.code"
-							[attr.data-flag]="country.flag"
-						>
-							<img
-								[src]="country.flag"
-								alt="flag"
-								width="20"
-								height="15"
-								class="mr-2"
-							/>
-							{{ country.name }} ({{ country.code }})
-						</option>
-					</select>
-				</div>
+	  <div class="col-md-6">
+		<!-- Name Input -->
+		<input
+		  type="text"
+		  class="form-control mb-4"
+		  placeholder="Enter Your Name*"
+		  [(ngModel)]="name"
+		  required
+		/>
+  
+		<div class="position-relative mb-4">
+		  <!-- Flag & Code Input -->
+		  <div class="input-group mb-1">
+			<div class="input-group-prepend" (click)="toggleDropdown()">
+			  <span class="input-group-text">
+				<img
+				  [src]="selectedCountry.flag"
+				  alt="flag"
+				  width="25"
+				  height="15"
+				  class="mr-2 cursor-pointer"
+				/>
+				{{ selectedCountry.code }}
+			  </span>
 			</div>
-
-			<!-- Email Input -->
+  
+			<!-- Phone Number Input -->
 			<input
-				type="email"
-				class="form-control mb-4"
-				placeholder="Enter Your Email*"
+			  type="text"
+			  class="form-control"
+			  [(ngModel)]="phoneNumber"
+			  placeholder="Enter phone number"
+			  required
 			/>
-
-			<!-- Submit Button -->
-			<button class="btn btn-primary btn-block font-weight-bold">
-				Submit
-			</button>
+		  </div>
+  
+		  <!-- Country Dropdown -->
+		  <div
+			*ngIf="isDropdownVisible"
+			class="position-absolute w-100 mt-1"
+			style="z-index: 1000; width: auto; max-width: 150px"
+		  >
+			<select
+			  class="form-control shadow-sm rounded-3 bg-light"
+			  [(ngModel)]="selectedCountry.code"
+			  (change)="onCountrySelect($event)"
+			>
+			  <option
+				*ngFor="let country of countries"
+				[value]="country.code"
+				[attr.data-flag]="country.flag"
+			  >
+				<img
+				  [src]="country.flag"
+				  alt="flag"
+				  width="20"
+				  height="15"
+				  class="mr-2"
+				/>
+				{{ country.name }} ({{ country.code }})
+			  </option>
+			</select>
+		  </div>
 		</div>
+  
+		<!-- Email Input -->
+		<input
+		  type="email"
+		  class="form-control mb-4"
+		  placeholder="Enter Your Email*"
+		  [(ngModel)]="email"
+		  required
+		/>
+  
+		<!-- Submit Button -->
+		<button class="btn btn-primary btn-block font-weight-bold" (click)="onSubmit()">
+		  Submit
+		</button>
+	  </div>
 	</div>
-</div>
+  </div>
+  
