@@ -8,12 +8,11 @@ import { Observable } from "rxjs"
 	styleUrls: ["./book-appointment.component.css"],
 })
 export class BookAppointmentComponent implements OnInit {
-	private url = "https://restcountries.com/v3.1/all"
 	countries: any[] = []
 	selectedCountry: any = {
 		name: "United States",
 		code: "+1",
-		flag: "https://flagcdn.com/w40/us.png",
+		flag: "https://flagcdn.com/w320/us.png",
 	}
 	phoneNumber: string = ""
 	isDropdownVisible = false
@@ -23,34 +22,34 @@ export class BookAppointmentComponent implements OnInit {
 	ngOnInit(): void {
 		this.getCountries().subscribe((data) => {
 			this.countries = data
-				.map((country) => ({
+				.map((country: any) => ({
 					name: country.name.common,
 					code:
 						country.idd?.root +
 						(country.idd?.suffixes ? country.idd.suffixes[0] : ""),
 					flag: country.flags?.png || "",
 				}))
-				.filter((c) => c.code) // Filter out countries without a dialing code
-				.sort((a, b) => a.name.localeCompare(b.name)) // Sort countries alphabetically
+				.sort((a, b) => a.name.localeCompare(b.name)) // Sort alphabetically
 		})
 	}
 
-	onCountrySelect(event: any) {
-		const countryCode = event.target.value
+	onCountrySelect(countryCode: string): void {
+		// Find the selected country based on the country code
 		const selected = this.countries.find(
 			(c) => c.code === countryCode
 		)
 		if (selected) {
 			this.selectedCountry = selected
-			this.isDropdownVisible = false // Close the dropdown after selection
+			this.isDropdownVisible = false // Hide dropdown after selection
 		}
 	}
 
 	getCountries(): Observable<any[]> {
-		return this.http.get<any[]>(this.url)
+		// Using Restcountries API
+		return this.http.get<any[]>("https://restcountries.com/v3.1/all")
 	}
 
-	toggleDropdown() {
+	toggleDropdown(): void {
 		this.isDropdownVisible = !this.isDropdownVisible
 	}
 }

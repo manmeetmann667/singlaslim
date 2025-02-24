@@ -50,13 +50,11 @@
 				>
 					<select
 						class="form-control shadow-sm rounded-3 bg-light"
-						[(ngModel)]="selectedCountry.code"
-						(change)="onCountrySelect($event)"
+						(change)="onCountrySelect($event.target.value)"
 					>
 						<option
 							*ngFor="let country of countries"
 							[value]="country.code"
-							[attr.data-flag]="country.flag"
 						>
 							<img
 								[src]="country.flag"
