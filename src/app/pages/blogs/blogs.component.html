@@ -1,22 +1,52 @@
 <header>
   <div class="container py-5">
-    <!-- Logo -->
+    <!-- Logo and Blog Title -->
     <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
       <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem">Blogs</span>
     </div>
-
-    <!-- <h1>Here are some moments of trebha !</h1> -->
   </div>
 </header>
 
-<div class="container" style="padding-bottom: 50px">
-  <div class="row d-flex flex-row justify-content-center align-items-center" *ngFor="let blog of blogsList">
-    <div class="col-lg-4 col-md-4 col-12 my-2">
-     <img [src]="blog.imageUrl" class="img-fluid" alt="">
+<!-- Blog Container with Square Grid Layout -->
+<div class="container blog-container">
+  <div *ngFor="let blog of blogs" class="blog-item">
+    <div class="img-container">
+      <img [src]="blog.media" class="img-fluid" alt="Blog Image" *ngIf="blog.type === 'image'">
+      <video #videoPlayer [src]="blog.media" class="img-fluid" *ngIf="blog.type === 'video'" controls></video>
     </div>
-    <div class="col-lg-8 col-md-8 col-12 d-flex flex-column">
+    <div class="blog-item-content">
       <h4 class="Montserrat-Medium">{{ blog.title }}</h4>
-      <p class="Montserrat-Medium">{{blog.description}}</p>
+      <div class="blog-item-description" [ngClass]="{'expanded': blog.showFullDescription}">
+        <p>{{ blog.description }}</p>
+      </div>
+      <button *ngIf="blog.description.length > 150" (click)="toggleDescription(blog)" class="read-more">
+        {{ blog.showFullDescription ? 'Show Less' : 'Read More' }}
+      </button>
+      <button (click)="openModal(modalContent, blog)" class="btn btn-primary mt-3">View More</button>
     </div>
+  </div>
+</div>
+
+<!-- Modal for Image/Video Preview -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Blog Details</h5>
+    <button type="button" class="close" (click)="modal.dismiss()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <img *ngIf="isImage" [src]="modalImage" class="img-fluid" alt="Blog Image">
+    <video *ngIf="isVideo" #videoPlayer [src]="modalImage" class="img-fluid" controls></video>
+    <p>{{ modalDescription }}</p>
+  </div>
+</ng-template>
+
+<!-- Award Winning Section -->
+<div class="container py-5 award-container">
+  <div class="award-content">
+    <h4 class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem">Award Winning Event</h4>
+    <p class="text-muted">We're proud to announce that we won the prestigious 'Health Excellence Award 2025'. Join us as we celebrate our journey of transforming lives and promoting well-being across the community.</p>
+  </div>
+  <div class="award-image">
+    <img src="https://via.placeholder.com/800x400" class="img-fluid rounded shadow-lg" alt="Award Image">
   </div>
 </div>
