@@ -92,9 +92,8 @@
 		</ng-template>
 	</ngb-carousel>
 
-	<div class="container my-5 py-5 d-flex flex-md-row flex-column">
-		<!-- <div class="col-md-6 col-12 text-justify Montserrat-Medium" style="align-self: center;">
-            <ul>
+	<!-- <div class="col-md-6 col-12 text-justify Montserrat-Medium" style="align-self: center;">
+		<ul>
                 <li style="font-size: 0.9rem;">
                     We started our journey from Punjab as Singla Slimming Clinic in 2003 by our founders Dr.Anju
                     Singla & Dr. Sushil Singla
@@ -102,7 +101,7 @@
             </ul>
         </div> -->
 
-		<div
+	<!-- <div
 			class="col-md-6 col-12 text-justify Montserrat-Medium d-flex flex-column align-items-center"
 			style="align-self: center; text-align: center"
 		>
@@ -110,42 +109,106 @@
 				src="../assets/images/dranjusingla.jpg"
 				alt="Dr. Anju Singla"
 				style="max-width: 50%; height: auto; margin-bottom: 1rem"
-			/>
-			<ul style="padding: 0; list-style-position: inside">
-				<li style="font-size: 0.9rem">
-					We started our journey from Punjab as Singla Slimming Clinic
-					in 2003 by our founders Dr. Anju Singla & Dr. Sushil Singla
-				</li>
-			</ul>
-		</div>
-
-		<div
+				/>
+				<ul style="padding: 0; list-style-position: inside">
+					<li style="font-size: 0.9rem">
+						We started our journey from Punjab as Singla Slimming Clinic
+						in 2003 by our founders Dr. Anju Singla & Dr. Sushil Singla
+					</li>
+				</ul>
+			</div>
+			
+			<div
 			class="col-md-6 col-12 text-start"
 			style="position: relative"
-		>
+			>
 			<div
-				style="
-					top: 50%;
-					height: 40%;
-					width: 60%;
-					background-color: #96763731;
-					position: absolute;
-				"
+			style="
+			top: 50%;
+			height: 40%;
+			width: 60%;
+			background-color: #96763731;
+			position: absolute;
+			"
 			></div>
 			<div
-				class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			class="text-center Montserrat-Bold display-2 d-lg-block d-none"
 			>
-				<div>WHO</div>
-				<div>WE</div>
-				<div>ARE</div>
+			<div>WHO</div>
+			<div>WE</div>
+			<div>ARE</div>
+		</div>
+		<div
+		class="text-center Montserrat-Bold display-4 d-lg-none d-block"
+		>
+		<div>WHO</div>
+		<div>WE</div>
+		<div>ARE</div>
+	</div>
+</div> -->
+	<div
+		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-center align-items-center bg-light rounded shadow-lg p-5"
+	>
+		<div
+			class="d-flex flex-md-row flex-column align-items-center text-center text-md-left"
+		>
+			<img
+				src="../../../assets/images/lose_weight.jpg"
+				alt="Lose Weight"
+				width="400px"
+				height="auto"
+				class="img-fluid rounded-lg mb-4 mb-md-0 mr-md-5 shadow"
+			/>
+			<div>
+				<p class="font-weight-bold" style="font-size: 2.8rem">
+					Loose <span class="text-danger">4 - 12kg</span> in 1 month
+				</p>
+				<p
+					class="font-weight-bold text-secondary"
+					style="font-size: 1.7rem; line-height: 2"
+				>
+					<span class="text-dark">Without</span> Exercise <br />
+					<span class="text-dark">Without</span> Medicine <br />
+					<span class="text-dark">Without</span> Surgery
+				</p>
 			</div>
+		</div>
+	</div>
+	<div class="my-8 py-5 shadow-lg" style="background-color: #fafafa">
+		<div>
+			<h2
+				class="text-center font-weight-bold mb-5"
+				style="font-size: 2.2rem"
+			>
+				Are You Facing?
+			</h2>
+		</div>
+
+		<!-- Slider container -->
+		<div class="slider mt-5 position-relative container">
 			<div
-				class="text-center Montserrat-Bold display-4 d-lg-none d-block"
+				class="slider-container"
+				[style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
 			>
-				<div>WHO</div>
-				<div>WE</div>
-				<div>ARE</div>
+				<div class="slide row">
+					<div
+						class="col-4 col-md-2"
+						*ngFor="let statement of statements"
+					>
+						<div class="card shadow-sm mb-4">
+							<div class="card-body">
+								<h5 class="card-title text-center">
+									{{ statement }}
+								</h5>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+
+			<!-- Navigation Buttons -->
+			<button class="prev-btn" (click)="prevSlide()">&#10094;</button>
+			<button class="next-btn" (click)="nextSlide()">&#10095;</button>
 		</div>
 	</div>
 
@@ -185,12 +248,12 @@
         </div>
     </div> -->
 
-	<div
+	<!-- <div
 		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
 		style="position: relative"
-	>
-		<!-- Left Section: Placeholder for Image/Visual -->
-		<div
+	> -->
+	<!-- Left Section: Placeholder for Image/Visual -->
+	<!-- <div
 			class="col-md-6 col-12 text-start"
 			style="position: relative"
 		>
@@ -209,8 +272,8 @@
 				<div>Our</div>
 				<div>Programs</div>
 				<div></div>
-			</div>
-			<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
+			</div> -->
+	<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
             <div>
                 WHO
             </div>
@@ -219,10 +282,10 @@
             </div>
             <div>ARE</div>
         </div> -->
-		</div>
+	<!-- </div> -->
 
-		<!-- Right Section: Text Content -->
-		<div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
+	<!-- Right Section: Text Content -->
+	<!-- <div class="my-5 col-md-6 col-12 text-justify Montserrat-Medium">
 			<div class="mt-4">
 				<h4 class="mb-3"><strong>Offline Services</strong></h4>
 				<ul class="list-unstyled">
@@ -239,7 +302,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<div
 		class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
@@ -457,12 +520,12 @@
 					<span class="font-weight-bold">FREE CONSULTATION!</span>
 				</p>
 				<button
-				onclick="window.location.href='https://wa.me/+918146300892'"
-				class="btn btn-primary mt-3"
-				style="font-size: 1.2rem"
-			  >
-				Book Appointment
-			  </button>
+					onclick="window.location.href='https://wa.me/+918146300892'"
+					class="btn btn-primary mt-3"
+					style="font-size: 1.2rem"
+				>
+					Book Appointment
+				</button>
 			</div>
 		</div>
 	</div>

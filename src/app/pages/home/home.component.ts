@@ -52,6 +52,9 @@ export class HomeComponent implements OnInit {
 		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
 			this.cityMap["LUDHIANA"]
 		)
+		setInterval(() => {
+			this.nextSlide()
+		}, 3000)
 	}
 	openModal(content: any) {
 		this.modalService.open(content, { centered: true })
@@ -120,5 +123,36 @@ export class HomeComponent implements OnInit {
 	changeLocation(location: string): void {
 		this.searchCity = location // Update the search field with the selected city
 		this.onSearch() // Trigger the search method
+	}
+	currentIndex = 0
+	statements = [
+		"Experiencing metabolic symptoms?",
+		"chest pain or breathlessness?",
+		"disrupted sleep or snoring?",
+		"joint pain limiting movement?",
+		"concerned about liver health?",
+		"worried about cancer risk?",
+		"feeling shame or judged?",
+		"low self-esteem issues?",
+		"avoiding social interactions?",
+		"frustrated with weight control?",
+		"feel guilty before eating?",
+		"suffering from acidity?",
+		"troubled by bloating?",
+		"regaining weight often?",
+	]
+	prevSlide() {
+		this.currentIndex =
+			this.currentIndex > 0
+				? this.currentIndex - 1
+				: this.statements.length - 1
+	}
+
+	nextSlide() {
+		// If currentIndex reaches the end, reset to 0, else move to the next slide
+		this.currentIndex =
+			this.currentIndex < this.statements.length - 1
+				? this.currentIndex + 1
+				: 0
 	}
 }

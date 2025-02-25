@@ -92,3 +92,81 @@
 .bg-custom {
 	background-color: #4295d4;
 }
+/* Styling for the slider */
+.slider {
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+	height: 500px; /* Adjust as needed */
+	position: relative;
+}
+
+.slider-container {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.card {
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+	height: 100%; /* Ensure card fills container */
+}
+
+.card-body {
+	height: 300px; /* Adjust for desired card height */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-title {
+	font-size: 1.25rem;
+	color: #34495e;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+}
+
+/* Navigation Buttons */
+.prev-btn,
+.next-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	text-align: center;
+	border: none;
+	padding: 0.3rem 1rem;
+	cursor: pointer;
+	font-size: 32px;
+	border-radius: 50%;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.prev-btn {
+	left: 10px;
+}
+
+.next-btn {
+	right: 10px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+	background-color: rgba(0, 0, 0, 0.8);
+	transform: scale(1.1);
+}
+
+/* Make cards responsive */
+@media (max-width: 768px) {
+	.card {
+		margin-bottom: 20px;
+	}
+}
