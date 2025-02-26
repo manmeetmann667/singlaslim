@@ -141,18 +141,24 @@ export class HomeComponent implements OnInit {
 		"troubled by bloating?",
 		"regaining weight often?",
 	]
+
 	prevSlide() {
 		this.currentIndex =
 			this.currentIndex > 0
 				? this.currentIndex - 1
-				: this.statements.length - 1
+				: this.getMaxIndex()
 	}
 
 	nextSlide() {
-		// If currentIndex reaches the end, reset to 0, else move to the next slide
+		// Move to the next slide or reset back to the first slide if at the last slide
 		this.currentIndex =
-			this.currentIndex < this.statements.length - 1
+			this.currentIndex < this.getMaxIndex()
 				? this.currentIndex + 1
 				: 0
+	}
+
+	getMaxIndex() {
+		// Calculate the number of slides required based on 3 items per slide
+		return Math.floor(this.statements.length / 5)
 	}
 }
