@@ -19,10 +19,13 @@
       <div class="blog-item-description" [ngClass]="{'expanded': blog.showFullDescription}">
         <p>{{ blog.description }}</p>
       </div>
-      <button *ngIf="blog.description.length > 150" (click)="toggleDescription(blog)" class="read-more">
-        {{ blog.showFullDescription ? 'Show Less' : 'Read More' }}
-      </button>
-      <button (click)="openModal(modalContent, blog)" class="btn btn-primary mt-3">View More</button>
+      <div class="d-flex justify-content-between akign-items-center">
+
+        <button *ngIf="blog.description.length > 150" (click)="toggleDescription(blog)" class="read-more">
+          {{ blog.showFullDescription ? 'Show Less' : 'Read More' }}
+        </button>
+        <button (click)="openModal(modalContent, blog)" class="btn btn-primary mt-3">View More</button>
+      </div>
     </div>
   </div>
 </div>
