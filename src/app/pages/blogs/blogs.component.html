@@ -1,149 +1,86 @@
 <header>
-	<div class="container py-5">
-		<!-- Logo and Blog Title -->
-		<div
-			class="d-flex flex-column justify-content-center align-items-center"
-			style="margin-top: 10px"
-		>
-			<span
-				class="Montserrat-Medium"
-				style="color: #967737; font-size: 1.3rem"
-				>Podcasts</span
-			>
-		</div>
-	</div>
+  <div class="container py-5">
+    <!-- Logo and Blog Title -->
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
+      <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem">Podcasts</span>
+    </div>
+  </div>
 </header>
 
 <!-- Blog Container with Square Grid Layout -->
 <div class="container blog-container">
-	<div *ngFor="let blog of blogs" class="blog-item">
-		<div class="img-container">
-			<img
-				[src]="blog.media"
-				class="img-fluid"
-				alt="Blog Image"
-				*ngIf="blog.type === 'image'"
-			/>
-			<video
-				#videoPlayer
-				[src]="blog.media"
-				class="img-fluid"
-				*ngIf="blog.type === 'video'"
-				controls
-			></video>
-		</div>
-		<div class="blog-item-content">
-			<h4 class="Montserrat-Medium">{{ blog.title }}</h4>
-			<div
-				class="blog-item-description"
-				[ngClass]="{ expanded: blog.showFullDescription }"
-			>
-				<p>{{ blog.description }}</p>
-			</div>
-			<div class="d-flex justify-content-between akign-items-center">
-				<button
-					*ngIf="blog.description.length > 150"
-					(click)="toggleDescription(blog)"
-					class="read-more"
-				>
-					{{ blog.showFullDescription ? "Show Less" : "Read More" }}
-				</button>
-				<button
-					(click)="openModal(modalContent, blog)"
-					class="btn btn-primary mt-3"
-				>
-					View More
-				</button>
-			</div>
-		</div>
-	</div>
+  <div *ngFor="let blog of blogs" class="blog-item">
+    <div class="img-container">
+      <img [src]="blog.media" class="img-fluid" alt="Blog Image" *ngIf="blog.type === 'image'" />
+      <video #videoPlayer [src]="blog.media" class="img-fluid" *ngIf="blog.type === 'video'" controls></video>
+    </div>
+    <div class="blog-item-content">
+      <h4 class="Montserrat-Medium">{{ blog.title }}</h4>
+      <div class="blog-item-description" [ngClass]="{ expanded: blog.showFullDescription }">
+        <p>{{ blog.description }}</p>
+      </div>
+      <button
+        *ngIf="blog.media === '../../../assets/images/eggs.jpeg' && blog.description?.length > 150"
+        (click)="toggleDescription(blog)"
+        class="read-more"
+      >
+        {{ blog.showFullDescription ? 'Show Less' : 'Read More' }}
+      </button>
+      <div class="d-flex justify-content-between akign-items-center">
+        <button
+          *ngIf="blog.description.length"
+          (click)="toggleDescription(blog)"
+          class="read-more"
+        >
+          {{ blog.showFullDescription ? "Show Less" : "Read More" }}
+        </button>
+        <button (click)="openModal(modalContent, blog)" class="btn btn-primary mt-3">View More</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal for Image/Video Preview -->
 <ng-template #modalContent let-modal>
-	<div class="modal-header">
-		<h5 class="modal-title">Blog Details</h5>
-		<button type="button" class="close" (click)="modal.dismiss()">
-			&times;
-		</button>
-	</div>
-	<div class="modal-body">
-		<img
-			*ngIf="isImage"
-			[src]="modalImage"
-			class="img-fluid"
-			alt="Blog Image"
-		/>
-		<video
-			*ngIf="isVideo"
-			#videoPlayer
-			[src]="modalImage"
-			class="img-fluid"
-			controls
-		></video>
-		<p>{{ modalDescription }}</p>
-	</div>
+  <div class="modal-header">
+    <h5 class="modal-title">Blog Details</h5>
+    <button type="button" class="close" (click)="modal.dismiss()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <img *ngIf="isImage" [src]="modalImage" class="img-fluid" alt="Blog Image" />
+    <video *ngIf="isVideo" #videoPlayer [src]="modalImage" class="img-fluid" controls></video>
+    <p>{{ modalDescription }}</p>
+  </div>
 </ng-template>
 
 <!-- Award Winning Section -->
 <header>
-	<div class="container py-5">
-		<!-- Logo and Blog Title -->
-		<div
-			class="d-flex flex-column justify-content-center align-items-center"
-			style="margin-top: 10px"
-		>
-			<span
-				class="Montserrat-Medium"
-				style="color: #967737; font-size: 1.3rem"
-				>Blogs</span
-			>
-		</div>
-	</div>
+  <div class="container py-5">
+    <!-- Logo and Blog Title -->
+    <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 10px">
+      <span class="Montserrat-Medium" style="color: #967737; font-size: 1.3rem">Blogs</span>
+    </div>
+  </div>
 </header>
+
 <div class="container py-5 award-container">
-	<div class="container blog-container">
-		<div *ngFor="let blog of blog_second" class="blog-item">
-			<div class="img-container">
-				<img
-					[src]="blog.media"
-					class="img-fluid"
-					alt="Blog Image"
-					*ngIf="blog.type === 'image'"
-				/>
-				<video
-					#videoPlayer
-					[src]="blog.media"
-					class="img-fluid"
-					*ngIf="blog.type === 'video'"
-					controls
-				></video>
-			</div>
-			<div class="blog-item-content">
-				<div
-					class="blog-item-description"
-					[ngClass]="{ expanded: blog.showFullDescription }"
-				>
-					<p>{{ blog.description }}</p>
-				</div>
-				<div
-					class="d-flex justify-content-between akign-items-center"
-				>
-					<button
-						*ngIf="blog.description.length > 150"
-						(click)="toggleDescription(blog)"
-						class="read-more"
-					>
-						{{ blog.showFullDescription ? "Show Less" : "Read More" }}
-					</button>
-					<button
-						(click)="openModal(modalContent, blog)"
-						class="btn btn-primary mt-3"
-					>
-						View More
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container blog-container">
+    <div *ngFor="let blog of blog_second" class="blog-item">
+      <div class="img-container">
+        <img [src]="blog.media" class="img-fluid" alt="Blog Image" *ngIf="blog.type === 'image'" />
+        <video #videoPlayer [src]="blog.media" class="img-fluid" *ngIf="blog.type === 'video'" controls></video>
+      </div>
+      <div class="blog-item-content">
+        <div class="blog-item-description" [ngClass]="{ expanded: blog.showFullDescription }">
+          <p>{{ blog.description }}</p>
+        </div>
+        <div class="d-flex justify-content-between akign-items-center">
+          <button *ngIf="blog.description.length > 150" (click)="toggleDescription(blog)" class="read-more">
+            {{ blog.showFullDescription ? "Show Less" : "Read More" }}
+          </button>
+          <button (click)="openModal(modalContent, blog)" class="btn btn-primary mt-3">View More</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -112,7 +112,7 @@ export class BlogsComponent implements OnInit {
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/eggs.mp4", // Adjust image path as per your project structure
+			media: "../../../assets/images/eggs.jpeg", // Adjust image path as per your project structure
 			description: `
        Whole eggs vs Egg whites 
 
@@ -135,27 +135,33 @@ Ultimately, the choice depends on your health goals and dietary needs. For most 
 
 		{
 			type: "image",
-			media: "../../../assets/images/blog_1.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_1.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/blog_2.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_2.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/blog_3.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_3.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/blog_4.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_4.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/blog_5.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_5.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/blog_6.jpg", // Adjust image path as per your project structure
+			description: "", // Add empty string or a placeholder
+			media: "../../../assets/images/blog_6.jpeg", // Adjust image path as per your project structure
 		},
 	]
 
