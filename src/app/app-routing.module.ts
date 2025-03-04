@@ -6,7 +6,6 @@ import { LoginComponent } from "./login/login.component"
 import { OurMembersComponent } from "./our-members/our-members.component"
 import { AboutUsComponent } from "./pages/about-us/about-us.component"
 
-import { BlogsComponent } from "./pages/blogs/blogs.component"
 import { BodyFirmingComponent } from "./pages/body-firming/body-firming.component"
 import { BreastLiftingComponent } from "./pages/breast-lifting/breast-lifting.component"
 import { BurningMarkComponent } from "./pages/burning-mark/burning-mark.component"
@@ -32,6 +31,7 @@ import { RegisterComponent } from "./register/register.component"
 import { TestimonialsComponent } from "./testimonials/testimonials.component"
 import { MedicalTestimonialComponent } from "./medical-testimonial/medical-testimonial.component"
 import { BookAppointmentComponent } from "./pages/book-appointment/book-appointment.component"
+import { BlogsComponent } from "./pages/blogs/blogs.component"
 
 const routes: Routes = [
 	{ path: "home", component: HomeComponent },
