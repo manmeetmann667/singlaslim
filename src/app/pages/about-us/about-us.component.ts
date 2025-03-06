@@ -11,10 +11,12 @@ import {
 })
 export class AboutUsComponent implements OnInit {
 	iframeSrc: SafeResourceUrl // Use SafeResourceUrl for sanitized iframe URLs
-	searchCity: string = "" // Bind to the search input field
+	searchCity: string = ""
+	showCityList: boolean = false
+	cities: string[] = []
 
-	// City mapping
-	cityMap = {
+	// City mapping with corresponding Google Maps embed URLs
+	cityMap: { [key: string]: string } = {
 		LUDHIANA:
 			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872590.5328929112!2d74.36157277812501!3d31.31599340000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a83ceecb71813%3A0x4d88a1265ec53df8!2sSingla%20Slimming%20Clinic%3A%20Weight%20Loss%20Clinic!5e0!3m2!1sen!2sca!4v1739867189642!5m2!1sen!2sca",
 		JALANDHAR:
@@ -30,28 +32,46 @@ export class AboutUsComponent implements OnInit {
 	constructor(private sanitizer: DomSanitizer) {}
 
 	ngOnInit(): void {
-		// Set the default city iframe when component initializes
-		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-			this.cityMap["LUDHIANA"]
-		)
+		this.cities = Object.keys(this.cityMap)
+		// Set default location to LUDHIANA
+		this.iframeSrc = this.sanitizeUrl(this.cityMap["LUDHIANA"])
 	}
 
-	// Method to update the iframe source based on the city input
+	// Toggle dropdown visibility
+	toggleCityList(): void {
+		this.showCityList = !this.showCityList
+	}
+
+	// Function to select a city from the dropdown
+	selectCity(city: string): void {
+		this.searchCity = city
+		this.updateMap(city)
+		this.showCityList = false
+	}
+
+	// Function to update the map based on the city input
 	onSearch(): void {
-		let city = this.searchCity.toUpperCase().trim() // Get the city input, ensure it's uppercase and trimmed
+		let city = this.searchCity.toUpperCase().trim()
 		if (this.cityMap[city]) {
-			this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
-				this.cityMap[city]
-			)
+			this.updateMap(city)
 		} else {
-			// If the city is not found, keep the default or show an alert
 			alert("City not found! Please enter a valid city name.")
 		}
 	}
 
-	// Method to update iframe when a predefined city is selected
-	changeLocation(location: string): void {
-		this.searchCity = location // Update the search field with the selected city
-		this.onSearch() // Trigger the search method
+	// Function to update iframe when clicking a predefined city
+	changeLocation(city: string): void {
+		this.searchCity = city
+		this.updateMap(city)
+	}
+
+	// Helper function to update iframeSrc
+	private updateMap(city: string): void {
+		this.iframeSrc = this.sanitizeUrl(this.cityMap[city])
+	}
+
+	// Helper function to sanitize URL
+	private sanitizeUrl(url: string): SafeResourceUrl {
+		return this.sanitizer.bypassSecurityTrustResourceUrl(url)
 	}
 }

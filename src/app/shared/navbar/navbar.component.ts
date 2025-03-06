@@ -59,6 +59,7 @@ export class NavbarComponent implements OnInit {
 			list: [
 				{ name: "Cryolipolysis", list: [], path: "/cryolipolysis" },
 				{ name: "Magic Tech", list: [], path: "/magic-tech" },
+				{ name: "Cavitation", list: [], path: "/cavitation" },
 				// { name: "Breast Reduction", list: [], path: "#" },
 				{
 					name: "Diode Lipolaser",
@@ -92,7 +93,7 @@ export class NavbarComponent implements OnInit {
 		// },
 
 		{
-			name: "Body",
+			name: "Hifu",
 			list: [
 				{
 					name: "Saggy Skin Treatment",
@@ -131,7 +132,7 @@ export class NavbarComponent implements OnInit {
 			],
 		},
 		{
-			name: "Skin Care",
+			name: "Skin Treatment",
 			list: [
 				// { name: "Skin Glowing", list: [], path: "/skin-glowing" },
 				// { name: "Skin Rejuvenation", list: [], path: "/skin-rejuvenation" },

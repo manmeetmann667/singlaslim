@@ -25,10 +25,20 @@ import {
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
-	images: string[] = [
-		"../assets/images/slider-1.png",
-		"../assets/images/ideal-weight-image.png",
-		"../assets/images/front-view-young-female-sport-outfit-measuring-her-body.jpg",
+	images: { image: string; title: string }[] = [
+		{
+			image: "../assets/images/doctors_home.jpg",
+			title: "Your Obseity Doctors",
+		},
+		{
+			image: "../assets/images/ideal-weight-image.png",
+			title: "Give Your Body <br> The Love It Deserves",
+		},
+		{
+			image:
+				"../assets/images/front-view-young-female-sport-outfit-measuring-her-body.jpg",
+			title: "Get In Your <br> Best Shape",
+		},
 	]
 
 	newsList: News[] = []
@@ -62,14 +72,18 @@ export class HomeComponent implements OnInit {
 
 	calculateIdealWeight() {
 		if (!this.weight || !this.height) {
-			alert("Please enter weight and height!")
+			alert("Please enter weight and height (in feet)!")
 			return
 		}
-		const heightInInches = this.height / 2.54
+
+		// Convert height from feet to inches
+		const heightInInches = this.height * 12
+
+		// Apply the ideal weight formula
 		if (this.gender === "male") {
-			this.idealWeight = heightInInches * 1
+			this.idealWeight = heightInInches * 1 // 1 lb per inch
 		} else {
-			this.idealWeight = heightInInches * 0.9
+			this.idealWeight = heightInInches * 0.9 // 0.9 lb per inch
 		}
 	}
 
@@ -161,4 +175,97 @@ export class HomeComponent implements OnInit {
 		// Calculate the number of slides required based on 3 items per slide
 		return Math.floor(this.statements.length / 5)
 	}
+	cards = [
+		{
+			title: "Magic Tech",
+
+			colorClass: "bg-primary",
+			description:
+				"Emsculpt stimulates 20,000+ contractions in a 30-minute session (equivalent to 20,000 crunches or squats",
+		},
+		{
+			title: "Cryolipolysis",
+			subtitle: "Card Title 1",
+			colorClass: "bg-primary",
+			description: ` The machine cools the fat cells to around -11°C to -13°C fat cells begin to freeze and die <br>
+
+About 20-25% of the fat in the treated area is permanently reduced.<br>
+✅ Targets Stubborn Fat<br>
+
+Works on areas like abdomen, thighs, arms, double chin, and love handles, where fat is resistant to diet & exercise...`,
+		},
+		{
+			title: "Card Title 3",
+			subtitle: "Card Title 1",
+			colorClass: "bg-primary",
+			description:
+				'A brief introduction to the topic. Click "Read More" for details...',
+		},
+		{
+			title: "Card Title 4",
+			subtitle: "Card Title 1",
+			colorClass: "bg-primary",
+			description:
+				'Learn more about this interesting topic. Click "Read More" for details...',
+		},
+		{
+			title: "Card Title 5",
+			subtitle: "Card Title 1",
+			colorClass: "bg-primary",
+			description:
+				'An engaging preview that leaves you curious. Click "Read More" for details...',
+		},
+		{
+			title: "Card Title 6",
+			subtitle: "Card Title 1",
+			colorClass: "bg-primary",
+			description:
+				'A glimpse into an exciting subject. Click "Read More" for details...',
+		},
+	]
+	HifuCards = [
+		{
+			title: "Saggy Arms",
+			description: `✅ Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
+			✅ Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
+			✅ Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
+			✅ Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
+			✅ Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
+			✅ Long-Lasting Results`,
+			image: "../assets/images/hifu_arms.jpeg",
+			link: "#",
+		},
+		{
+			title: "Saggy Thighs",
+			description: `✅ Skin Tightening & Lifting → 70-85% improvement in skin firmness over 2-3 months<br>
+✅ Collagen Production Boost → 80-90% increase, leading to improved elasticity<br>
+✅ Fat Reduction → 20-30% reduction in localized fat per session<br>
+✅ Reduced Wrinkles & Loose Skin → 60-75% reduction in thigh sagging`,
+			image: "../assets/images/higu_thighs.jpg",
+			link: "#",
+		},
+		{
+			title: "Saggy Belly",
+			description: `✅ Fat Reduction → 20-30% fat reduction in the treated area after 1-2 sessions.<br>
+✅ Skin Tightening & Firmness → 70-85% improvement in skin elasticity over 2-3 months.<br>
+✅ Reduction in Skin Laxity → 65-80% improvement in saggy skin after treatment.<br>
+✅ Body Contouring Effect → 2-5 cm reduction in waist circumference after a full treatment course.<br>
+✅ Visible Results → 90% of patients see noticeable improvement within 8-12 weeks.<br>
+✅ Collagen & Elastin Production Boost → 80-90% increase for firmer, tighter skin.`,
+			image: "../assets/images/hifu_belly.jpeg",
+			link: "#",
+		},
+		{
+			title: "Saggy Breast",
+			description: `
+<img src="../assets/images/blue_tick.png" height="16px"> Tightening & Firmness → 75-90% of women experience noticeable tightening after 1-2 sessions.<br>
+✅ Increased Collagen Production → 80-95% improvement in collagen synthesis, leading to better elasticity.<br>
+✅ Improved Lubrication & Hydration → 65-85% increase in natural lubrication, reducing vaginal dryness.<br>
+✅ Enhanced Sensation & Sensitivity → 70-85% report improved sexual satisfaction.<br>
+✅ Urinary Incontinence Reduction → 60-80% experience less urinary leakage or better bladder control.<br>
+✅ Non-Surgical & Pain-Free Alternative → 90% prefer HIFU over surgical tightening methods.`,
+			image: "../assets/images/hifu_breast.jpg",
+			link: "#",
+		},
+	]
 }

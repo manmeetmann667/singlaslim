@@ -4,14 +4,14 @@
 		[pauseOnHover]="false"
 		[interval]="2500"
 	>
-		<ng-template ngbSlide *ngFor="let image of images; index as i">
+		<ng-template ngbSlide *ngFor="let slide of images">
 			<div
 				class="d-none d-lg-block"
 				style="height: 100vh"
 				[ngStyle]="{
 					background:
 						'linear-gradient(to right, #141717 0%, transparent), url(' +
-						image +
+						slide.image +
 						') no-repeat',
 					'background-size': 'cover',
 					'background-position': 'center'
@@ -20,17 +20,14 @@
 				<div
 					class="container-fluid pl-5 ml-4 d-flex flex-column justify-content-center pt-5 h-100"
 				>
-					<div class="Montserrat-SemiBold display-4 mt-5 text-white">
-						Give Your Body <br />
-						The Love It Deserves.
-					</div>
-					<div class="Montserrat-Medium text-white h5">
-						Book your consultation today with Singla Slimming Clinic.
-					</div>
+					<div
+						class="Montserrat-SemiBold display-4 mt-5 text-white"
+						[innerHTML]="slide.title"
+					></div>
 					<div class="row col-5">
 						<div class="col-lg-6 col-12">
-							<a href="tel: 08146300892"
-								><button
+							<a href="tel:08146300892">
+								<button
 									class="btn btn-primary w-100 mt-4 Montserrat-SemiBold"
 									style="scale: 1.1"
 								>
@@ -38,57 +35,9 @@
 								</button>
 							</a>
 						</div>
-						<!-- <div class="col-lg-6 col-12">
-                  <button class="btn btn-outline-primary w-100 Montserrat-Medium mt-4" (click)="openAppointmentForm(bookAppointmentFormModal)">Book a Consultation</button>
-                </div> -->
 					</div>
 				</div>
 			</div>
-			<div
-				class="d-block d-lg-none"
-				style="height: 100vh; width: 100%"
-				[ngStyle]="{
-					background:
-						'linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 10%, transparent), url(' +
-						image +
-						') no-repeat',
-					'background-size': 'cover',
-					'background-position': 'center'
-				}"
-			>
-				<div
-					class="container d-flex flex-column justify-content-center h-100 pe-2"
-				>
-					<div
-						class="Montserrat-SemiBold text-white"
-						style="font-size: 2rem"
-					>
-						Give Your Body <br />
-						The Love It Deserves.
-					</div>
-					<div class="Montserrat-Medium text-white fs-6">
-						Book your consultation today with Singla Slimming Clinic.
-					</div>
-					<div class="d-flex flex-row mt-4 px-0">
-						<div class="">
-							<a class="Montserrat-Medium" href="tel: 08146300892"
-								><button
-									class="btn-primary btn me-2 Montserrat-Medium"
-								>
-									Call Us
-								</button></a
-							>
-						</div>
-						<!-- <div class="">
-                  <button class="btn-main-mobile"  (click)="openAppointmentForm(bookAppointmentFormModal)">Book a Consultation</button>
-                </div> -->
-					</div>
-				</div>
-			</div>
-			<!-- <div class="carousel-caption">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div> -->
 		</ng-template>
 	</ngb-carousel>
 
@@ -161,7 +110,7 @@
 			/>
 			<div>
 				<p class="font-weight-bold" style="font-size: 2.8rem">
-					Loose <span class="text-danger">4 - 12kg</span> in 1 month
+					Lose <span class="text-primary">4 - 12kg</span> in 1 month
 				</p>
 				<p
 					class="font-weight-bold text-secondary"
@@ -209,6 +158,165 @@
 			<!-- Navigation Buttons -->
 			<button class="prev-btn" (click)="prevSlide()">&#10094;</button>
 			<button class="next-btn" (click)="nextSlide()">&#10095;</button>
+		</div>
+		<div
+			class="mb-5 py-5"
+			style="background-color: aliceblue; border-radius: 1rem"
+		>
+			<div class="d-flex justify-content-around align-items-center">
+				<div>
+					<p class="font-weight-bold" style="font-size: 2.6rem">
+						Calculate Your Ideal Weight
+					</p>
+					<p style="font-size: 1.5rem">
+						Know your Ideal Weight for
+						<span class="font-weight-bold">Healthier Life!</span>
+					</p>
+					<button
+						class="btn btn-primary mt-3"
+						style="font-size: 1.2rem"
+						(click)="openModal(content)"
+					>
+						Calculate Now
+					</button>
+				</div>
+				<img
+					src="../../../assets/images/doctor_2.png"
+					width="500px"
+					height="auto"
+					class="rounded"
+				/>
+			</div>
+		</div>
+		<ng-template #content let-modal>
+			<div class="modal-header bg-custom text-white">
+				<h5 class="modal-title font-weight-bold">
+					Medically Ideal Weight Calculator
+				</h5>
+				<button
+					type="button"
+					class="close"
+					style="color: white"
+					(click)="modal.dismiss('Cross click')"
+					aria-label="Close"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!-- Gender Selection -->
+				<label class="form-label font-weight-bold">Gender:</label>
+				<div class="mb-3 d-flex flex-column">
+					<div>
+						<input
+							type="radio"
+							name="gender"
+							value="male"
+							id="male"
+							[(ngModel)]="gender"
+							class="form-check-input"
+						/>
+						<label for="male" class="form-check-label">Male</label>
+					</div>
+					<div class="mt-2">
+						<input
+							type="radio"
+							name="gender"
+							value="female"
+							id="female"
+							class="form-check-input ms-3"
+							[(ngModel)]="gender"
+						/>
+						<label for="female" class="form-check-label"
+							>Female</label
+						>
+					</div>
+				</div>
+				<!-- Weight Input -->
+				<div class="mb-3">
+					<label for="weight" class="form-label font-weight-bold"
+						>Weight (kg):</label
+					>
+					<input
+						type="number"
+						id="weight"
+						class="form-control"
+						[(ngModel)]="weight"
+						placeholder="Enter your weight"
+					/>
+				</div>
+				<!-- Height Input -->
+				<div class="mb-3">
+					<label for="height" class="form-label font-weight-bold"
+						>Height (ft):</label
+					>
+					<input
+						type="number"
+						id="height"
+						class="form-control"
+						[(ngModel)]="height"
+						placeholder="Enter your height"
+					/>
+				</div>
+			</div>
+			<div
+				class="d-flex justify-content-between align-items-center pl-3 pr-3"
+			>
+				<div *ngIf="idealWeight !== null">
+					<p>
+						Your ideal weight is:
+						<span style="color: #4295d4">
+							{{ idealWeight.toFixed(2) }}
+							kg
+						</span>
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						(click)="modal.dismiss('Close click')"
+					>
+						Close
+					</button>
+					<button
+						type="button"
+						class="btn btn-success"
+						(click)="calculateIdealWeight()"
+					>
+						<i class="fa fa-calculator"></i> Calculate
+					</button>
+				</div>
+			</div>
+		</ng-template>
+
+		<div class="container my-5 py-5">
+			<div
+				class="row align-items-center bg-light p-5 rounded-lg shadow-lg"
+			>
+				<!-- Image Section -->
+				<div class="col-md-6 text-center text-md-left">
+					<img
+						src="../../../assets/images/portrait-smiling-young-doctors-standing-together-portrait-medical-staff-inside-modern-hospital-smiling-camera.jpg"
+						alt="Lose Weight"
+						class="img-fluid rounded-lg shadow"
+						style="max-width: 100%; border-radius: 20px"
+					/>
+				</div>
+
+				<!-- Text Section -->
+				<div class="col-md-6 text-center text-md-left">
+					<p
+						class="font-weight-bold text-dark"
+						style="font-size: 2.8rem; line-height: 1.3"
+					>
+						Lose
+						<span class="text-primary font-italic">12 - 36kg</span> in
+						less than <br />
+						<span class="text-success">90 days</span>
+					</p>
+				</div>
+			</div>
 		</div>
 
 		<!-- <div
@@ -302,56 +410,158 @@
 			</div>
 		</div>
 	</div> -->
+		<div class="container my-5">
+			<h2
+				class="position-relative font-weight-bold d-inline-block text-uppercase pb-2"
+			>
+				Our Services
+				<span class="d-block bg-warning gradient-line"></span>
+			</h2>
 
-		<div
-			class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-			style="position: relative"
-		>
-			<!-- Left Section: Text Content -->
-			<div class="col-md-6 col-12 text-justify Montserrat-Medium">
-				<!-- <h1 class="display-4 mb-4">Our Services</h1> -->
-				<ul class="list-unstyled">
-					<!-- <li class="mb-3">
-                    <strong>Non-Surgical Liposuction:</strong> Utilizing state-of-the-art fat cavitation machines with
-                    ultrasound technology to naturally melt fat without pain or invasive surgery.
-                </li> -->
-					<li class="mb-3">
-						<strong>Skin Toning and Tightening:</strong> Advanced
-						solutions for a firmer and smoother appearance.
-					</li>
-					<li class="mb-3">
-						<strong>Body Shaping:</strong> Customized programs for a
-						sculpted physique.
-					</li>
-					<li class="mb-3">
-						<strong>Personalized Meal Plans:</strong> Balanced,
-						nutritious, and tailored to individual needs.
-					</li>
-					<li class="mb-3">
-						<strong>Regular Monitoring and Support:</strong> Ensuring
-						your progress with expert guidance.
-					</li>
-				</ul>
+			<div class="row py-5">
+				<div class="col-md-4 mb-4" *ngFor="let card of cards">
+					<div class="card-wrapper-first">
+						<div class="card-first border-0 shadow">
+							<div class="card-header-first bg-primary">
+								{{ card.title }}
+							</div>
+							<div class="card-body-first">
+								<p
+									class="card-title-first"
+									[innerHTML]="card.description"
+								></p>
+								<i class="fas fa-user card-icon-first"></i>
+							</div>
+							<div class="card-footer-first">
+								<button class="btn btn-outline-primary btn-block">
+									Read More
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container py-5">
+				<!-- Decorative Symbol Before Heading -->
+				<div class="d-flex align-items-center">
+					<div class="d-flex align-items-center mb-2">
+						<div
+							class="bg-warning rounded-circle mr-2"
+							style="width: 16px; height: 16px"
+						></div>
+						<span class="text-warning font-weight-bold">●</span>
+					</div>
+
+					<!-- Heading -->
+					<h2
+						class="font-weight-bold mb-4 pb-2 text-dark"
+						style="font-size: 2rem"
+					>
+						What is Hifu?
+					</h2>
+				</div>
+
+				<div class="row align-items-center">
+					<!-- Text Section -->
+					<div class="col-md-6">
+						<p class="text-justify lead">
+							<strong class="text-dark">HIFU</strong> delivers
+							ultrasound energy deep into the skin layers, heating
+							tissues. This stimulates fibroblasts to produce new
+							collagen and elastin, leading to firmer, tighter skin.
+						</p>
+						<ul class="list-unstyled pl-3">
+							<li class="mb-2">
+								✅ <strong>Age Lifting:</strong> 85-95% of patients
+								see noticeable skin tightening over 2-3 months.
+							</li>
+							<li class="mb-2">
+								✅ <strong>Collagen & Elastin Boost:</strong> 80-90%
+								experience increased firmness due to collagen
+								remodeling.
+							</li>
+							<li class="mb-2">
+								✅ <strong>Wrinkle Reduction:</strong> 70-85%
+								reduction in fine lines and wrinkles over time.
+							</li>
+							<li class="mb-2">
+								✅
+								<strong>Non-Surgical Face Lift Alternative:</strong>
+								90% prefer HIFU over surgery for a natural look.
+							</li>
+						</ul>
+					</div>
+
+					<!-- Image Section -->
+					<div class="col-md-6 text-center">
+						<div class="position-relative">
+							<img
+								src="../../../assets/images/hifu.jpg"
+								class="img-fluid rounded shadow-lg"
+								alt="HIFU Treatment"
+								style="border-radius: 15px; max-width: 90%"
+							/>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div
-				class="col-md-6 col-12 d-flex justify-content-center align-items-center"
-			>
-				<div
-					style="
-						top: 50%;
-						height: 40%;
-						width: 60%;
-						background-color: #96763731;
-						position: absolute;
-					"
-				></div>
-				<div
-					class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+			<div class="d-flex align-items-center">
+				<div class="d-flex align-items-center mb-2">
+					<div
+						class="bg-warning rounded-circle mr-2"
+						style="width: 16px; height: 16px"
+					></div>
+					<span class="text-warning font-weight-bold">●</span>
+				</div>
+
+				<!-- Heading -->
+				<h2
+					class="font-weight-bold mb-4 pb-2 text-dark"
+					style="font-size: 2rem"
 				>
-					<div>Our</div>
-					<div>Services</div>
-					<div></div>
+					Benefits of Hifu
+				</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-4 mb-4" *ngFor="let card of HifuCards">
+					<div class="card shadow-lg border-0 h-100">
+						<!-- Image Section -->
+						<img
+							[src]="card.image"
+							class="card-img-top rounded-top"
+							alt="Card Image"
+							style="height: 200px; object-fit: cover"
+						/>
+
+						<!-- Text Section -->
+						<div
+							class="card-body-second d-flex flex-column px-2 py-3"
+						>
+							<h5
+								class="card-title font-weight-bold text-center text-dark pb-2"
+							>
+								{{ card.title }}
+							</h5>
+							<p
+								class="card-text text-muted"
+								style="line-height: 1.6"
+								[innerHTML]="card.description"
+							>
+								<!-- {{ card.description }} -->
+							</p>
+
+							<!-- Button Section -->
+							<div class="mt-auto text-center">
+								<a
+									[href]="card.link"
+									class="btn btn-warning font-weight-bold px-4 py-2 mt-3"
+								>
+									Read More
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -414,7 +624,7 @@
 				</p>
 
 				<!-- Address Section -->
-				<h3 class="mt-4">Branches</h3>
+				<!-- <h3 class="mt-4">Branches</h3> -->
 				<!-- <div class="d-flex flex-row mb-2">
             <span class="Montserrat-SemiBold">LUDHIANA: </span>
             <span class="ml-2">2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span>
@@ -427,7 +637,7 @@
             <span class="Montserrat-SemiBold">JALANDHAR: </span>
             <span class="ml-2">MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span>
         </div> -->
-
+				<!-- 
 				<ul class="list-unstyled">
 					<li class="mb-3">
 						<strong>Ludhiana:</strong> 12-J, Deepak Hospital Road,
@@ -453,11 +663,11 @@
 					</li>
 				</ul>
 
-				<!-- Office Hours Section -->
-				<h3 class="mt-4">Office Hours</h3>
+				 Office Hours Section -->
+				<!-- <h3 class="mt-4">Office Hours</h3>
 				<p>Monday to Saturday: 9:00 AM - 7:00 PM</p>
 				<h3 class="mt-4">Call Us At</h3>
-				<p>+91 8416300892</p>
+				<p>+91 8416300892</p> -->
 			</div>
 		</div>
 
@@ -534,136 +744,6 @@
 				</div>
 			</div>
 		</div>
-		<div
-			class="container my-5 py-5"
-			style="background-color: aliceblue; border-radius: 1rem"
-		>
-			<div class="d-flex justify-content-around align-items-center">
-				<div>
-					<p class="font-weight-bold" style="font-size: 2.6rem">
-						Calculate Your Ideal Weight
-					</p>
-					<p style="font-size: 1.5rem">
-						Know your Ideal Weight for
-						<span class="font-weight-bold">Healthier Life!</span>
-					</p>
-					<button
-						class="btn btn-primary mt-3"
-						style="font-size: 1.2rem"
-						(click)="openModal(content)"
-					>
-						Calculate Now
-					</button>
-				</div>
-				<img
-					src="../../../assets/images/doctor_2.png"
-					width="500px"
-					height="auto"
-					class="rounded"
-				/>
-			</div>
-		</div>
-		<ng-template #content let-modal>
-			<div class="modal-header bg-custom text-white">
-				<h5 class="modal-title font-weight-bold">
-					Medically Ideal Weight Calculator
-				</h5>
-				<button
-					type="button"
-					class="close"
-					style="color: white"
-					(click)="modal.dismiss('Cross click')"
-					aria-label="Close"
-				>
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<!-- Gender Selection -->
-				<label class="form-label font-weight-bold">Gender:</label>
-				<div class="mb-3 d-flex flex-column">
-					<div>
-						<input
-							type="radio"
-							name="gender"
-							value="male"
-							id="male"
-							[(ngModel)]="gender"
-							class="form-check-input"
-						/>
-						<label for="male" class="form-check-label">Male</label>
-					</div>
-					<div class="mt-2">
-						<input
-							type="radio"
-							name="gender"
-							value="female"
-							id="female"
-							class="form-check-input ms-3"
-							[(ngModel)]="gender"
-						/>
-						<label for="female" class="form-check-label"
-							>Female</label
-						>
-					</div>
-				</div>
-				<!-- Weight Input -->
-				<div class="mb-3">
-					<label for="weight" class="form-label font-weight-bold"
-						>Weight (kg):</label
-					>
-					<input
-						type="number"
-						id="weight"
-						class="form-control"
-						[(ngModel)]="weight"
-						placeholder="Enter your weight"
-					/>
-				</div>
-				<!-- Height Input -->
-				<div class="mb-3">
-					<label for="height" class="form-label font-weight-bold"
-						>Height (cm):</label
-					>
-					<input
-						type="number"
-						id="height"
-						class="form-control"
-						[(ngModel)]="height"
-						placeholder="Enter your height"
-					/>
-				</div>
-			</div>
-			<div
-				class="d-flex justify-content-between align-items-center pl-3 pr-3"
-			>
-				<div *ngIf="idealWeight !== null">
-					<p>
-						Your ideal weight is:
-						<span style="color: #4295d4">
-							{{ idealWeight.toFixed(2) }}
-							kg
-						</span>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button
-						type="button"
-						class="btn btn-secondary"
-						(click)="modal.dismiss('Close click')"
-					>
-						Close
-					</button>
-					<button
-						type="button"
-						class="btn btn-success"
-						(click)="calculateIdealWeight()"
-					>
-						<i class="fa fa-calculator"></i> Calculate
-					</button>
-				</div>
-			</div>
-		</ng-template>
 
 		<div
 			class="container-fluid d-flex flex-md-row flex-column justify-content-around align-items-center my-5 py-5"
