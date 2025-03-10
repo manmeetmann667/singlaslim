@@ -220,7 +220,7 @@ export class PhotoGalleryComponent implements OnInit, OnDestroy {
 		},
 		{
 			type: "image",
-			media: "../../../assets/images/eggs.jpeg", // Adjust image path as per your project structure
+			media: "../../../assets/images/blog_1.jpeg", // Adjust image path as per your project structure
 			description: `
        Whole eggs vs Egg whites 
 
@@ -244,7 +244,7 @@ Ultimately, the choice depends on your health goals and dietary needs. For most 
 		{
 			type: "image",
 			description: "", // Add empty string or a placeholder
-			media: "../../../assets/images/blog_1.jpeg", // Adjust image path as per your project structure
+			media: "../../../assets/images/eggs.jpeg", // Adjust image path as per your project structure
 		},
 		{
 			type: "image",

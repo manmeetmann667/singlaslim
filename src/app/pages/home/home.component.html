@@ -40,6 +40,17 @@
 			</div>
 		</ng-template>
 	</ngb-carousel>
+	<div
+		class="tagembed-widget"
+		style="width: 100%; height: 100%"
+		data-widget-id="2157125"
+		data-tags="false"
+		view-url="https://widget.tagembed.com/2157125"
+	></div>
+	<script
+		src="https://widget.tagembed.com/embed.min.js"
+		type="text/javascript"
+	></script>
 
 	<!-- <div class="col-md-6 col-12 text-justify Montserrat-Medium" style="align-self: center;">
 		<ul>
@@ -159,6 +170,30 @@
 			<button class="prev-btn" (click)="prevSlide()">&#10094;</button>
 			<button class="next-btn" (click)="nextSlide()">&#10095;</button>
 		</div>
+		<div class="container my-5">
+			<h2
+				class="position-relative font-weight-bold d-inline-block text-uppercase pb-3"
+			>
+				Awards
+				<span class="d-block bg-warning gradient-line"></span>
+			</h2>
+
+			<div class="row">
+				<div
+					class="col-md-4 col-sm-6 mb-4"
+					*ngFor="let image of images1"
+				>
+					<div class="card shadow-sm border-0">
+						<img
+							[src]="'../assets/images/' + image"
+							[alt]="'Award ' + image"
+							class="img-fluid award-image"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div
 			class="mb-5 py-5"
 			style="background-color: aliceblue; border-radius: 1rem"
@@ -433,9 +468,12 @@
 								<i class="fas fa-user card-icon-first"></i>
 							</div>
 							<div class="card-footer-first">
-								<button class="btn btn-outline-primary btn-block">
+								<a
+									[href]="card.link"
+									class="btn btn-outline-primary btn-block"
+								>
 									Read More
-								</button>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -565,68 +603,80 @@
 				</div>
 			</div>
 		</div>
-
-		<div
-			class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
-			style="position: relative"
-		>
-			<!-- Left Section: Placeholder for Image/Visual -->
-			<div
-				class="col-md-6 col-12 text-start"
-				style="position: relative"
+		<div class="container my-5 py-5">
+			<h2
+				class="position-relative font-weight-bold d-inline-block text-uppercase pb-2 mb-4"
 			>
+				About Us
+				<span class="d-block bg-warning gradient-line"></span>
+			</h2>
+			<div
+				style="position: relative"
+				class="d-flex flex-md-row flex-column justify-content-between align-items-center"
+			>
+				<!-- Left Section: Placeholder for Image/Visual -->
 				<div
+					class="col-md-6 col-12 text-start"
+					style="position: relative"
+				>
+					<img
+						src="../../../assets//images/about_us_pic.jpg"
+						alt=""
+						width="400px"
+						height="auto"
+					/>
+					<!-- <div
 					style="
 						top: 50%;
 						height: 40%;
 						width: 60%;
 						background-color: #96763731;
 						position: absolute;
-					"
-				></div>
-				<div
-					class="text-center Montserrat-Bold display-2 d-lg-block d-none"
-				>
-					<div>About</div>
-					<div>Us</div>
-					<div></div>
-				</div>
-				<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
-            <div>
-                WHO
-            </div>
+						"
+						></div> -->
+					<!-- <div
+						class="text-center Montserrat-Bold display-2 d-lg-block d-none"
+						>
+						<div>About</div>
+						<div>Us</div>
+						<div></div>
+				</div> -->
+					<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
+					<div>
+						WHO
+					</div>
             <div>
                 WE
             </div>
             <div>ARE</div>
         </div> -->
-			</div>
+				</div>
 
-			<!-- Right Section: Text Content -->
-			<div
-				class="my-5 col-md-6 col-12 text-justify Montserrat-Medium"
-			>
-				<!-- <h1 class="display-4 mb-4">About Us</h1> -->
-				<p>
-					Singla Slimming Clinic has been a pioneer in the slimming
-					and wellness industry since 2003. Founded by Dr. Anju Singla
-					and Dr. Sushil Singla, we have successfully transformed
-					lives for over 21 years, helping individuals achieve their
-					weight loss goals with cutting-edge, non-invasive
-					techniques.
-				</p>
-				<p>
-					With over 121,000 success stories and more than 2.5 million+
-					kilos lost, we have become a trusted name in weight loss and
-					wellness. We focus on addressing the root causes of
-					overweight and offer tailored solutions for sustainable
-					results.
-				</p>
+				<!-- Right Section: Text Content -->
+				<div
+					class="my-5 col-md-6 col-12 text-justify Montserrat-Medium"
+				>
+					<!-- <h1 class="display-4 mb-4">About Us</h1> -->
+					<p>
+						Singla Slimming Clinic has been a pioneer in the slimming
+						and wellness industry since 2003. Founded by Dr. Anju
+						Singla and Dr. Sushil Singla, we have successfully
+						transformed lives for over 21 years, helping individuals
+						achieve their weight loss goals with cutting-edge,
+						non-invasive techniques.
+					</p>
+					<p>
+						With over 132,232 success stories and more than 2.7
+						million+ kilos lost, we have become a trusted name in
+						weight loss and wellness. We focus on addressing the root
+						causes of overweight and offer tailored solutions for
+						sustainable results.
+					</p>
 
-				<!-- Address Section -->
-				<!-- <h3 class="mt-4">Branches</h3> -->
-				<!-- <div class="d-flex flex-row mb-2">
-            <span class="Montserrat-SemiBold">LUDHIANA: </span>
+					<!-- Address Section -->
+					<!-- <h3 class="mt-4">Branches</h3> -->
+					<!-- <div class="d-flex flex-row mb-2">
+					<span class="Montserrat-SemiBold">LUDHIANA: </span>
             <span class="ml-2">2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span>
         </div>
         <div class="d-flex flex-row mb-2">
@@ -636,21 +686,21 @@
         <div class="d-flex flex-row mb-2">
             <span class="Montserrat-SemiBold">JALANDHAR: </span>
             <span class="ml-2">MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span>
-        </div> -->
-				<!-- 
-				<ul class="list-unstyled">
-					<li class="mb-3">
-						<strong>Ludhiana:</strong> 12-J, Deepak Hospital Road,
-						near The Drawing Room Cafe, D-Block, A-Block, Sarabha
-						Nagar
-					</li>
-					<li class="mb-3">
-						<strong>Amritsar:</strong> 284 D, near dusshera ground,
-						Gumtala Sub Urban, Defence Colony,D-Block, Ranjit Avenue
-					</li>
-					<li class="mb-3">
-						<strong>Jalandhar:</strong> 1st floor, mkc mall, opposite
-						APJ college, Near BMC Chowk, New Jawahar Nagar
+					</div> -->
+					<!-- 
+					<ul class="list-unstyled">
+						<li class="mb-3">
+							<strong>Ludhiana:</strong> 12-J, Deepak Hospital Road,
+							near The Drawing Room Cafe, D-Block, A-Block, Sarabha
+							Nagar
+						</li>
+						<li class="mb-3">
+							<strong>Amritsar:</strong> 284 D, near dusshera ground,
+							Gumtala Sub Urban, Defence Colony,D-Block, Ranjit Avenue
+						</li>
+						<li class="mb-3">
+							<strong>Jalandhar:</strong> 1st floor, mkc mall, opposite
+							APJ college, Near BMC Chowk, New Jawahar Nagar
 					</li>
 					<li class="mb-3">
 						<strong>Mohali:</strong> sco no. 4, KBD Plaza, Near
@@ -662,12 +712,13 @@
 						Office, 56,57 c block, VIP Rd, Zirakpur, Punjab 140603
 					</li>
 				</ul>
-
-				 Office Hours Section -->
-				<!-- <h3 class="mt-4">Office Hours</h3>
+				
+				Office Hours Section -->
+					<!-- <h3 class="mt-4">Office Hours</h3>
 				<p>Monday to Saturday: 9:00 AM - 7:00 PM</p>
 				<h3 class="mt-4">Call Us At</h3>
 				<p>+91 8416300892</p> -->
+				</div>
 			</div>
 		</div>
 
@@ -744,20 +795,33 @@
 				</div>
 			</div>
 		</div>
-
 		<div
-			class="container-fluid d-flex flex-md-row flex-column justify-content-around align-items-center my-5 py-5"
-			style="background-color: #fafafa"
+			class="container-fluid d-flex flex-md-row flex-column justify-content-around align-items-center my-5"
 		>
 			<div
 				class="col-md-6 col-12 px-5 text-justify Montserrat-Medium"
 			>
 				<div class="display-4">Locate Our Clinics</div>
 
-				<div class="mt-3">
-					<p class="bg-dark text-white w-100 rounded p-3">
-						Select a City
-					</p>
+				<div class="mt-3 position-relative">
+					<!-- Button to toggle city list -->
+					<button
+						class="form-control bg-dark mb-4 text-white d-flex font-weight-bold border-0 w-100"
+						(click)="toggleCityList()"
+					>
+						{{ searchCity ? searchCity : "Select a city" }}
+					</button>
+
+					<!-- Dropdown list of cities -->
+					<div *ngIf="showCityList" class="dropdown-menu-custom">
+						<div
+							*ngFor="let city of cities"
+							class="p-2 border-bottom text-dark city-item"
+							(click)="selectCity(city)"
+						>
+							{{ city }}
+						</div>
+					</div>
 				</div>
 
 				<!-- City List -->

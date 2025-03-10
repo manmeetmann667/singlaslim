@@ -119,9 +119,9 @@ header {
 }
 
 .container.py-5.award-container img {
-	max-width: 45%;
+	/* max-width: 45%; */
 	border-radius: 10px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+	/* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
 }
 
 .container.py-5.award-container .award-content {

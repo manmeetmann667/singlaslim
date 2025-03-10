@@ -47,7 +47,9 @@ export class HomeComponent implements OnInit {
 	weight!: number // User's input weight
 	height!: number // User's input height in inches
 	iframeSrc: SafeResourceUrl // Use SafeResourceUrl for sanitized iframe URLs
-	searchCity: string = "" // Bind to the search input field
+	searchCity: string = ""
+	showCityList: boolean = false
+	cities: string[] = []
 	idealWeight: number | null = null
 
 	constructor(
@@ -62,9 +64,12 @@ export class HomeComponent implements OnInit {
 		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
 			this.cityMap["LUDHIANA"]
 		)
+
 		setInterval(() => {
 			this.nextSlide()
 		}, 3000)
+		this.groupImages()
+		this.cities = Object.keys(this.cityMap)
 	}
 	openModal(content: any) {
 		this.modalService.open(content, { centered: true })
@@ -107,7 +112,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	// City mapping
-	cityMap = {
+	cityMap: { [key: string]: string } = {
 		LUDHIANA:
 			"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d872590.5328929112!2d74.36157277812501!3d31.31599340000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a83ceecb71813%3A0x4d88a1265ec53df8!2sSingla%20Slimming%20Clinic%3A%20Weight%20Loss%20Clinic!5e0!3m2!1sen!2sca!4v1739867189642!5m2!1sen!2sca",
 		JALANDHAR:
@@ -132,7 +137,20 @@ export class HomeComponent implements OnInit {
 			alert("City not found! Please enter a valid city name.")
 		}
 	}
+	selectCity(city: string): void {
+		this.searchCity = city
+		this.updateMap(city)
+		this.showCityList = false
+	}
+	// Helper function to update iframeSrc
+	private updateMap(city: string): void {
+		this.iframeSrc = this.sanitizeUrl(this.cityMap[city])
+	}
 
+	// Helper function to sanitize URL
+	private sanitizeUrl(url: string): SafeResourceUrl {
+		return this.sanitizer.bypassSecurityTrustResourceUrl(url)
+	}
 	// Method to update iframe when a predefined city is selected
 	changeLocation(location: string): void {
 		this.searchCity = location // Update the search field with the selected city
@@ -173,54 +191,53 @@ export class HomeComponent implements OnInit {
 
 	getMaxIndex() {
 		// Calculate the number of slides required based on 3 items per slide
-		return Math.floor(this.statements.length / 5)
+		return Math.floor(this.statements.length / 3)
 	}
 	cards = [
 		{
 			title: "Magic Tech",
-
+			link: "magic-tech",
 			colorClass: "bg-primary",
-			description:
-				"Emsculpt stimulates 20,000+ contractions in a 30-minute session (equivalent to 20,000 crunches or squats",
+			description: `Laser emits low-level energy that penetrates the skin and targets fat cells The targeted area appears slimmer as fat cell contents are expelled.<br>
+
+1 session can reduce 0.5 to 1.5 inches<br>
+Stimulates 30% more collagen and elastin production.<br>
+Encourages 300-500 calories to be burned post-session.`,
 		},
 		{
 			title: "Cryolipolysis",
+			link: "cryolipolysis",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
 			description: ` The machine cools the fat cells to around -11°C to -13°C fat cells begin to freeze and die <br>
-
-About 20-25% of the fat in the treated area is permanently reduced.<br>
-✅ Targets Stubborn Fat<br>
+			About 20-25% of the fat in the treated area is permanently reduced.
+ Targets Stubborn Fat<br>
 
 Works on areas like abdomen, thighs, arms, double chin, and love handles, where fat is resistant to diet & exercise...`,
 		},
 		{
-			title: "Card Title 3",
+			title: "Cavitation",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
+			link: "cavitation",
 			description:
-				'A brief introduction to the topic. Click "Read More" for details...',
+				"Cavitation is a popular non-invasive fat reduction treatment used in weight loss and body contouring. It is also known as ultrasonic cavitation or ultrasound fat cavitation....",
 		},
 		{
-			title: "Card Title 4",
+			title: "Diode Lipolaser",
 			subtitle: "Card Title 1",
+			link: "diode-lipolaser",
 			colorClass: "bg-primary",
 			description:
-				'Learn more about this interesting topic. Click "Read More" for details...',
+				"Non surgical diode Lipolaser is an alternative of surgical laser liposuction. Where the treatment is done externally without any surgical procedure ultrasonic transducer/probe is moved externally on the target areas energy....",
 		},
 		{
-			title: "Card Title 5",
+			title: "Body Firming",
+			link: "body-firming",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
 			description:
-				'An engaging preview that leaves you curious. Click "Read More" for details...',
-		},
-		{
-			title: "Card Title 6",
-			subtitle: "Card Title 1",
-			colorClass: "bg-primary",
-			description:
-				'A glimpse into an exciting subject. Click "Read More" for details...',
+				"As part of our wellness therapy we also offer body firming program. This will help you to shapeup and accentuate your figure. We have professional who can help you with the process.... ",
 		},
 	]
 	HifuCards = [
@@ -228,7 +245,7 @@ Works on areas like abdomen, thighs, arms, double chin, and love handles, where 
 			title: "Saggy Arms",
 			description: `✅ Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
 			✅ Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
-			✅ Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
+			<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
 			✅ Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
 			✅ Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
 			✅ Long-Lasting Results`,
@@ -259,13 +276,33 @@ Works on areas like abdomen, thighs, arms, double chin, and love handles, where 
 			title: "Saggy Breast",
 			description: `
 <img src="../assets/images/blue_tick.png" height="16px"> Tightening & Firmness → 75-90% of women experience noticeable tightening after 1-2 sessions.<br>
-✅ Increased Collagen Production → 80-95% improvement in collagen synthesis, leading to better elasticity.<br>
-✅ Improved Lubrication & Hydration → 65-85% increase in natural lubrication, reducing vaginal dryness.<br>
-✅ Enhanced Sensation & Sensitivity → 70-85% report improved sexual satisfaction.<br>
-✅ Urinary Incontinence Reduction → 60-80% experience less urinary leakage or better bladder control.<br>
-✅ Non-Surgical & Pain-Free Alternative → 90% prefer HIFU over surgical tightening methods.`,
+✅ 90% improvement in sking firmness & elasticity.<br>
+✅ 70 - 80% collagen boost for perkier, youthful breasts<br>
+✅ 100% non-surgical & pain-free no downtime<br>`,
 			image: "../assets/images/hifu_breast.jpg",
 			link: "#",
 		},
 	]
+	images1: string[] = [
+		"award_1.jpg",
+		"award_2.jpg",
+		"award_3.jpg",
+		"award_4.jpg",
+		"award_5.jpg",
+		"award_6.jpg",
+		"award_7.jpg",
+		"award_8.jpg",
+	]
+
+	imageGroups: string[][] = []
+
+	groupImages() {
+		const chunkSize = 3 // Number of images per row
+		for (let i = 0; i < this.images.length; i += chunkSize) {
+			this.imageGroups.push(this.images1.slice(i, i + chunkSize))
+		}
+	}
+	toggleCityList(): void {
+		this.showCityList = !this.showCityList
+	}
 }

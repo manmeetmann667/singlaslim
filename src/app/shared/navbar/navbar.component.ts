@@ -98,7 +98,7 @@ export class NavbarComponent implements OnInit {
 				{
 					name: "Saggy Skin Treatment",
 					list: [],
-					path: "/saggy-skin-treatment",
+					path: "/saggyskin-treatment",
 				},
 				{
 					name: "Arms Tightening",
@@ -118,7 +118,7 @@ export class NavbarComponent implements OnInit {
 				{
 					name: "Vaginal Tightening",
 					list: [],
-					path: "/vaginal-tightening",
+					path: "/vaginal-tighting",
 				},
 				{
 					name: "Thighs Tightening",
