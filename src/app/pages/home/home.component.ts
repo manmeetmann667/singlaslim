@@ -2,6 +2,7 @@ import {
 	Component,
 	ElementRef,
 	OnInit,
+	Renderer2,
 	ViewChild,
 } from "@angular/core"
 import { AngularFirestore } from "@angular/fire/firestore"
@@ -27,8 +28,8 @@ import {
 export class HomeComponent implements OnInit {
 	images: { image: string; title: string }[] = [
 		{
-			image: "../assets/images/doctors_home.jpg",
-			title: "Your Obseity Doctors",
+			image: "../assets/images/doctors_image.png",
+			title: "Your Obesity Doctors",
 		},
 		{
 			image: "../assets/images/ideal-weight-image.png",
@@ -56,7 +57,9 @@ export class HomeComponent implements OnInit {
 		private db: AngularFirestore,
 		private auth: AuthService,
 		private modalService: NgbModal,
-		private sanitizer: DomSanitizer
+		private sanitizer: DomSanitizer,
+		private el: ElementRef,
+		private renderer: Renderer2
 	) {}
 
 	ngOnInit(): void {
@@ -64,6 +67,18 @@ export class HomeComponent implements OnInit {
 		this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(
 			this.cityMap["LUDHIANA"]
 		)
+		const script = this.renderer.createElement("script")
+		script.src = "https://widget.tagembed.com/embed.min.js"
+		script.type = "text/javascript"
+		script.async = true
+
+		// Append script after the component is rendered
+		script.onload = () => {
+			console.log("Tagembed widget loaded")
+			this.loadWidget()
+		}
+
+		this.renderer.appendChild(this.el.nativeElement, script)
 
 		setInterval(() => {
 			this.nextSlide()
@@ -74,7 +89,18 @@ export class HomeComponent implements OnInit {
 	openModal(content: any) {
 		this.modalService.open(content, { centered: true })
 	}
-
+	loadWidget(): void {
+		// Ensure the widget renders after script load
+		const widget = document.querySelector(".tagembed-widget")
+		if (widget) {
+			widget.setAttribute("data-widget-id", "2157125")
+			widget.setAttribute("data-tags", "false")
+			widget.setAttribute(
+				"view-url",
+				"https://widget.tagembed.com/2157125"
+			)
+		}
+	}
 	calculateIdealWeight() {
 		if (!this.weight || !this.height) {
 			alert("Please enter weight and height (in feet)!")
@@ -158,20 +184,62 @@ export class HomeComponent implements OnInit {
 	}
 	currentIndex = 0
 	statements = [
-		"Experiencing metabolic symptoms?",
-		"chest pain or breathlessness?",
-		"disrupted sleep or snoring?",
-		"joint pain limiting movement?",
-		"concerned about liver health?",
-		"worried about cancer risk?",
-		"feeling shame or judged?",
-		"low self-esteem issues?",
-		"avoiding social interactions?",
-		"frustrated with weight control?",
-		"feel guilty before eating?",
-		"suffering from acidity?",
-		"troubled by bloating?",
-		"regaining weight often?",
+		{
+			text: "Experiencing metabolic symptoms?",
+			imageUrl: "../assets/images/metabolism.jpg",
+		},
+		{
+			text: "chest pain or breathlessness?",
+			imageUrl: "../assets/images/chestpain.jpg",
+		},
+		{
+			text: "disrupted sleep or snoring?",
+			imageUrl: "../assets/images/disruptedsleep.jpg",
+		},
+		{
+			text: "joint pain limiting movement?",
+			imageUrl: "../assets/images/jointpain.jpg",
+		},
+		{
+			text: "concerned about liver health?",
+			imageUrl: "../assets/images/liver.jpg",
+		},
+		{
+			text: "worried about cancer risk?",
+			imageUrl: "../assets/images/cancerrisk.jpg",
+		},
+		{
+			text: "feeling shame or judged?",
+			imageUrl: "../assets/images/disruptedsleep.jpg",
+		},
+		{
+			text: "low self-esteem issues?",
+			imageUrl: "../assets/images/selfesteem.jpg",
+		},
+		{
+			text: "avoiding social interactions?",
+			imageUrl: "../assets/images/disruptedsleep.jpg",
+		},
+		{
+			text: "frustrated with weight control?",
+			imageUrl: "../assets/images/weightcontrol.jpg",
+		},
+		{
+			text: "feel guilty before eating?",
+			imageUrl: "../assets/images/eating.jpg",
+		},
+		{
+			text: "suffering from acidity?",
+			imageUrl: "../assets/images/acidity.jpg",
+		},
+		{
+			text: "troubled by bloating?",
+			imageUrl: "../assets/images/bloating.jpg",
+		},
+		{
+			text: "regaining weight often?",
+			imageUrl: "../assets/images/regainweight.jpg",
+		},
 	]
 
 	prevSlide() {
@@ -182,7 +250,6 @@ export class HomeComponent implements OnInit {
 	}
 
 	nextSlide() {
-		// Move to the next slide or reset back to the first slide if at the last slide
 		this.currentIndex =
 			this.currentIndex < this.getMaxIndex()
 				? this.currentIndex + 1
@@ -190,9 +257,10 @@ export class HomeComponent implements OnInit {
 	}
 
 	getMaxIndex() {
-		// Calculate the number of slides required based on 3 items per slide
-		return Math.floor(this.statements.length / 3)
+		// Use Math.ceil() to ensure the remaining items get their own slide
+		return Math.ceil(this.statements.length / 5) - 1
 	}
+
 	cards = [
 		{
 			title: "Magic Tech",
@@ -243,32 +311,32 @@ Works on areas like abdomen, thighs, arms, double chin, and love handles, where 
 	HifuCards = [
 		{
 			title: "Saggy Arms",
-			description: `✅ Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
-			✅ Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
+			description: `<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
+			<img src="../assets/images/blue_tick.png" height="16px"> Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
 			<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
-			✅ Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
-			✅ Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
-			✅ Long-Lasting Results`,
+			<img src="../assets/images/blue_tick.png" height="16px"> Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
+			<img src="../assets/images/blue_tick.png" height="16px"> Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
+			<img src="../assets/images/blue_tick.png" height="16px"> Long-Lasting Results`,
 			image: "../assets/images/hifu_arms.jpeg",
 			link: "#",
 		},
 		{
 			title: "Saggy Thighs",
-			description: `✅ Skin Tightening & Lifting → 70-85% improvement in skin firmness over 2-3 months<br>
-✅ Collagen Production Boost → 80-90% increase, leading to improved elasticity<br>
-✅ Fat Reduction → 20-30% reduction in localized fat per session<br>
-✅ Reduced Wrinkles & Loose Skin → 60-75% reduction in thigh sagging`,
+			description: `<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Lifting → 70-85% improvement in skin firmness over 2-3 months<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Collagen Production Boost → 80-90% increase, leading to improved elasticity<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction → 20-30% reduction in localized fat per session<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Reduced Wrinkles & Loose Skin → 60-75% reduction in thigh sagging`,
 			image: "../assets/images/higu_thighs.jpg",
 			link: "#",
 		},
 		{
 			title: "Saggy Belly",
-			description: `✅ Fat Reduction → 20-30% fat reduction in the treated area after 1-2 sessions.<br>
-✅ Skin Tightening & Firmness → 70-85% improvement in skin elasticity over 2-3 months.<br>
-✅ Reduction in Skin Laxity → 65-80% improvement in saggy skin after treatment.<br>
-✅ Body Contouring Effect → 2-5 cm reduction in waist circumference after a full treatment course.<br>
-✅ Visible Results → 90% of patients see noticeable improvement within 8-12 weeks.<br>
-✅ Collagen & Elastin Production Boost → 80-90% increase for firmer, tighter skin.`,
+			description: `<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction → 20-30% fat reduction in the treated area after 1-2 sessions.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Firmness → 70-85% improvement in skin elasticity over 2-3 months.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Reduction in Skin Laxity → 65-80% improvement in saggy skin after treatment.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Body Contouring Effect → 2-5 cm reduction in waist circumference after a full treatment course.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Visible Results → 90% of patients see noticeable improvement within 8-12 weeks.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> Collagen & Elastin Production Boost → 80-90% increase for firmer, tighter skin.`,
 			image: "../assets/images/hifu_belly.jpeg",
 			link: "#",
 		},
@@ -276,9 +344,9 @@ Works on areas like abdomen, thighs, arms, double chin, and love handles, where 
 			title: "Saggy Breast",
 			description: `
 <img src="../assets/images/blue_tick.png" height="16px"> Tightening & Firmness → 75-90% of women experience noticeable tightening after 1-2 sessions.<br>
-✅ 90% improvement in sking firmness & elasticity.<br>
-✅ 70 - 80% collagen boost for perkier, youthful breasts<br>
-✅ 100% non-surgical & pain-free no downtime<br>`,
+<img src="../assets/images/blue_tick.png" height="16px"> 90% improvement in sking firmness & elasticity.<br>
+<img src="../assets/images/blue_tick.png" height="16px"> 70 - 80% collagen boost for perkier, youthful breasts<br>
+<img src="../assets/images/blue_tick.png" height="16px"> 100% non-surgical & pain-free no downtime<br>`,
 			image: "../assets/images/hifu_breast.jpg",
 			link: "#",
 		},
