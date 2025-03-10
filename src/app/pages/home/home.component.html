@@ -187,7 +187,7 @@
 			<button class="prev-btn" (click)="prevSlide()">&#10094;</button>
 			<button class="next-btn" (click)="nextSlide()">&#10095;</button>
 		</div>
-		<div class="container my-5">
+		<div class="container mb-5">
 			<h2
 				class="position-relative font-weight-bold d-inline-block text-uppercase pb-3"
 			>
@@ -212,135 +212,86 @@
 		</div>
 
 		<div
-			class="mb-5 py-5"
+			class="mb-5 py-5 px-3"
 			style="background-color: aliceblue; border-radius: 1rem"
 		>
-			<div class="d-flex justify-content-around align-items-center">
-				<div>
-					<p class="font-weight-bold" style="font-size: 2.6rem">
+			<div
+				class="d-flex flex-column flex-md-row justify-content-around align-items-center"
+			>
+				<div class="text-center text-md-left mb-4 mb-md-0">
+					<p class="font-weight-bold" style="font-size: 2.2rem">
 						Calculate Your Ideal Weight
 					</p>
-					<p style="font-size: 1.5rem">
+					<p style="font-size: 1.2rem">
 						Know your Ideal Weight for
 						<span class="font-weight-bold">Healthier Life!</span>
 					</p>
 					<button
 						class="btn btn-primary mt-3"
-						style="font-size: 1.2rem"
-						(click)="openModal(content)"
+						style="font-size: 1.1rem"
+						(click)="openModalIdeal()"
 					>
 						Calculate Now
 					</button>
 				</div>
 				<img
 					src="../../../assets/images/doctor_2.png"
-					width="500px"
-					height="auto"
-					class="rounded"
+					class="img-fluid rounded"
+					style="max-width: 100%; height: auto"
 				/>
 			</div>
 		</div>
-		<ng-template #content let-modal>
-			<div class="modal-header bg-custom text-white">
-				<h5 class="modal-title font-weight-bold">
-					Medically Ideal Weight Calculator
-				</h5>
-				<button
-					type="button"
-					class="close"
-					style="color: white"
-					(click)="modal.dismiss('Cross click')"
-					aria-label="Close"
-				>
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<!-- Gender Selection -->
-				<label class="form-label font-weight-bold">Gender:</label>
-				<div class="mb-3 d-flex flex-column">
-					<div>
-						<input
-							type="radio"
-							name="gender"
-							value="male"
-							id="male"
-							[(ngModel)]="gender"
-							class="form-check-input"
-						/>
-						<label for="male" class="form-check-label">Male</label>
+		<!-- Custom Modal -->
+		<div class="custom-modal-overlay" id="customModal">
+			<div class="custom-modal">
+				<div class="custom-modal-header">
+					<h5 class="modal-title">
+						Medically Ideal Weight Calculator
+					</h5>
+					<span class="close-btn" (click)="closeModalIdeal()"
+						>&times;</span
+					>
+				</div>
+				<div class="custom-modal-body">
+					<div class="form-group">
+						<label>Gender:</label><br />
+						<input type="radio" name="gender" value="male" /> Male
+						<input type="radio" name="gender" value="female" /> Female
 					</div>
-					<div class="mt-2">
+					<div class="form-group">
+						<label>Weight (kg):</label>
 						<input
-							type="radio"
-							name="gender"
-							value="female"
-							id="female"
-							class="form-check-input ms-3"
-							[(ngModel)]="gender"
+							type="number"
+							class="form-control"
+							[(ngModel)]="weight"
 						/>
-						<label for="female" class="form-check-label"
-							>Female</label
-						>
+					</div>
+					<div class="form-group">
+						<label>Height (ft):</label>
+						<input
+							type="number"
+							class="form-control"
+							[(ngModel)]="height"
+						/>
 					</div>
 				</div>
-				<!-- Weight Input -->
-				<div class="mb-3">
-					<label for="weight" class="form-label font-weight-bold"
-						>Weight (kg):</label
-					>
-					<input
-						type="number"
-						id="weight"
-						class="form-control"
-						[(ngModel)]="weight"
-						placeholder="Enter your weight"
-					/>
+				<div *ngIf="idealWeight !== null" class="result">
+					<p>✅ Your Ideal Weight is:</p>
+					<h4>{{ idealWeight.toFixed(2) }} kg</h4>
 				</div>
-				<!-- Height Input -->
-				<div class="mb-3">
-					<label for="height" class="form-label font-weight-bold"
-						>Height (ft):</label
-					>
-					<input
-						type="number"
-						id="height"
-						class="form-control"
-						[(ngModel)]="height"
-						placeholder="Enter your height"
-					/>
-				</div>
-			</div>
-			<div
-				class="d-flex justify-content-between align-items-center pl-3 pr-3"
-			>
-				<div *ngIf="idealWeight !== null">
-					<p>
-						Your ideal weight is:
-						<span style="color: #4295d4">
-							{{ idealWeight.toFixed(2) }}
-							kg
-						</span>
-					</p>
-				</div>
-				<div class="modal-footer">
-					<button
-						type="button"
-						class="btn btn-secondary"
-						(click)="modal.dismiss('Close click')"
-					>
+				<div class="custom-modal-footer">
+					<button class="btn-secondary" (click)="closeModalIdeal()">
 						Close
 					</button>
 					<button
-						type="button"
-						class="btn btn-success"
+						class="btn-success"
 						(click)="calculateIdealWeight()"
 					>
-						<i class="fa fa-calculator"></i> Calculate
+						Calculate
 					</button>
 				</div>
 			</div>
-		</ng-template>
+		</div>
 
 		<div class="container my-5 py-5">
 			<div
@@ -469,8 +420,75 @@
 				Our Services
 				<span class="d-block bg-warning gradient-line"></span>
 			</h2>
+			<div class="container text-center mt-4">
+				<h2 class="font-weight-bold text-primary">
+					Weight Management Program
+				</h2>
+				<h3 class="mb-4 text-secondary">Online & Offline</h3>
+				<div class="table-responsive">
+					<table
+						class="table table-bordered text-center table-striped"
+					>
+						<thead class="thead-dark">
+							<tr>
+								<th>Benefits</th>
+								<th>Offline</th>
+								<th>Online</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="bg-light">
+								<td>Weight Loss</td>
+								<td>4 to 12 KG in 1 Month</td>
+								<td>3 to 8 KG in 1 Month</td>
+							</tr>
+							<tr>
+								<td>Slimming Technology</td>
+								<td>&#10003;</td>
+								<td>&#10007;</td>
+							</tr>
+							<tr class="bg-light">
+								<td>Medical Support</td>
+								<td>&#10003;</td>
+								<td>&#10003;</td>
+							</tr>
+							<tr>
+								<td>CRM 24x7</td>
+								<td>&#10007;</td>
+								<td>&#10003;</td>
+							</tr>
+							<tr class="bg-light">
+								<td>Counselling</td>
+								<td>&#10003;</td>
+								<td>&#10003;</td>
+							</tr>
+							<tr>
+								<td>Daily Customized Diet Plan</td>
+								<td>&#10003;</td>
+								<td>&#10003;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="d-flex align-items-center mt-5">
+				<div class="d-flex align-items-center mb-2">
+					<div
+						class="bg-warning rounded-circle mr-2"
+						style="width: 16px; height: 16px"
+					></div>
+					<span class="text-warning font-weight-bold">●</span>
+				</div>
 
-			<div class="row py-5">
+				<!-- Heading -->
+				<h2
+					class="font-weight-bold mb-4 pb-2 text-dark"
+					style="font-size: 2rem"
+				>
+					Weight Loss
+				</h2>
+			</div>
+			<div class="row pb-5">
 				<div class="col-md-4 mb-4" *ngFor="let card of cards">
 					<div class="card-wrapper-first">
 						<div class="card-first border-0 shadow">
@@ -642,53 +660,21 @@
 				About Us
 				<span class="d-block bg-warning gradient-line"></span>
 			</h2>
-			<div
-				style="position: relative"
-				class="d-flex flex-md-row flex-column justify-content-between align-items-center"
-			>
-				<!-- Left Section: Placeholder for Image/Visual -->
+			<div class="row align-items-center">
+				<!-- Left Section: Image -->
 				<div
-					class="col-md-6 col-12 text-start"
-					style="position: relative"
+					class="col-md-6 col-12 mb-4 mb-md-0 text-center text-md-left"
 				>
 					<img
-						src="../../../assets//images/about_us_pic.jpg"
-						alt=""
-						width="400px"
-						height="auto"
+						src="../../../assets/images/about_us_pic.jpg"
+						alt="About Us"
+						class="img-fluid"
+						style="max-width: 400px"
 					/>
-					<!-- <div
-					style="
-						top: 50%;
-						height: 40%;
-						width: 60%;
-						background-color: #96763731;
-						position: absolute;
-						"
-						></div> -->
-					<!-- <div
-						class="text-center Montserrat-Bold display-2 d-lg-block d-none"
-						>
-						<div>About</div>
-						<div>Us</div>
-						<div></div>
-				</div> -->
-					<!-- <div class="text-center Montserrat-Bold display-4 d-lg-none d-block">
-					<div>
-						WHO
-					</div>
-            <div>
-                WE
-            </div>
-            <div>ARE</div>
-        </div> -->
 				</div>
 
 				<!-- Right Section: Text Content -->
-				<div
-					class="my-5 col-md-6 col-12 text-justify Montserrat-Medium"
-				>
-					<!-- <h1 class="display-4 mb-4">About Us</h1> -->
+				<div class="col-md-6 col-12 text-justify">
 					<p>
 						Singla Slimming Clinic has been a pioneer in the slimming
 						and wellness industry since 2003. Founded by Dr. Anju
@@ -704,52 +690,6 @@
 						causes of overweight and offer tailored solutions for
 						sustainable results.
 					</p>
-
-					<!-- Address Section -->
-					<!-- <h3 class="mt-4">Branches</h3> -->
-					<!-- <div class="d-flex flex-row mb-2">
-					<span class="Montserrat-SemiBold">LUDHIANA: </span>
-            <span class="ml-2">2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span>
-        </div>
-        <div class="d-flex flex-row mb-2">
-            <span class="Montserrat-SemiBold">FIROZPUR: </span>
-            <span class="ml-2">27 BANK COLONY, BAGHI ROAD, FIROZPUR</span>
-        </div>
-        <div class="d-flex flex-row mb-2">
-            <span class="Montserrat-SemiBold">JALANDHAR: </span>
-            <span class="ml-2">MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span>
-					</div> -->
-					<!-- 
-					<ul class="list-unstyled">
-						<li class="mb-3">
-							<strong>Ludhiana:</strong> 12-J, Deepak Hospital Road,
-							near The Drawing Room Cafe, D-Block, A-Block, Sarabha
-							Nagar
-						</li>
-						<li class="mb-3">
-							<strong>Amritsar:</strong> 284 D, near dusshera ground,
-							Gumtala Sub Urban, Defence Colony,D-Block, Ranjit Avenue
-						</li>
-						<li class="mb-3">
-							<strong>Jalandhar:</strong> 1st floor, mkc mall, opposite
-							APJ college, Near BMC Chowk, New Jawahar Nagar
-					</li>
-					<li class="mb-3">
-						<strong>Mohali:</strong> sco no. 4, KBD Plaza, Near
-						Airport Rd, Sector 117, Sahibzada Ajit Singh Nagar, Punjab
-						140307
-					</li>
-					<li class="mb-3">
-						<strong>Zirakpur:</strong> CCC, Chandigarh Citi Center
-						Office, 56,57 c block, VIP Rd, Zirakpur, Punjab 140603
-					</li>
-				</ul>
-				
-				Office Hours Section -->
-					<!-- <h3 class="mt-4">Office Hours</h3>
-				<p>Monday to Saturday: 9:00 AM - 7:00 PM</p>
-				<h3 class="mt-4">Call Us At</h3>
-				<p>+91 8416300892</p> -->
 				</div>
 			</div>
 		</div>
@@ -800,15 +740,23 @@
 			</div>
 		</div>
 		<div class="my-5 py-5" style="background-color: #fafafa">
-			<div class="d-flex justify-content-around align-items-center">
-				<img
-					src="../../../assets/images/doctor.jpg"
-					width="500px"
-					class="rounded"
-					style="border: 2px solid black"
-					height="auto"
-				/>
-				<div>
+			<div class="row align-items-center">
+				<!-- Left Section: Image -->
+				<div class="col-md-6 col-12 text-center mb-4 mb-md-0">
+					<img
+						src="../../../assets/images/doctor.jpg"
+						class="rounded img-fluid"
+						style="
+							border: 2px solid black;
+							max-width: 500px;
+							width: 100%;
+						"
+						alt="Doctor"
+					/>
+				</div>
+
+				<!-- Right Section: Text Content -->
+				<div class="col-md-6 col-12 text-center text-md-left">
 					<p class="font-weight-bold" style="font-size: 2.6rem">
 						Start Your Transformation<br />
 						journey NOW!!
@@ -827,114 +775,101 @@
 				</div>
 			</div>
 		</div>
-		<div
-			class="container-fluid d-flex flex-md-row flex-column justify-content-around align-items-center my-5"
-		>
-			<div
-				class="col-md-6 col-12 px-5 text-justify Montserrat-Medium"
-			>
-				<div class="display-4">Locate Our Clinics</div>
 
-				<div class="mt-3 position-relative">
-					<!-- Button to toggle city list -->
-					<button
-						class="form-control bg-dark mb-4 text-white d-flex font-weight-bold border-0 w-100"
-						(click)="toggleCityList()"
-					>
-						{{ searchCity ? searchCity : "Select a city" }}
-					</button>
+		<div class="container my-5 py-5">
+			<div class="row justify-content-around align-items-start">
+				<!-- Left Section: City List -->
+				<div class="col-md-6 col-12 mb-4">
+					<h2 class="display-4">Locate Our Clinics</h2>
 
-					<!-- Dropdown list of cities -->
-					<div *ngIf="showCityList" class="dropdown-menu-custom">
-						<div
-							*ngFor="let city of cities"
-							class="p-2 border-bottom text-dark city-item"
-							(click)="selectCity(city)"
+					<!-- City Dropdown -->
+					<div class="mt-3 position-relative">
+						<button
+							class="form-control bg-dark text-white font-weight-bold border-0 w-100"
+							(click)="toggleCityList()"
 						>
-							{{ city }}
+							{{ searchCity ? searchCity : "Select a city" }}
+						</button>
+
+						<!-- Dropdown List -->
+						<div *ngIf="showCityList" class="dropdown-menu-custom">
+							<div
+								*ngFor="let city of cities"
+								class="p-2 border-bottom text-dark city-item"
+								(click)="selectCity(city)"
+							>
+								{{ city }}
+							</div>
+						</div>
+					</div>
+
+					<!-- Address List -->
+					<div
+						class="scroll-auto mt-4"
+						style="height: 400px; overflow-y: auto"
+					>
+						<div
+							class="d-flex flex-column cursor-pointer mb-3 rounded bg-light p-3"
+							(click)="changeLocation('LUDHIANA')"
+						>
+							<span class="font-weight-bold">LUDHIANA:</span>
+							<span class="mt-2 text-muted"
+								>2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span
+							>
+						</div>
+
+						<div
+							class="d-flex flex-column cursor-pointer mb-3 rounded bg-light p-3"
+							(click)="changeLocation('JALANDHAR')"
+						>
+							<span class="font-weight-bold">JALANDHAR:</span>
+							<span class="mt-2 text-muted"
+								>MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span
+							>
+						</div>
+
+						<div
+							class="d-flex flex-column cursor-pointer mb-3 rounded bg-light p-3"
+							(click)="changeLocation('ZIRAKPUR')"
+						>
+							<span class="font-weight-bold">ZIRAKPUR:</span>
+							<span class="mt-2 text-muted">VIP ROAD CCC</span>
+						</div>
+
+						<div
+							class="d-flex flex-column cursor-pointer mb-3 rounded bg-light p-3"
+							(click)="changeLocation('MOHALI')"
+						>
+							<span class="font-weight-bold">MOHALI:</span>
+							<span class="mt-2 text-muted">Plaza 117, Mohali</span>
+						</div>
+
+						<div
+							class="d-flex flex-column cursor-pointer mb-3 rounded bg-light p-3"
+							(click)="changeLocation('AMRITSAR')"
+						>
+							<span class="font-weight-bold">AMRITSAR:</span>
+							<span class="mt-2 text-muted"
+								>284 D BLOCK RANJIT AVENUE</span
+							>
 						</div>
 					</div>
 				</div>
 
-				<!-- City List -->
-				<div
-					class="scroll-auto"
-					style="height: 400px; overflow-y: scroll"
-				>
-					<div
-						class="d-flex cursor-pointer mb-3 rounded flex-column align-items-start bg-light p-3"
-						(click)="changeLocation('LUDHIANA')"
-					>
-						<span class="font-weight-bold">LUDHIANA: </span>
-						<span
-							class="mt-2"
-							style="color: rgba(118, 115, 115, 0.999)"
-							>2E, SARABHA NAGAR MALHAR ROAD, LUDHIANA</span
-						>
-					</div>
-
-					<div
-						class="d-flex rounded cursor-pointer mb-3 flex-column align-items-start bg-light p-3"
-						(click)="changeLocation('JALANDHAR')"
-					>
-						<span class="Montserrat-SemiBold">JALANDHAR: </span>
-						<span
-							class="mt-2"
-							style="color: rgba(118, 115, 115, 0.999)"
-							>MKC Mall, 461 NEW JAWAHAR NAGAR, JALANDHAR</span
-						>
-					</div>
-
-					<div
-						class="d-flex rounded cursor-pointer mb-3 flex-column align-items-start bg-light p-3"
-						(click)="changeLocation('ZIRAKPUR')"
-					>
-						<span class="Montserrat-SemiBold">ZIRAKPUR: </span>
-						<span
-							class="mt-2"
-							style="color: rgba(118, 115, 115, 0.999)"
-							>VIP ROAD CCC</span
-						>
-					</div>
-
-					<div
-						class="d-flex rounded cursor-pointer mb-3 flex-column align-items-start bg-light p-3"
-						(click)="changeLocation('MOHALI')"
-					>
-						<span class="Montserrat-SemiBold">MOHALI: </span>
-						<span
-							class="mt-2"
-							style="color: rgba(118, 115, 115, 0.999)"
-							>Plaza 117, Mohali</span
-						>
-					</div>
-
-					<div
-						class="d-flex rounded flex-column cursor-pointer align-items-start bg-light p-3"
-						(click)="changeLocation('AMRITSAR')"
-					>
-						<span class="Montserrat-SemiBold">AMRITSAR: </span>
-						<span
-							class="mt-2"
-							style="color: rgba(118, 115, 115, 0.999)"
-							>284 D BLOCK RANJIT AVENUE</span
-						>
+				<!-- Right Section: Map -->
+				<div class="col-md-6 col-12">
+					<div class="map-container">
+						<iframe
+							[src]="iframeSrc"
+							width="100%"
+							height="400"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+						></iframe>
 					</div>
 				</div>
-			</div>
-
-			<!-- Map Section -->
-			<div class="map-container mt-5">
-				<!-- Display map -->
-				<iframe
-					[src]="iframeSrc"
-					width="600"
-					height="450"
-					style="border: 0"
-					allowfullscreen=""
-					loading="lazy"
-					referrerpolicy="no-referrer-when-downgrade"
-				></iframe>
 			</div>
 		</div>
 	</div>

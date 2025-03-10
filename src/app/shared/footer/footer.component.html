@@ -10,29 +10,28 @@
 	"
 >
 	<div class="py-5">
-		<div
-			class="row d-flex justify-content-around align-items-start px-4"
-		>
+		<div class="row justify-content-around align-items-start px-4">
 			<!-- Logo and Description -->
-			<div class="col-lg-4 col-md-6">
+			<div class="col-lg-4 col-md-6 col-12 mb-4">
 				<img
 					src="../../../assets/images/singla-slimming-clinic-logo.png"
 					alt="Clinic Logo"
 					width="200px"
 					height="auto"
+					class="mb-3"
 				/>
-				<p class="mt-3">
-					<span class="font-weight-bold"> Your body is a gift, </span>
+				<p>
+					<span class="font-weight-bold">Your body is a gift,</span>
 					one that deserves expert guidance, not endless struggles and
 					guilt. Trust it in the hands of a doctor who understands its
 					needs, and you will finally break free from the cycle of
 					temporary fixes. Because true transformation is about
-					healing from within
+					healing from within.
 				</p>
 				<div class="mt-3">
 					<p class="font-weight-bold" style="font-size: 1.3rem">
 						The best time to start was yesterday. The next best time
-						is NOW
+						is NOW.
 					</p>
 					<button
 						onclick="window.location.href='https://wa.me/+918146300892'"
@@ -44,16 +43,14 @@
 				<div class="mt-4">
 					<h4>Office Hours</h4>
 					<p>
-						<span class="font-weight-bold">
-							Monday to Saturday:
-						</span>
+						<span class="font-weight-bold">Monday to Saturday:</span>
 						9:00 AM - 7:00 PM
 					</p>
 				</div>
 			</div>
 
 			<!-- Menu Section -->
-			<div class="col-lg-4 col-md-6">
+			<div class="col-lg-4 col-md-6 col-12 mb-4">
 				<div class="row">
 					<div
 						class="col-6 mt-3 mb-2"
@@ -91,9 +88,9 @@
 								</div>
 								<div *ngIf="subOneItem.list.length > 0">
 									<div *ngFor="let subTwoItem of subOneItem.list">
-										<div class="ms-4 mb-2">
+										<div class="ml-4 mb-2">
 											<a
-												[routerLink]="subOneItem.link"
+												[routerLink]="subTwoItem.link"
 												style="color: inherit"
 											>
 												{{ subTwoItem.name }}
@@ -108,99 +105,61 @@
 			</div>
 
 			<!-- Contact Information -->
-			<div class="w-25">
-				<div class="col-lg-12 flex-grow">
-					<div class="d-flex mb-0">
-						<p class="font-weight-bold" style="font-size: 1.4rem">
-							Start Your Transformation Now!
-						</p>
-					</div>
+			<div class="col-lg-4 col-12 mb-4">
+				<div>
+					<h4 class="font-weight-bold mb-3">
+						Start Your Transformation Now!
+					</h4>
 					<p class="font-weight-bold" style="font-size: 1.1rem">
 						Contact Number:
 						<span class="font-weight-normal">8146300892</span>
 					</p>
 
-					<div class="mt-1">
-						<p
-							class="font-weight-bold"
-							style="font-size: 1.5rem; margin-bottom: 1rem"
-						>
-							Addressess
-						</p>
-						<div
-							class="d-flex align-items-start justify-content-between"
-						>
-							<div class="mr-7">
-								<div class="d-flex align-items-center mb-3">
-									<i class="bi bi-geo-alt-fill mr-2"></i>
-									<span
-										class="font-weight-bold"
-										style="font-size: 1.1rem"
-										>Ludhiana</span
-									>
-								</div>
+					<!-- Addresses -->
+					<div class="mt-3">
+						<h5 class="font-weight-bold mb-3">Our Clinics</h5>
+						<div class="row">
+							<div class="col-6">
+								<p><strong>Ludhiana:</strong></p>
 								<p>2E, SARABHA NAGAR MALHAR ROAD</p>
 
-								<div class="d-flex align-items-center mb-3">
-									<i class="bi bi-geo-alt-fill mr-2"></i>
-									<span
-										class="font-weight-bold"
-										style="font-size: 1.1rem"
-										>Jalandhar</span
-									>
-								</div>
+								<p><strong>Jalandhar:</strong></p>
 								<p>MKC Mall, 461 NEW JAWAHAR NAGAR</p>
 							</div>
-							<div class="ml-7">
-								<div class="d-flex align-items-center mb-3">
-									<i class="bi bi-geo-alt-fill mr-2"></i>
-									<span
-										class="font-weight-bold"
-										style="font-size: 1.1rem"
-										>Zirakpur</span
-									>
-								</div>
+							<div class="col-6">
+								<p><strong>Zirakpur:</strong></p>
 								<p>VIP ROAD CCC</p>
-								<div class="d-flex align-items-center mb-3">
-									<i class="bi bi-geo-alt-fill mr-2"></i>
-									<span
-										class="font-weight-bold"
-										style="font-size: 1.1rem"
-										>Mohali</span
-									>
-								</div>
+
+								<p><strong>Mohali:</strong></p>
 								<p>PLAZA 117</p>
-								<div class="d-flex align-items-center mb-3">
-									<i class="bi bi-geo-alt-fill mr-2"></i>
-									<span
-										class="font-weight-bold"
-										style="font-size: 1.1rem"
-										>Amritsar</span
-									>
-								</div>
+
+								<p><strong>Amritsar:</strong></p>
 								<p>284 D BLOCK RANJIT AVENUE</p>
 							</div>
 						</div>
 					</div>
 
-					<div class="d-flex align-items-center mt-3">
-						<i
-							class="bi bi-envelope-fill mr-2"
-							style="font-size: 1.1rem"
-						></i>
-						<p class="mb-0" style="font-size: 1.1rem">
-							singlaslimmingclinic&#64;gmail.com
+					<!-- Email -->
+					<div class="mt-4">
+						<p class="font-weight-bold">
+							Email: singlaslimmingclinic&#64;gmail.com
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Footer Bottom Section -->
 	<hr />
 	<div
-		class="container d-flex Montserrat-SemiBold mt-3 pb-3 flex-row justify-content-between"
+		class="container d-flex flex-column flex-md-row justify-content-between align-items-center py-3"
 	>
-		<div>Copyright Singla Slimming Clinic</div>
-		<div>Developed by Auribises Technologies</div>
+		<p class="mb-0">
+			© 2025 Singla Slimming Clinic. All rights reserved.
+		</p>
+		<p class="mb-0">
+			Developed by <a href="#">Auribises Technologies</a>
+		</p>
 	</div>
 </div>

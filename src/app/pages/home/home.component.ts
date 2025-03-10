@@ -26,6 +26,7 @@ import {
 	styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
+	@ViewChild("modalElement", { static: false }) modal!: ElementRef
 	images: { image: string; title: string }[] = [
 		{
 			image: "../assets/images/doctors_image.png",
@@ -258,7 +259,7 @@ export class HomeComponent implements OnInit {
 
 	getMaxIndex() {
 		// Use Math.ceil() to ensure the remaining items get their own slide
-		return Math.ceil(this.statements.length / 5) - 1
+		return Math.ceil(this.statements.length / 4) - 1
 	}
 
 	cards = [
@@ -372,5 +373,12 @@ Works on areas like abdomen, thighs, arms, double chin, and love handles, where 
 	}
 	toggleCityList(): void {
 		this.showCityList = !this.showCityList
+	}
+	openModalIdeal() {
+		document.getElementById("customModal").classList.add("active")
+	}
+
+	closeModalIdeal() {
+		document.getElementById("customModal").classList.remove("active")
 	}
 }
