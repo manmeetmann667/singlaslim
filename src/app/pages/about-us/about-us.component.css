@@ -80,3 +80,14 @@ h3 {
 .city-item:hover {
 	background-color: #f1f1f1;
 }
+@media (max-width: 600px) {
+	.heading {
+		position: relative;
+		left: -45px;
+		font-size: 47px;
+	}
+	.search-box {
+		position: relative;
+		left: -37px;
+	}
+}
