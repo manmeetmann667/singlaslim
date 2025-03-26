@@ -42,7 +42,11 @@ export class HomeComponent implements OnInit {
 			title: "Get In Your <br> Best Shape",
 		},
 	]
-
+	videos: string[] = [
+		"assets/videos/SSC.mp4",
+		"assets/videos/SSC.mp4",
+		"assets/videos/SSC.mp4",
+	]
 	newsList: News[] = []
 
 	gender: string = "male" // Default gender
@@ -267,10 +271,10 @@ export class HomeComponent implements OnInit {
 			title: "Magic Tech",
 			link: "magic-tech",
 			colorClass: "bg-primary",
-			description: `Laser emits low-level energy that penetrates the skin and targets fat cells The targeted area appears slimmer as fat cell contents are expelled.<br>
+			description: `<img src="../assets/images/bullet_circle.png" height="9px"> Laser emits low-level energy that penetrates the skin and targets fat cells The targeted area appears slimmer as fat cell contents are expelled.<br>
 
-1 session can reduce 0.5 to 1.5 inches<br>
-Stimulates 30% more collagen and elastin production.<br>
+<img src="../assets/images/bullet_circle.png" height="9px"> 1 session can reduce 0.5 to 1.5 inches<br>
+<img src="../assets/images/bullet_circle.png" height="9px"> Stimulates 30% more collagen and elastin production.<br>
 Encourages 300-500 calories to be burned post-session.`,
 		},
 		{
@@ -278,76 +282,75 @@ Encourages 300-500 calories to be burned post-session.`,
 			link: "cryolipolysis",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
-			description: ` The machine cools the fat cells to around -11°C to -13°C fat cells begin to freeze and die <br>
-			About 20-25% of the fat in the treated area is permanently reduced.
+			description: `<img src="../assets/images/bullet_circle.png" height="9px"> The machine cools the fat cells to around -11°C to -13°C fat cells begin to freeze and die <br>
+		<img src="../assets/images/bullet_circle.png" height="9px">	About 20-25% of the fat in the treated area is permanently reduced.
  Targets Stubborn Fat<br>
 
-Works on areas like abdomen, thighs, arms, double chin, and love handles, where fat is resistant to diet & exercise...`,
+<img src="../assets/images/bullet_circle.png" height="9px"> Works on areas like abdomen, thighs, arms, double chin, and love handles, where fat is resistant to diet & exercise...`,
 		},
 		{
 			title: "Cavitation",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
 			link: "cavitation",
-			description:
-				"Cavitation is a popular non-invasive fat reduction treatment used in weight loss and body contouring. It is also known as ultrasonic cavitation or ultrasound fat cavitation....",
+			description: `<img src="../assets/images/bullet_circle.png" height="9px"> Cavitation is a popular non-invasive fat reduction treatment used in weight loss and body contouring.<br>
+				<img src="../assets/images/bullet_circle.png" height="9px"> It is also known as ultrasonic cavitation or ultrasound fat cavitation....`,
 		},
 		{
 			title: "Diode Lipolaser",
 			subtitle: "Card Title 1",
 			link: "diode-lipolaser",
 			colorClass: "bg-primary",
-			description:
-				"Non surgical diode Lipolaser is an alternative of surgical laser liposuction. Where the treatment is done externally without any surgical procedure ultrasonic transducer/probe is moved externally on the target areas energy....",
+			description: `<img src="../assets/images/bullet_circle.png" height="9px"> Non surgical diode Lipolaser is an alternative of surgical laser liposuction.<br>
+			<img src="../assets/images/bullet_circle.png" height="9px"> Where the treatment is done externally without any surgical procedure ultrasonic transducer/probe is moved externally on the target areas energy....`,
 		},
 		{
 			title: "Body Firming",
 			link: "body-firming",
 			subtitle: "Card Title 1",
 			colorClass: "bg-primary",
-			description:
-				"As part of our wellness therapy we also offer body firming program. This will help you to shapeup and accentuate your figure. We have professional who can help you with the process.... ",
+			description: `<img src="../assets/images/bullet_circle.png" height="9px"> As part of our wellness therapy we also offer body firming program. This will help you to shapeup and accentuate your figure.<br> <img src="../assets/images/bullet_circle.png" height="9px"> We have professional who can help you with the process.... `,
 		},
 	]
 	HifuCards = [
 		{
 			title: "Saggy Arms",
-			description: `<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
-			<img src="../assets/images/blue_tick.png" height="16px"> Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
-			<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
-			<img src="../assets/images/blue_tick.png" height="16px"> Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
-			<img src="../assets/images/blue_tick.png" height="16px"> Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
-			<img src="../assets/images/blue_tick.png" height="16px"> Long-Lasting Results`,
+			description: `<img src="../assets/images/bullet_circle.png" height="12px"> Skin Tightening & Lifting → 80-90% improvement in firmness after 2-3 months.<br>
+			<img src="../assets/images/bullet_circle.png" height="12px"> Collagen & Elastin Boost → 75-85% increase in skin elasticity due to stimulated collagen production.<br>
+			<img src="../assets/images/bullet_circle.png" height="12px"> Fat Reduction (if targeting fat deposits) → 20-30% reduction in localized fat per session.<br>
+			<img src="../assets/images/bullet_circle.png" height="12px"> Wrinkle & Loose Skin Reduction → 70-85% decrease in sagging appearance over time.<br>
+			<img src="../assets/images/bullet_circle.png" height="12px"> Improved Skin Texture & Smoothness → 80-90% of patients notice better skin quality.<br>
+			<img src="../assets/images/bullet_circle.png" height="12px"> Long-Lasting Results`,
 			image: "../assets/images/hifu_arms.jpeg",
 			link: "#",
 		},
 		{
 			title: "Saggy Thighs",
-			description: `<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Lifting → 70-85% improvement in skin firmness over 2-3 months<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Collagen Production Boost → 80-90% increase, leading to improved elasticity<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction → 20-30% reduction in localized fat per session<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Reduced Wrinkles & Loose Skin → 60-75% reduction in thigh sagging`,
+			description: `<img src="../assets/images/bullet_circle.png" height="12px"> Skin Tightening & Lifting → 70-85% improvement in skin firmness over 2-3 months<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Collagen Production Boost → 80-90% increase, leading to improved elasticity<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Fat Reduction → 20-30% reduction in localized fat per session<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Reduced Wrinkles & Loose Skin → 60-75% reduction in thigh sagging`,
 			image: "../assets/images/higu_thighs.jpg",
 			link: "#",
 		},
 		{
 			title: "Saggy Belly",
-			description: `<img src="../assets/images/blue_tick.png" height="16px"> Fat Reduction → 20-30% fat reduction in the treated area after 1-2 sessions.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Skin Tightening & Firmness → 70-85% improvement in skin elasticity over 2-3 months.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Reduction in Skin Laxity → 65-80% improvement in saggy skin after treatment.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Body Contouring Effect → 2-5 cm reduction in waist circumference after a full treatment course.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Visible Results → 90% of patients see noticeable improvement within 8-12 weeks.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> Collagen & Elastin Production Boost → 80-90% increase for firmer, tighter skin.`,
+			description: `<img src="../assets/images/bullet_circle.png" height="12px"> Fat Reduction → 20-30% fat reduction in the treated area after 1-2 sessions.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Skin Tightening & Firmness → 70-85% improvement in skin elasticity over 2-3 months.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Reduction in Skin Laxity → 65-80% improvement in saggy skin after treatment.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Body Contouring Effect → 2-5 cm reduction in waist circumference after a full treatment course.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Visible Results → 90% of patients see noticeable improvement within 8-12 weeks.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> Collagen & Elastin Production Boost → 80-90% increase for firmer, tighter skin.`,
 			image: "../assets/images/hifu_belly.jpeg",
 			link: "#",
 		},
 		{
 			title: "Saggy Breast",
 			description: `
-<img src="../assets/images/blue_tick.png" height="16px"> Tightening & Firmness → 75-90% of women experience noticeable tightening after 1-2 sessions.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> 90% improvement in sking firmness & elasticity.<br>
-<img src="../assets/images/blue_tick.png" height="16px"> 70 - 80% collagen boost for perkier, youthful breasts<br>
-<img src="../assets/images/blue_tick.png" height="16px"> 100% non-surgical & pain-free no downtime<br>`,
+<img src="../assets/images/bullet_circle.png" height="12px"> Tightening & Firmness → 75-90% of women experience noticeable tightening after 1-2 sessions.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> 90% improvement in sking firmness & elasticity.<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> 70 - 80% collagen boost for perkier, youthful breasts<br>
+<img src="../assets/images/bullet_circle.png" height="12px"> 100% non-surgical & pain-free no downtime<br>`,
 			image: "../assets/images/hifu_breast.jpg",
 			link: "#",
 		},

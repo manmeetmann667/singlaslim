@@ -126,24 +126,90 @@
 				class="img-fluid rounded-lg mb-4 mb-md-0 mr-md-5 shadow"
 			/>
 			<div>
-				<p class="font-weight-bold" style="font-size: 2.8rem">
+				<p class="Montserrat-Bold" style="font-size: 2.8rem">
 					Lose <span class="text-primary">4 - 12kg</span> in 1 month
 				</p>
 				<p
 					class="font-weight-bold text-secondary"
 					style="font-size: 1.7rem; line-height: 2"
 				>
-					<span class="text-dark">Without</span> Exercise <br />
-					<span class="text-dark">Without</span> Medicine <br />
-					<span class="text-dark">Without</span> Surgery
+					<span class="text-dark Montserrat-Medium">Without</span>
+					Exercise |
+					<span class="text-dark Montserrat-Medium">Without</span>
+					Medicine |
+					<span class="text-dark Montserrat-Medium">Without</span>
+					Surgery
 				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container my-5 py-5">
+		<h2
+			class="position-relative Montserrat-Bold font-weight-bold d-inline-block text-uppercase pb-2 mb-4"
+		>
+			About Us
+			<span class="d-block bg-warning gradient-line"></span>
+		</h2>
+		<div class="row align-items-center">
+			<!-- Left Section: Image -->
+			<div
+				class="col-md-6 col-12 mb-4 mb-md-0 text-center text-md-left"
+			>
+				<img
+					src="../../../assets/images/about_us_pic.jpg"
+					alt="About Us"
+					class="img-fluid"
+					style="max-width: 400px"
+				/>
+			</div>
+
+			<!-- Right Section: Text Content -->
+			<div class="col-md-6 col-12 text-justify Montserrat-Medium">
+				<p>
+					Singla Slimming Clinic has been a pioneer in the slimming
+					and wellness industry since 2003. Founded by Dr. Anju Singla
+					and Dr. Sushil Singla, we have successfully transformed
+					lives for over 21 years, helping individuals achieve their
+					weight loss goals with cutting-edge, non-invasive
+					techniques.
+				</p>
+				<p>
+					With over 132,232 success stories and more than 2.7 million+
+					kilos lost, we have become a trusted name in weight loss and
+					wellness. We focus on addressing the root causes of
+					overweight and offer tailored solutions for sustainable
+					results.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container mb-5">
+		<h2
+			class="position-relative Montserrat-Bold d-inline-block text-uppercase pb-3"
+		>
+			Awards
+			<span class="d-block bg-warning gradient-line"></span>
+		</h2>
+
+		<div class="row">
+			<div
+				class="col-md-4 col-sm-6 mb-4"
+				*ngFor="let image of images1"
+			>
+				<div class="card shadow-sm border-0">
+					<img
+						[src]="'../assets/images/' + image"
+						[alt]="'Award ' + image"
+						class="img-fluid award-image"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="my-8 py-5 shadow-lg" style="background-color: #fafafa">
 		<div>
 			<h2
-				class="text-center font-weight-bold mb-5"
+				class="text-center Montserrat-Bold mb-5"
 				style="font-size: 2.2rem"
 			>
 				Are You Facing?
@@ -174,7 +240,7 @@
 							<div
 								class="custom-card-body position-relative text-center"
 							>
-								<h5 class="custom-card-title">
+								<h5 class="custom-card-title Montserrat-Medium">
 									{{ statement.text }}
 								</h5>
 							</div>
@@ -187,29 +253,6 @@
 			<button class="prev-btn" (click)="prevSlide()">&#10094;</button>
 			<button class="next-btn" (click)="nextSlide()">&#10095;</button>
 		</div>
-		<div class="container mb-5">
-			<h2
-				class="position-relative font-weight-bold d-inline-block text-uppercase pb-3"
-			>
-				Awards
-				<span class="d-block bg-warning gradient-line"></span>
-			</h2>
-
-			<div class="row">
-				<div
-					class="col-md-4 col-sm-6 mb-4"
-					*ngFor="let image of images1"
-				>
-					<div class="card shadow-sm border-0">
-						<img
-							[src]="'../assets/images/' + image"
-							[alt]="'Award ' + image"
-							class="img-fluid award-image"
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<div
 			class="mb-5 py-5 px-3"
@@ -219,12 +262,12 @@
 				class="d-flex flex-column flex-md-row justify-content-around align-items-center"
 			>
 				<div class="text-center text-md-left mb-4 mb-md-0">
-					<p class="font-weight-bold" style="font-size: 2.2rem">
+					<p class="Montserrat-Bold" style="font-size: 2.2rem">
 						Calculate Your Ideal Weight
 					</p>
 					<p style="font-size: 1.2rem">
 						Know your Ideal Weight for
-						<span class="font-weight-bold">Healthier Life!</span>
+						<span class="Montserrat-Bold">Healthier Life!</span>
 					</p>
 					<button
 						class="btn btn-primary mt-3"
@@ -236,8 +279,7 @@
 				</div>
 				<img
 					src="../../../assets/images/doctor_2.png"
-					class="img-fluid rounded"
-					style="max-width: 100%; height: auto"
+					class="img-fluid-first rounded"
 				/>
 			</div>
 		</div>
@@ -245,7 +287,7 @@
 		<div class="custom-modal-overlay" id="customModal">
 			<div class="custom-modal">
 				<div class="custom-modal-header">
-					<h5 class="modal-title">
+					<h5 class="modal-title Montserrat-Medium">
 						Medically Ideal Weight Calculator
 					</h5>
 					<span class="close-btn" (click)="closeModalIdeal()"
@@ -310,7 +352,7 @@
 				<!-- Text Section -->
 				<div class="col-md-6 text-center text-md-left">
 					<p
-						class="font-weight-bold text-dark"
+						class="Montserrat-Bold text-dark"
 						style="font-size: 2.8rem; line-height: 1.3"
 					>
 						Lose
@@ -421,7 +463,7 @@
 				<span class="d-block bg-warning gradient-line"></span>
 			</h2>
 			<div class="container text-center mt-4">
-				<h2 class="font-weight-bold text-primary">
+				<h2 class="Montserrat-Bold text-primary">
 					Weight Management Program
 				</h2>
 				<h3 class="mb-4 text-secondary">Online & Offline</h3>
@@ -454,7 +496,7 @@
 							</tr>
 							<tr>
 								<td>CRM 24x7</td>
-								<td>&#10007;</td>
+								<td>&#10003;</td>
 								<td>&#10003;</td>
 							</tr>
 							<tr class="bg-light">
@@ -482,7 +524,7 @@
 
 				<!-- Heading -->
 				<h2
-					class="font-weight-bold mb-4 pb-2 text-dark"
+					class="Montserrat-Bold mb-4 pb-2 text-dark"
 					style="font-size: 2rem"
 				>
 					Weight Loss
@@ -491,15 +533,12 @@
 			<div class="row pb-5">
 				<div class="col-md-4 mb-4" *ngFor="let card of cards">
 					<div class="card-wrapper-first">
-						<div class="card-first border-0 shadow">
+						<div class="card-first border-0 shadow Montserrat-Medium">
 							<div class="card-header-first bg-primary">
 								{{ card.title }}
 							</div>
 							<div class="card-body-first">
-								<p
-									class="card-title-first"
-									[innerHTML]="card.description"
-								></p>
+								<p [innerHTML]="card.description"></p>
 								<i class="fas fa-user card-icon-first"></i>
 							</div>
 							<div class="card-footer-first">
@@ -549,7 +588,7 @@
 									src="../assets/images/blue_tick.png"
 									height="16px"
 								/>
-								<strong>Age Lifting:</strong> 85-95% of patients see
+								<strong> Age Lifting:</strong> 85-95% of patients see
 								noticeable skin tightening over 2-3 months.
 							</li>
 							<li class="mb-2">
@@ -557,7 +596,7 @@
 									src="../assets/images/blue_tick.png"
 									height="16px"
 								/>
-								<strong>Collagen & Elastin Boost:</strong> 80-90%
+								<strong> Collagen & Elastin Boost:</strong> 80-90%
 								experience increased firmness due to collagen
 								remodeling.
 							</li>
@@ -566,7 +605,7 @@
 									src="../assets/images/blue_tick.png"
 									height="16px"
 								/>
-								<strong>Wrinkle Reduction:</strong> 70-85% reduction
+								<strong> Wrinkle Reduction:</strong> 70-85% reduction
 								in fine lines and wrinkles over time.
 							</li>
 							<li class="mb-2">
@@ -574,7 +613,7 @@
 									src="../assets/images/blue_tick.png"
 									height="16px"
 								/>
-								<strong>Non-Surgical Face Lift Alternative:</strong>
+								<strong> Non-Surgical Face Lift Alternative:</strong>
 								90% prefer HIFU over surgery for a natural look.
 							</li>
 						</ul>
@@ -653,46 +692,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="container my-5 py-5">
-			<h2
-				class="position-relative font-weight-bold d-inline-block text-uppercase pb-2 mb-4"
-			>
-				About Us
-				<span class="d-block bg-warning gradient-line"></span>
-			</h2>
-			<div class="row align-items-center">
-				<!-- Left Section: Image -->
-				<div
-					class="col-md-6 col-12 mb-4 mb-md-0 text-center text-md-left"
-				>
-					<img
-						src="../../../assets/images/about_us_pic.jpg"
-						alt="About Us"
-						class="img-fluid"
-						style="max-width: 400px"
-					/>
-				</div>
-
-				<!-- Right Section: Text Content -->
-				<div class="col-md-6 col-12 text-justify">
-					<p>
-						Singla Slimming Clinic has been a pioneer in the slimming
-						and wellness industry since 2003. Founded by Dr. Anju
-						Singla and Dr. Sushil Singla, we have successfully
-						transformed lives for over 21 years, helping individuals
-						achieve their weight loss goals with cutting-edge,
-						non-invasive techniques.
-					</p>
-					<p>
-						With over 132,232 success stories and more than 2.7
-						million+ kilos lost, we have become a trusted name in
-						weight loss and wellness. We focus on addressing the root
-						causes of overweight and offer tailored solutions for
-						sustainable results.
-					</p>
-				</div>
-			</div>
-		</div>
 
 		<div
 			class="container my-5 py-5 d-flex flex-md-row flex-column justify-content-between align-items-center"
@@ -738,6 +737,27 @@
 					<div></div>
 				</div>
 			</div>
+		</div>
+		<div class="container">
+			<div class="d-flex align-items-center mb-3">
+				<div class="d-flex align-items-center mb-2">
+					<div
+						class="bg-warning rounded-circle mr-2"
+						style="width: 16px; height: 16px"
+					></div>
+					<span class="text-warning font-weight-bold">●</span>
+				</div>
+
+				<!-- Heading -->
+				<h2
+					class="font-weight-bold mb-4 pb-2 text-dark"
+					style="font-size: 2rem"
+				>
+					Testimonials
+				</h2>
+			</div>
+
+			<app-video-silder></app-video-silder>
 		</div>
 		<div class="my-5 py-5" style="background-color: #fafafa">
 			<div class="row align-items-center">

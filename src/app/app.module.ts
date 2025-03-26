@@ -40,7 +40,8 @@ import { SkinTighteningComponent } from "./pages/skin-tightening/skin-tightening
 import { AboutUsComponent } from "./pages/about-us/about-us.component"
 import { SafeUrlPipe } from "./safe-url.pipe"
 import { MedicalTestimonialComponent } from "./medical-testimonial/medical-testimonial.component"
-import { BookAppointmentComponent } from "./pages/book-appointment/book-appointment.component"
+import { BookAppointmentComponent } from "./pages/book-appointment/book-appointment.component";
+import { VideoSilderComponent } from './video-silder/video-silder.component'
 
 @NgModule({
 	declarations: [
@@ -69,6 +70,7 @@ import { BookAppointmentComponent } from "./pages/book-appointment/book-appointm
 		SafeUrlPipe,
 		MedicalTestimonialComponent,
 		BookAppointmentComponent,
+		VideoSilderComponent,
 	],
 	imports: [
 		BrowserModule,

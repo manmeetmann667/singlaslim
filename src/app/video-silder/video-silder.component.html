@@ -1,0 +1,11 @@
+<div class="slider-container">
+	<div class="video-track" #videoTrack>
+		<div class="video-item" *ngFor="let video of videoList">
+			<a href="/testimonials">
+				<video autoplay loop muted>
+					<source [src]="video" type="video/mp4" />
+				</video>
+			</a>
+		</div>
+	</div>
+</div>
