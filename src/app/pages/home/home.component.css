@@ -142,9 +142,9 @@
 /* ======= Mobile Responsive ======= */
 @media (max-width: 600px) {
 	.custom-modal {
-		width: 44%;
+		width: 93%;
 		position: relative;
-		right: 214px;
+		right: 5px;
 	}
 	.img-fluid-first {
 		max-width: 100%;
